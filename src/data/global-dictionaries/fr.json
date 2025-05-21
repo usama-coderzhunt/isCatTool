@@ -1,0 +1,1662 @@
+{
+    "common": {
+        "home": "Accueil",
+        "about": "À propos",
+        "services": "Services",
+        "contact": "Contact",
+        "login": "Connexion",
+        "signup": "S'inscrire",
+        "submit": "Soumettre",
+        "cancel": "Annuler",
+        "backToList": "Retour à la liste",
+        "create": "Créer",
+        "update": "Mettre à jour",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "view": "Voir",
+        "search": "Rechercher",
+        "actions": "Actions",
+        "confirmDelete": "Confirmer la Suppression",
+        "confirmStatusChange": "Confirmer le Changement de Statut",
+        "select": "Sélectionner",
+        "yes": "Oui",
+        "no": "Non",
+        "staff_only": "Pour les employés uniquement",
+        "staff_and_client": "Pour les employés et les clients"
+    },
+    "landing": {
+        "hero": {
+            "title": "Bienvenue sur Notre Plateforme",
+            "subtitle": "Votre Solution Tout-en-Un",
+            "getStarted": "Commencer"
+        },
+        "features": {
+            "title": "Nos Fonctionnalités",
+            "feature1": "Facile à Utiliser",
+            "feature2": "Sécurisé",
+            "feature3": "Fiable"
+        },
+        "customerReviews": {
+            "title": "Avis des Clients",
+            "readMore": "Lire Plus",
+            "writeReview": "Écrire un Avis"
+        }
+    },
+    "auth": {
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "forgotPassword": {
+            "title": "Mot de passe oublié 🔒",
+            "description": "Saisissez votre e-mail et nous vous enverrons les instructions pour réinitialiser votre mot de passe",
+            "emailLabel": "E-mail",
+            "emailPlaceholder": "Entrez votre e-mail",
+            "sendButton": "Envoyer le lien de réinitialisation",
+            "backToLogin": "Retour à la connexion"
+        },
+        "rememberMe": "Se souvenir de moi",
+        "loginButton": "Se connecter",
+        "registerButton": "S'enregistrer",
+        "login": {
+            "welcome": "Bienvenue sur",
+            "signInMessage": "Veuillez vous connecter à votre compte et commencer l'aventure",
+            "emailOrUsername": "Email ou Nom d'utilisateur",
+            "emailPlaceholder": "Entrez votre email ou nom d'utilisateur",
+            "password": "Mot de passe",
+            "rememberMe": "Se souvenir de moi",
+            "forgotPassword": "Mot de passe oublié ?",
+            "loginButton": "Connexion",
+            "newOnPlatform": "Nouveau sur notre plateforme ?",
+            "createAccount": "Créer un compte",
+            "or": "ou"
+        },
+        "register": {
+            "title": "L'aventure commence ici 🚀",
+            "description": "Rendez la gestion de votre application facile et amusante !",
+            "usernameLabel": "Nom d'utilisateur",
+            "usernamePlaceholder": "Entrez votre nom d'utilisateur",
+            "emailLabel": "E-mail",
+            "emailPlaceholder": "Entrez votre e-mail",
+            "passwordLabel": "Mot de passe",
+            "passwordPlaceholder": "············",
+            "agreeText": "J'accepte la",
+            "privacyPolicy": "politique de confidentialité et les conditions",
+            "signUpButton": "S'inscrire",
+            "alreadyAccount": "Vous avez déjà un compte ?",
+            "signInInstead": "Se connecter",
+            "or": "ou"
+        }
+    },
+    "userDropdown": {
+        "myProfile": "Mon Profil",
+        "settings": "Paramètres",
+        "pricing": "Tarification",
+        "faq": "FAQ",
+        "language": "Langue",
+        "logout": "Déconnexion"
+    },
+    "clientTable": {
+        "name": "NOM",
+        "fullName": "Nom Complet",
+        "firstName": "Prénom",
+        "lastName": "Nom de famille",
+        "email": "E-MAIL",
+        "dateOfBirth": "DATE DE NAISSANCE",
+        "country": "PAYS",
+        "status": "STATUT",
+        "action": "Action",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "allStatus": "Tous les statuts",
+        "createClient": "Créer un client",
+        "createLead": "Créer un prospect",
+        "clients": "Clients de traduction",
+        "leads": "Prospects de traduction",
+        "promoteToClient": "Promouvoir en client",
+        "confirmStatusChange": "Confirmer le changement de statut",
+        "statusChangeMessage": "Êtes-vous sûr de vouloir changer le statut ?",
+        "promoteMessage": "Êtes-vous sûr de vouloir promouvoir",
+        "search": "Rechercher",
+        "phone": "Téléphone",
+        "address": "Adresse",
+        "city": "Ville",
+        "state": "État",
+        "zipCode": "Code postal",
+        "viewDetails": "Voir les détails",
+        "filterByStatus": "Filtrer par statut",
+        "exportToCSV": "Exporter en CSV",
+        "editClient": "Modifier le client",
+        "deleteClient": "Supprimer le client",
+        "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ?",
+        "clientAdded": "Client ajouté avec succès",
+        "clientUpdated": "Client mis à jour avec succès",
+        "clientDeleted": "Client supprimé avec succès",
+        "clientSearchPlaceholder": "Rechercher des clients...",
+        "leadSearchPlaceholder": "Rechercher des prospects...",
+        "required": "Ce champ est obligatoire",
+        "invalidEmail": "Adresse e-mail invalide",
+        "invalidPhone": "Numéro de téléphone invalide",
+        "middleName": "Deuxième prénom",
+        "nationality": "Nationalité",
+        "gender": "Genre",
+        "male": "Masculin",
+        "female": "Féminin",
+        "other": "Autre",
+        "postalCode": "Code postal",
+        "chooseCountry": "Choisissez un pays",
+        "cancel": "Annuler",
+        "close": "Fermer",
+        "notes": "Notes",
+        "createNewClient": "Créer un nouveau client",
+        "createNewLead": "Créer un nouveau prospect",
+        "updateClient": "Mettre à jour le client",
+        "updateLead": "Mettre à jour le prospect",
+        "clientType": "Type de client",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "convertedToClient": "Converti en client",
+        "noData": "Données client non trouvées",
+        "toClient": "en client",
+        "confirmDelete": "Confirmer la Suppression",
+        "delBtnlabelBulk": "Supprimer les clients",
+        "delBtnLeadlabelBulk": "Supprimer les prospects"
+    },
+    "table": {
+        "noResults": "Aucun résultat trouvé",
+        "noRecords": "Aucun enregistrement à afficher",
+        "rowsPerPage": "Lignes par page",
+        "of": "sur",
+        "search": "Rechercher",
+        "actions": "Actions",
+        "noData": "Aucune donnée disponible",
+        "loading": "Chargement...",
+        "pagination": {
+            "first": "Premier",
+            "last": "Dernier",
+            "next": "Suivant",
+            "previous": "Précédent"
+        }
+    },
+    "modal": {
+        "title": "Titre",
+        "description": "Description",
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "delete": "Supprimer",
+        "confirmation": {
+            "delete": {
+                "title": "Confirmer la Suppression",
+                "cancel": "Annuler",
+                "confirm": "Confirmer"
+            },
+            "status": {
+                "title": "Confirmer le Changement de Statut",
+                "message": "Êtes-vous sûr de vouloir changer le statut ?",
+                "cancel": "Annuler",
+                "confirm": "Confirmer"
+            },
+            "promotion": {
+                "title": "Promouvoir en Client",
+                "message": "Êtes-vous sûr de vouloir promouvoir en client ?",
+                "cancel": "Annuler",
+                "confirm": "Confirmer"
+            }
+        }
+    },
+    "groupsPage": {
+        "title": "Gestion des Groupes",
+        "addGroup": "Ajouter un Groupe",
+        "name": "Nom du Groupe",
+        "description": "Description",
+        "members": "Membres",
+        "status": "Statut",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "actions": "Actions",
+        "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ",
+        "groupAdded": "Groupe ajouté avec succès",
+        "groupUpdated": "Groupe mis à jour avec succès",
+        "groupDeleted": "Groupe supprimé avec succès",
+        "searchPlaceholder": "Rechercher des groupes...",
+        "noGroups": "Aucun groupe trouvé",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "view": "Voir",
+        "createNewGroup": "Créer un Nouveau Groupe",
+        "updateGroup": "Mettre à jour le Groupe"
+    },
+    "positionsPage": {
+        "title": "Postes",
+        "addPosition": "Ajouter un Poste",
+        "name": "Nom du Poste",
+        "cancel": "Annuler",
+        "create": "Créer"
+    },
+    "usersPage": {
+        "title": "Gestion des Utilisateurs",
+        "addUser": "Ajouter un Utilisateur",
+        "username": "Nom d'utilisateur",
+        "email": "E-mail",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "actions": "Actions",
+        "noData": "Aucune donnée disponible",
+        "searchPlaceholder": "Rechercher des utilisateurs",
+        "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet utilisateur?"
+    },
+    "userDetails": {
+        "title": "Détails de l'Utilisateur",
+        "username": "Nom d'utilisateur",
+        "email": "E-mail",
+        "permissions": "Permissions"
+    },
+    "permissions": {
+        "title": "Permissions",
+        "noData": "Aucune permission trouvée",
+        "model": "Modèle",
+        "totalPermissions": "Permissions Totales",
+        "permissions": "permissions",
+        "updatePermissions": "Mettre à jour les Permissions",
+        "update": "Mettre à jour",
+        "search": "Rechercher",
+        "permissionsSearchPlaceholder": "Rechercher des permissions..."
+    },
+    "positionsTable": {
+        "search": "Rechercher",
+        "positionSearchPlaceholder": "Rechercher des postes...",
+        "title": "Postes du Personnel",
+        "positionName": "Nom du Poste",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "actions": "Actions",
+        "createPosition": "Créer un Poste",
+        "confirmDelete": "Confirmer la Suppression",
+        "deleteMessage": "Êtes-vous sûr de vouloir supprimer",
+        "updatePosition": "Mettre à jour le Poste",
+        "addPosition": "Ajouter un Poste",
+        "deletePositionBulk": "Supprimer les positions"
+    },
+    "staffTable": {
+        "search": "Rechercher",
+        "staffSearchPlaceholder": "Rechercher des membres du personnel...",
+        "title": "Personnel",
+        "createStaff": "Créer un membre du personnel",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "position": "Poste",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "actions": "Actions",
+        "noPosition": "Aucun poste",
+        "deleteStaff": "Supprimer le membre du personnel",
+        "deleteMessage": "Êtes-vous sûr de vouloir supprimer",
+        "active": "Actif",
+        "inactive": "Inactif"
+    },
+    "staffDetails": {
+        "title": "Détails du Personnel",
+        "fullName": "Nom Complet",
+        "email": "E-mail",
+        "phoneNumber": "Numéro de Téléphone",
+        "position": "Poste",
+        "status": "Statut",
+        "active": "Actif",
+        "inactive": "Inactif"
+    },
+    "groupDialog": {
+        "createGroupDialogTitle": "Créer un Nouveau Groupe",
+        "createGroupDialogFieldLab": "Nom du Groupe",
+        "createGroupDialogFieldLabRequired": "Le nom du groupe est obligatoire",
+        "createGroupDialogCancel": "Annuler",
+        "createGroupDialogCreate": "Créer"
+    },
+    "staffDialog": {
+        "createTitle": "Créer un nouveau membre du personnel",
+        "updateTitle": "Mettre à jour le poste du membre du personnel",
+        "username": "Nom d'utilisateur",
+        "middleName": "Deuxième Prénom",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "E-mail",
+        "phoneNumber": "Numéro de téléphone",
+        "address": "Adresse",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "position": "Poste",
+        "updatePosition": "Mettre à jour le poste",
+        "updateStaff": "Mettre à jour le membre du personnel",
+        "createStaff": "Créer un nouveau membre du personnel"
+    },
+    "services": {
+        "heading": "Nos Services",
+        "subheading": "Découvrez nos solutions professionnelles",
+        "contact": "Contactez-nous",
+        "search": "Rechercher",
+        "image": "Image",
+        "serviceSearchPlaceholder": "Rechercher des services...",
+        "transServicesTitle": "Services de traduction",
+        "servicesTitle": "Services",
+        "addNew": "Ajouter un Nouveau Service",
+        "deltransservicebulk": "Supprimer les services",
+        "editService": "Modifier le Service",
+        "serviceDetails": "Détails du service",
+        "view": "Détails du Service",
+        "delete": "Supprimer le service",
+        "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce service ?",
+        "delservicebulk": "حذف الخدمات",
+        "noData": "Aucun service trouvé",
+        "noServiceDataFound": "Données de service non trouvées",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "table": {
+            "name": "Nom du service",
+            "description": "Description",
+            "status": "Statut",
+            "actions": "Actions",
+            "translationType": "Type de traduction",
+            "marketingFunnel": "Entonnoir Marketing",
+            "communicationPlatform": "Plateforme de Communication",
+            "sourceLanguage": "Langue Source",
+            "targetLanguage": "Langue Cible",
+            "priority": "Priorité",
+            "cost": "Coût",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le"
+        },
+        "communicationPlatform": "Plateforme de communication",
+        "translationType": "Type de traduction",
+        "marketingFunnel": "Entonnoir marketing",
+        "cost": "Coût",
+        "sourceLanguage": "Langue source",
+        "targetLanguage": "Langue cible",
+        "priority": "Priorité",
+        "createNewService": "Créer un nouveau service",
+        "createNewPlan": "Créer un nouveau plan",
+        "updatePlan": "Mettre à jour le plan",
+        "updateService": "Mettre à jour le service",
+        "name": "Nom",
+        "serviceType": "Type de Service",
+        "price": "Prix",
+        "status": "Statut",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "billingCycle": "Cycle de Facturation",
+        "trialPeriod": "Période d'Essai",
+        "days": "jours",
+        "category": "Catégorie",
+        "shortDescription": "Description courte",
+        "characters": "caractères",
+        "subscription": "Abonnement",
+        "oneTime": "Unique",
+        "serviceCategory": "Catégorie de Service",
+        "selectTarget": "Sélectionner",
+        "createService": "Créer un Service",
+        "deleteMessage": "Êtes-vous sûr de vouloir supprimer",
+        "backToServices": "Retour à la Liste des Services",
+        "openServiceDetails": "Ouvrir les Détails du Service",
+        "servicePlans": {
+            "title": "Plans de Services",
+            "addNewPlan": "Ajouter un Nouveau Plan",
+            "editPlan": "Modifier le Plan",
+            "deletePlan": "Supprimer le Plan",
+            "getStarted": "Commencer",
+            "edit": "Modifier",
+            "delete": "Supprimer",
+            "cases": "Cas",
+            "users": "Utilisateurs",
+            "deleteSuccess": "Plan de service supprimé avec succès",
+            "createSuccess": "Plan de service créé avec succès",
+            "updateSuccess": "Plan de service mis à jour avec succès",
+            "form": {
+                "fields": {
+                    "name": "Nom",
+                    "service_type": "Type de Service",
+                    "price": "Prix",
+                    "selectServiceType": "Sélectionner le Type de Service",
+                    "subscription": "Abonnement",
+                    "oneTime": "Unique",
+                    "yearly_price": "Prix Annuel",
+                    "trial_period_days": "Période d'Essai (Jours)",
+                    "is_active": "Actif"
+                }
+            }
+        }
+    },
+    "documents": {
+        "title": "Documents",
+        "uploadNew": "Télécharger un Nouveau Document",
+        "addNew": "Ajouter un nouveau document",
+        "edit": "Modifier le Document",
+        "view": "Voir le Document",
+        "selectFile": "Sélectionnez un fichier à télécharger",
+        "table": {
+            "shortNote": "Note Courte",
+            "expirationDate": "Date d'Expiration",
+            "actions": "Actions",
+            "documentType": "Type de Document",
+            "note": "Note",
+            "name": "Nom",
+            "create": "Créer un Document",
+            "cancel": "Annuler",
+            "noData": "Aucun document trouvé",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le"
+        },
+        "types": {
+            "title": "Types de Documents",
+            "create": "Créer un Type de Document",
+            "edit": "Modifier le Type de Document",
+            "name": "Nom",
+            "created": "Créé le",
+            "deletedocsBulk": "Supprimer les types de documents",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le",
+            "actions": "Actions",
+            "noData": "Aucun type de document trouvé",
+            "search": "Rechercher",
+            "documentTypeSearchPlaceholder": "Rechercher des types de documents...",
+            "delete": {
+                "title": "Supprimer le Type de Document",
+                "message": "Êtes-vous sûr de vouloir supprimer {{name}} ?"
+            }
+        }
+    },
+    "fileUploader": {
+        "selectFile": "Sélectionnez un fichier à télécharger",
+        "dragDrop": "ou glisser-déposer",
+        "fileTypes": "PDF, DOC, DOCX jusqu'à 10MB"
+    },
+    "serviceModal": {
+        "title": {
+            "create": "Créer un nouveau service",
+            "edit": "Modifier le service",
+            "view": "Voir le service"
+        },
+        "fields": {
+            "communicationPlatform": "Plateforme de communication",
+            "translationType": "Type de traduction",
+            "marketingFunnel": "Entonnoir marketing",
+            "cost": "Coût",
+            "sourceLanguage": "Langue source",
+            "targetLanguage": "Langue cible",
+            "priority": "Priorité"
+        },
+        "buttons": {
+            "create": "Créer un nouveau service",
+            "update": "Mettre à jour le service",
+            "close": "Fermer"
+        },
+        "validation": {
+            "required": "Ce champ est obligatoire"
+        }
+    },
+    "validation": {
+        "required": "Ce champ est obligatoire",
+        "invalidNumber": "Doit être un nombre valide",
+        "invalidEmail": "Adresse e-mail invalide",
+        "invalidPhone": "Numéro de téléphone invalide",
+        "passwordMismatch": "Les mots de passe ne correspondent pas",
+        "minLength": "Doit contenir au moins {min} caractères",
+        "maxLength": "Doit contenir au maximum {max} caractères",
+        "positiveNumber": "Doit être supérieur ou égal à 0",
+        "fieldRequired": "{field} est obligatoire",
+        "minDigits": "Doit contenir au moins {min} chiffres",
+        "maxDigits": "Ne doit pas dépasser {max} chiffres",
+        "invalidPhoneFormat": "Format de numéro de téléphone invalide",
+        "passwordRequirements": "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial",
+        "confirmPasswordRequired": "La confirmation du mot de passe est obligatoire",
+        "fileRequired": "Le fichier est obligatoire",
+        "atLeastOneRequired": "Au moins un {field} doit être sélectionné",
+        "invalidClientType": "Type de client invalide",
+        "usernameRequired": "Le nom d'utilisateur est obligatoire",
+        "firstNameRequired": "Le prénom est obligatoire",
+        "lastNameRequired": "Le nom est obligatoire",
+        "emailRequired": "L'email est obligatoire",
+        "passwordRequired": "Le mot de passe est obligatoire",
+        "positionRequired": "La position est obligatoire",
+        "documentTypeRequired": "Le type de document est obligatoire",
+        "noteRequired": "La note est obligatoire",
+        "costRequired": "Le coût est obligatoire",
+        "titleRequired": "Le titre est obligatoire",
+        "summaryRequired": "Le résumé est obligatoire",
+        "typeRequired": "Le type est obligatoire",
+        "clientRequired": "Au moins un client doit être sélectionné"
+    },
+    "clientDetails": {
+        "title": "Détails du Client",
+        "fullName": "Nom Complet",
+        "firstName": "Prénom",
+        "middleName": "Deuxième Prénom",
+        "lastName": "Nom",
+        "email": "E-mail",
+        "phoneNumber": "Numéro de Téléphone",
+        "createdAt": "Créé le",
+        "convertedToClient": "Converti en Client",
+        "status": "Statut",
+        "clientType": "Type de Client",
+        "notes": "Notes",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "backToList": "Retour à la Liste",
+        "dataNotFound": "Données client non trouvées"
+    },
+    "lawyerClients": {
+        "title": "Clients Avocats",
+        "leads": "Prospects Avocats",
+        "modes": {
+            "create": "Créer",
+            "edit": "Modifier",
+            "view": "Voir"
+        },
+        "create": "Créer un Client Avocat",
+        "createLead": "Créer un Prospect Avocat",
+        "delete": "Supprimer les clients avocats",
+        "deleteLead": "Supprimer les prospects avocats",
+        "table": {
+            "title": "Détails des Clients Avocats",
+            "fullName": "Nom Complet",
+            "name": "NOM",
+            "dateOfBirth": "DATE DE NAISSANCE",
+            "actions": "Actions",
+            "allStatus": "Tous les Statuts",
+            "search": "Rechercher",
+            "lawyerClientSearchPlaceholder": "Rechercher des clients avocats...",
+            "lawyerLeadSearchPlaceholder": "Rechercher des prospects avocats...",
+            "confirmDelete": "Confirmer la Suppression",
+            "confirmStatusChange": "Confirmer le Changement de Statut",
+            "promoteToClient": "Promouvoir en Client",
+            "statusChangeMessage": "Êtes-vous sûr de vouloir changer le statut ?",
+            "promotionMessage": "Êtes-vous sûr de vouloir promouvoir ?",
+            "createNew": "Créer un Nouveau Avocat",
+            "update": "Mettre à jour le Avocat",
+            "email": "E-mail",
+            "phoneNumber": "Numéro de Téléphone",
+            "firstName": "Prénom",
+            "middleName": "Deuxième Prénom",
+            "lastName": "Nom",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le",
+            "convertedToClient": "Converti en Client",
+            "status": "Statut",
+            "clientType": "Type de Client",
+            "notes": "Notes",
+            "active": "Actif",
+            "inactive": "Inactif"
+        },
+        "details": {
+            "title": "Détails du Client Avocat",
+            "fullName": "Nom Complet",
+            "status": "Statut",
+            "email": "E-mail",
+            "phone": "Téléphone",
+            "dateOfBirth": "Date de Naissance",
+            "country": "Pays",
+            "openDetailedView": "Ouvrir la Vue Détaillée",
+            "promoteToClient": "Promouvoir en Client",
+            "backToList": "Retour à la Liste"
+        },
+        "form": {
+            "firstName": "Prénom",
+            "lastName": "Nom",
+            "middleName": "Deuxième Prénom",
+            "email": "E-mail",
+            "phoneNumber": "Numéro de Téléphone",
+            "dateOfBirth": "Date de Naissance",
+            "address": "Adresse",
+            "createNew": "Créer un Nouveau Avocat",
+            "update": "Mettre à jour le Avocat"
+        }
+    },
+    "cases": {
+        "title": "Affaires",
+        "create": "Créer une Affaire",
+        "edit": "Modifier l'Affaire",
+        "deletebulkcases": "Supprimer les cas",
+        "delete": {
+            "title": "Supprimer l'Affaire",
+            "message": "Êtes-vous sûr de vouloir supprimer ?"
+        },
+        "table": {
+            "title": "Titre",
+            "summary": "Résumé",
+            "costAmount": "Montant des Coûts",
+            "actions": "Actions",
+            "search": "Rechercher",
+            "caseSearchPlaceholder": "Rechercher des affaires...",
+            "noData": "Aucune affaire trouvée",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le",
+            "closed": "Fermé",
+            "caseClosed": "Fermé",
+            "caseOpen": "Ouvert",
+            "allStatus": "Toutes les Statuts",
+            "open": "Ouvert"
+        },
+        "form": {
+            "title": "Titre",
+            "cost": "Coût",
+            "types": "Types",
+            "clients": "Clients",
+            "summary": "Résumé",
+            "paymentSchedule": "Calendrier de Paiement",
+            "staff": "Personnel",
+            "createCase": "Créer une Affaire",
+            "updateCase": "Mettre à jour l'Affaire",
+            "note": "Note",
+            "createDocument": "Créer un Document",
+            "updateDocument": "Mettre à jour le Document",
+            "name": "Nom",
+            "createCaseSuccess": "Affaire créée avec succès",
+            "updateCaseSuccess": "Affaire mise à jour avec succès"
+        },
+        "details": {
+            "openDetailedView": "Ouvrir la Vue Détaillée",
+            "title": "Détails de l'Affaire",
+            "summary": "Résumé",
+            "paymentSchedule": "Calendrier de Paiement",
+            "costAmount": "Montant des Coûts",
+            "backToList": "Retour à la Liste",
+            "noData": "Données de l'affaire non trouvées"
+        },
+        "todo": {
+            "todo": "Tâches",
+            "case": "Affaire",
+            "title": "Éléments à Faire",
+            "addNew": "Ajouter un Nouvel Élément",
+            "edit": "Modifier l'Élément",
+            "view": "Détails de l'Élément",
+            "status": "Statut",
+            "subject": "Sujet",
+            "dueDate": "Date d'échéance",
+            "sendToGoogleCalendar": "Envoyer vers Google Calendar",
+            "notification": "Notification",
+            "completed": "Terminé",
+            "incomplete": "Incomplet",
+            "description": "Description",
+            "createNew": "Créer un Nouvel Élément",
+            "update": "Mettre à Jour l'Élément",
+            "noData": "Aucun élément à faire trouvé",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le",
+            "todoSearchPlaceholder": "Rechercher des éléments à faire...",
+            "pagination": {
+                "rowsPerPage": "Lignes par page",
+                "of": "sur"
+            }
+        }
+    },
+    "caseTypes": {
+        "title": "Types de Cas",
+        "addCaseTypeModal": {
+            "title": "Ajouter un Type de Cas",
+            "update": "Mettre à Jour le Type de Cas",
+            "create": "Créer un Nouveau Type de Cas",
+            "edit": "Modifier le Type de Cas"
+        },
+        "fields": {
+            "name": "Nom",
+            "required": "Le nom est requis"
+        },
+        "buttons": {
+            "create": "Créer un Type de Cas",
+            "update": "Mettre à Jour le Type de Cas",
+            "delete": "Supprimer les Types de Cas"
+        },
+        "toastMessages": {
+            "created": "Type de Cas créé avec succès",
+            "updated": "Type de Cas mis à jour avec succès",
+            "deleted": "Type de Cas supprimé avec succès",
+            "bulkDeleted": "Types de Cas supprimés avec succès"
+        },
+        "table": {
+            "noData": "Aucun type de cas trouvé",
+            "search": "Rechercher",
+            "name": "Nom",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le",
+            "actions": "Actions"
+        },
+        "deleteConfirmationModal": {
+            "title": "Supprimer le Cas",
+            "bulkTitle": "Supprimer les Cas",
+            "message": "Êtes-vous sûr de vouloir supprimer ce cas",
+            "bulkMessage": "Êtes-vous sûr de vouloir supprimer les cas sélectionnés",
+            "delete": "Supprimer le Type de Cas",
+            "bulkDelete": "Supprimer les Types de Cas",
+            "cancel": "Annuler"
+        }
+    },
+    "clientModal": {
+        "title": {
+            "create": "Créer un nouveau client",
+            "edit": "Modifier le client"
+        },
+        "fields": {
+            "firstName": "Prénom",
+            "lastName": "Nom",
+            "middleName": "Deuxième prénom",
+            "email": "E-mail",
+            "phoneNumber": "Numéro de téléphone",
+            "dateOfBirth": "Date de naissance",
+            "address": "Adresse",
+            "country": "Pays"
+        },
+        "buttons": {
+            "create": "Créer un nouveau client",
+            "update": "Mettre à jour le client"
+        }
+    },
+    "leadModal": {
+        "title": {
+            "create": "Créer un nouveau prospect",
+            "edit": "Modifier le prospect"
+        },
+        "buttons": {
+            "create": "Créer un nouveau prospect",
+            "update": "Mettre à jour le prospect"
+        }
+    },
+    "statusChange": {
+        "confirmMessage": "Êtes-vous sûr de vouloir changer le statut ?"
+    },
+    "groups": {
+        "title": "Groupes",
+        "userGroups": "Groupes d'Utilisateurs",
+        "businessUnit": "Unité Commerciale",
+        "details": "Détails du Groupe",
+        "name": "Nom",
+        "id": "ID",
+        "actions": "Actions",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "view": "Voir",
+        "search": "Rechercher",
+        "searchPlaceholder": "Rechercher un groupe...",
+        "table": {
+            "noData": "Aucun groupe trouvé",
+            "rowsPerPage": "Lignes par page",
+            "of": "sur"
+        },
+        "delete": {
+            "title": "Confirmer la Suppression"
+        }
+    },
+    "groupUsers": {
+        "title": "Utilisateurs du Groupe",
+        "select": "Sélectionner",
+        "username": "Nom d'utilisateur",
+        "email": "E-mail",
+        "updateUsers": "Mettre à jour les Utilisateurs",
+        "noData": "Aucun utilisateur trouvé",
+        "search": "Rechercher",
+        "groupUsersSearchPlaceholder": "Rechercher des utilisateurs du groupe..."
+    },
+    "notifications": {
+        "title": "Notifications",
+        "createNotification": "Créer une Notification",
+        "delNotificationbulk": "Supprimer les notifications",
+        "name": "Nom",
+        "actions": "Actions",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "search": "Rechercher",
+        "notificationSearchPlaceholder": "Rechercher des notifications...",
+        "delete": {
+            "title": "Confirmer la Suppression",
+            "message": "Êtes-vous sûr de vouloir supprimer cette notification ?"
+        },
+        "success": {
+            "deleted": "Notification supprimée avec succès",
+            "created": "Notification créée avec succès",
+            "updated": "Notification mise à jour avec succès"
+        },
+        "table": {
+            "noData": "Aucune notification trouvée",
+            "pagination": {
+                "rowsPerPage": "Lignes par page",
+                "of": "sur"
+            }
+        },
+        "modal": {
+            "create": "Créer une Notification",
+            "edit": "Modifier la Notification",
+            "name": "Nom",
+            "method": "Méthode",
+            "selectMethod": "Sélectionner la méthode",
+            "toWho": "À qui",
+            "selectTarget": "Sélectionner la cible",
+            "createButton": "Créer la Notification",
+            "updateButton": "Mettre à jour la Notification",
+            "methods": {
+                "email": "Email",
+                "sms": "SMS",
+                "both": "Les deux"
+            },
+            "targets": {
+                "staff": "Personnel",
+                "client": "Client",
+                "both": "Les deux"
+            }
+        }
+    },
+    "adminSettings": {
+        "title": "Paramètres Administrateur",
+        "generalSettings": "Paramètres Généraux",
+        "mainTitle": "Titre Principal",
+        "logoSettings": "Paramètres du Logo",
+        "lightLogo": "Logo Clair",
+        "darkLogo": "Logo Sombre",
+        "favicon": "Favicon",
+        "financeSettings": "Paramètres Financiers",
+        "selectCurrency": "Sélectionner la Devise",
+        "apiTokenSettings": "Paramètres des Jetons API",
+        "socialTrackingSettings": "Paramètres de Suivi Social",
+        "googleAnalyticsCode": "Code Google Analytics",
+        "facebookPixelCode": "Code Facebook Pixel",
+        "socialLinks": "Liens Sociaux",
+        "seoSettings": "Paramètres SEO",
+        "metaTitle": "Titre Meta",
+        "tagline": "Slogan",
+        "metaDescription": "Description Meta",
+        "seoKeywords": "Mots-clés SEO",
+        "footerSettings": "Paramètres du Pied de Page",
+        "copyrightText": "Texte de Copyright",
+        "paymentSettings": "Paramètres de Paiement",
+        "paypalSettings": "Paramètres PayPal",
+        "clientId": "ID Client",
+        "clientSecret": "Secret Client",
+        "enablePaypal": "Activer PayPal",
+        "mode": "Mode",
+        "webhookId": "ID Webhook",
+        "stripeSettings": "Paramètres Stripe",
+        "publishableKey": "Clé Publique",
+        "secretKey": "Clé Secrète",
+        "enableStripe": "Activer Stripe",
+        "webhookSecret": "Secret Webhook",
+        "webhookUrl": "URL Webhook",
+        "manualPayment": {
+            "title": "Méthodes de Paiement Manuel",
+            "availableMethods": "Méthodes de Paiement Disponibles",
+            "addNew": "Ajouter une Nouvelle Méthode",
+            "name": "Nom",
+            "instructions": "Instructions",
+            "enabled": "Activé",
+            "disabled": "Désactivé",
+            "revertChanges": "Revert changes",
+            "cancel": "Cancel",
+            "save": "Save"
+        },
+        "buttons": {
+            "create": "Créer",
+            "update": "Mettre à jour",
+            "delete": "Supprimer",
+            "addPaymentMethod": "Ajouter une Méthode de Paiement"
+        },
+        "logoSelectLabel": "Sélectionner le Type de Logo",
+        "uploadLogo": "Télécharger le Logo",
+        "sandbox": "Bac à sable",
+        "live": "En direct",
+        "test": "Test",
+        "paypalConfiguration": "Configuration PayPal",
+        "stripeConfiguration": "Configuration Stripe",
+        "addNewPaymentMethod": "Ajouter une Nouvelle Méthode de Paiement"
+    },
+    "termsAndConditions": {
+        "mainTitle": "Conditions d'utilisation",
+        "overview": {
+            "title": "VUE D'ENSEMBLE",
+            "content": [
+                "Ce site web est exploité par Idealistic Solutions. Sur tout le site, les termes « nous », « notre » et « nos » font référence à Idealistic Solutions. Idealistic Solutions offre ce site web, y compris toutes les informations, outils et services disponibles à partir de ce site, à vous, l'utilisateur, sous réserve de votre acceptation de tous les termes, conditions, politiques et avis énoncés ici.",
+                "En visitant notre site et/ou en achetant quelque chose chez nous, vous vous engagez dans notre « Service » et acceptez d'être lié par les termes et conditions suivants (« Conditions de Service », « Conditions »), y compris les termes et conditions et politiques supplémentaires référencés ici et/ou disponibles par hyperlien. Ces Conditions de Service s'appliquent à tous les utilisateurs du site, y compris sans limitation les utilisateurs qui sont des navigateurs, des fournisseurs, des clients, des marchands et/ou des contributeurs de contenu.",
+                "Veuillez lire attentivement ces Conditions de Service avant d'accéder ou d'utiliser notre site web. En accédant ou en utilisant une partie quelconque du site, vous acceptez d'être lié par ces Conditions de Service. Si vous n'acceptez pas tous les termes et conditions de cet accord, alors vous ne pouvez pas accéder au site web ni utiliser aucun service. Si ces Conditions de Service sont considérées comme une offre, l'acceptation est expressément limitée à ces Conditions de Service.",
+                "Toutes les nouvelles fonctionnalités ou outils ajoutés au magasin actuel seront également soumis aux Conditions de Service. Vous pouvez consulter la version la plus récente des Conditions de Service à tout moment sur cette page. Nous nous réservons le droit de mettre à jour, changer ou remplacer toute partie de ces Conditions de Service en publiant des mises à jour et/ou des changements sur notre site web. Il est de votre responsabilité de vérifier cette page périodiquement pour les changements. Votre utilisation continue ou votre accès au site web après la publication de tout changement constitue l'acceptation de ces changements.",
+                "Notre magasin est hébergé sur Shopify Inc. Ils nous fournissent une plateforme de commerce électronique en ligne qui nous permet de vendre nos produits et services."
+            ]
+        },
+        "section1": {
+            "title": "CONDITIONS DE LA BOUTIQUE EN LIGNE",
+            "content": [
+                "En acceptant ces Conditions de Service, vous déclarez que vous avez au moins l'âge de la majorité dans votre état ou province de résidence, ou que vous avez l'âge de la majorité dans votre état ou province de résidence et que vous nous avez donné votre consentement pour permettre à l'un de vos dépendants mineurs d'utiliser ce site.",
+                "Vous ne pouvez pas utiliser nos produits à des fins illégales ou non autorisées, ni, dans l'utilisation du Service, violer les lois de votre juridiction (y compris, mais sans s'y limiter, les lois sur les droits d'auteur).",
+                "Vous ne devez pas transmettre de vers, de virus ou tout autre code de nature destructive.",
+                "Une rupture ou une violation de l'une des Conditions entraînera la résiliation immédiate de vos Services."
+            ]
+        },
+        "section2": {
+            "title": "CONDITIONS GÉNÉRALES",
+            "content": [
+                "Nous nous réservons le droit de refuser le service à quiconque, pour quelque raison que ce soit et à tout moment.",
+                "Vous comprenez que votre contenu (à l'exclusion des informations de carte de crédit) peut être transféré de manière non cryptée et impliquer (a) des transmissions sur divers réseaux ; et (b) des modifications pour se conformer et s'adapter aux exigences techniques des réseaux ou appareils de connexion. Les informations de carte de crédit sont toujours cryptées lors du transfert sur les réseaux.",
+                "Vous acceptez de ne pas reproduire, dupliquer, copier, vendre, revendre ou exploiter toute partie du Service, l'utilisation du Service, ou l'accès au Service ou tout contact sur le site web par lequel le service est fourni, sans l'autorisation écrite expresse de notre part.",
+                "Les titres utilisés dans cet accord sont inclus pour la commodité seulement et ne limiteront ni n'affecteront autrement ces Conditions."
+            ]
+        },
+        "section3": {
+            "title": "EXACTITUDE, EXHAUSTIVITÉ ET ACTUALITÉ DES INFORMATIONS",
+            "content": [
+                "Nous ne sommes pas responsables si les informations disponibles sur ce site ne sont pas exactes, complètes ou actuelles.",
+                "Le matériel sur ce site est fourni à titre d'information générale seulement et ne doit pas être utilisé comme seule base pour prendre des décisions sans consulter des sources d'information primaires, plus précises, plus complètes ou plus actuelles.",
+                "Toute confiance que vous accordez au matériel sur ce site est à vos propres risques.",
+                "Ce site peut contenir certaines informations historiques. Les informations historiques ne sont pas nécessairement actuelles et sont fournies à titre de référence seulement.",
+                "Nous nous réservons le droit de modifier le contenu de ce site à tout moment, mais nous n'avons aucune obligation de mettre à jour les informations sur notre site. Vous convenez qu'il est de votre responsabilité de surveiller les changements apportés à notre site."
+            ]
+        },
+        "section4": {
+            "title": "MODIFICATIONS DU SERVICE ET DES PRIX",
+            "content": [
+                "Les prix de nos produits sont sujets à changement sans préavis.",
+                "Nous nous réservons le droit, à tout moment, de modifier ou d'interrompre le Service (ou toute partie ou contenu de celui-ci) sans préavis.",
+                "Nous ne serons pas responsables envers vous ou envers un tiers pour toute modification, changement de prix, suspension ou interruption du Service."
+            ]
+        },
+        "section5": {
+            "title": "PRODUITS OU SERVICES (LE CAS ÉCHÉANT)",
+            "content": [
+                "Certains produits ou services peuvent être disponibles exclusivement en ligne via le site web.",
+                "Ces produits ou services peuvent avoir des quantités limitées et sont sujets à retour ou échange uniquement conformément à notre Politique de Retour.",
+                "Nous avons fait tout notre possible pour afficher aussi précisément que possible les couleurs et les images de nos produits qui apparaissent dans le magasin.",
+                "Nous ne pouvons garantir que l'affichage des couleurs sur l'écran de votre ordinateur sera exact.",
+                "Nous nous réservons le droit, mais ne sommes pas obligés, de limiter les ventes de nos produits ou Services à toute personne, région géographique ou juridiction.",
+                "Nous pouvons exercer ce droit au cas par cas.",
+                "Nous nous réservons le droit de limiter les quantités de tout produit ou service que nous offrons.",
+                "Toutes les descriptions de produits ou les prix des produits sont sujets à changement à tout moment sans préavis, à notre seule discrétion.",
+                "Nous nous réservons le droit d'interrompre tout produit à tout moment.",
+                "Toute offre de produit ou service faite sur ce site est nulle là où elle est interdite.",
+                "Nous ne garantissons pas que la qualité de tout produit, service, information ou autre matériel acheté ou obtenu par vous répondra à vos attentes, ni que les erreurs dans le Service seront corrigées."
+            ]
+        },
+        "section6": {
+            "title": "EXACTITUDE DES INFORMATIONS DE FACTURATION ET DE COMPTE",
+            "content": [
+                "Nous nous réservons le droit de refuser toute commande que vous passez chez nous.",
+                "Nous pouvons, à notre seule discrétion, limiter ou annuler les quantités achetées par personne, par foyer ou par commande.",
+                "Ces restrictions peuvent inclure les commandes passées par ou sous le même compte client, la même carte de crédit, et/ou les commandes utilisant la même adresse de facturation et/ou de livraison.",
+                "Dans le cas où nous modifierions ou annulerions une commande, nous pourrions essayer de vous en informer en contactant l'adresse e-mail et/ou l'adresse de facturation/numéro de téléphone fournis au moment de la commande.",
+                "Nous nous réservons le droit de limiter ou d'interdire les commandes qui, à notre seule discrétion, semblent être passées par des revendeurs ou des distributeurs.",
+                "Vous acceptez de fournir des informations d'achat et de compte actuelles, complètes et exactes pour tous les achats effectués dans notre magasin.",
+                "Vous acceptez de mettre à jour rapidement votre compte et d'autres informations, y compris votre adresse e-mail, les numéros de carte de crédit et les dates d'expiration, afin que nous puissions finaliser vos transactions et vous contacter si nécessaire.",
+                "Pour plus de détails, veuillez consulter notre Politique de Retours."
+            ]
+        },
+        "section7": {
+            "title": "OUTILS OPTIONNELS",
+            "content": [
+                "Nous pouvons vous donner accès à des outils tiers sur lesquels nous n'exerçons ni surveillance, ni contrôle, ni influence.",
+                "Vous reconnaissez et acceptez que nous fournissons l'accès à ces outils « tels quels » et « tels que disponibles » sans aucune garantie, représentation ou condition d'aucune sorte et sans aucune approbation.",
+                "Nous n'aurons aucune responsabilité quelle qu'elle soit découlant de ou liée à votre utilisation d'outils tiers optionnels.",
+                "Toute utilisation par vous d'outils optionnels offerts via le site est entièrement à vos propres risques et discrétion et vous devez vous assurer que vous êtes familiarisé avec et approuvez les termes selon lesquels les outils sont fournis par le(s) fournisseur(s) tiers concerné(s).",
+                "Nous pouvons également, à l'avenir, proposer de nouveaux services et/ou fonctionnalités via le site web (y compris la sortie de nouveaux outils et ressources).",
+                "Ces nouvelles fonctionnalités et/ou services seront également soumis à ces Conditions de Service."
+            ]
+        },
+        "section8": {
+            "title": "LIENS VERS DES TIERS",
+            "content": [
+                "Certains contenus, produits et services disponibles via notre Service peuvent inclure des matériaux provenant de tiers.",
+                "Les liens de tiers sur ce site peuvent vous rediriger vers des sites web tiers qui ne sont pas affiliés à nous.",
+                "Nous ne sommes pas responsables de l'examen ou de l'évaluation du contenu ou de l'exactitude et nous ne garantissons pas et n'aurons aucune responsabilité pour les matériaux ou sites web de tiers, ni pour tout autre matériel, produit ou service de tiers.",
+                "Nous ne sommes pas responsables des dommages ou préjudices liés à l'achat ou à l'utilisation de biens, services, ressources, contenus ou toute autre transaction effectuée en relation avec des sites web tiers.",
+                "Veuillez examiner attentivement les politiques et pratiques du tiers et assurez-vous de les comprendre avant de vous engager dans une transaction.",
+                "Les plaintes, réclamations, préoccupations ou questions concernant les produits de tiers doivent être adressées au tiers."
+            ]
+        },
+        "section9": {
+            "title": "COMMENTAIRES DES UTILISATEURS, RETOURS D'INFORMATION ET AUTRES SOUMISSIONS",
+            "content": [
+                "Si, à notre demande, vous envoyez certaines soumissions spécifiques (par exemple des participations à un concours) ou sans demande de notre part, vous envoyez des idées créatives, des suggestions, des propositions, des plans ou d'autres matériaux, que ce soit en ligne, par e-mail, par courrier postal ou autrement (collectivement, les « commentaires »), vous acceptez que nous puissions, à tout moment, sans restriction, éditer, copier, publier, distribuer, traduire et utiliser autrement dans n'importe quel médium tout commentaire que vous nous transmettez.",
+                "Nous n'avons et n'aurons aucune obligation (1) de maintenir la confidentialité des commentaires ; (2) de payer une compensation pour les commentaires ; ou (3) de répondre aux commentaires.",
+                "Nous pouvons, mais n'avons aucune obligation de surveiller, éditer ou supprimer du contenu que nous déterminons, à notre seule discrétion, comme étant illégal, offensant, menaçant, diffamatoire, calomnieux, pornographique, obscène ou autrement répréhensible ou violant la propriété intellectuelle d'une partie ou les présentes Conditions de Service.",
+                "Vous acceptez que vos commentaires ne violeront aucun droit d'un tiers, y compris les droits d'auteur, les marques de commerce, la vie privée, la personnalité ou d'autres droits personnels ou de propriété.",
+                "Vous acceptez en outre que vos commentaires ne contiendront pas de matériel diffamatoire ou autrement illégal, abusif ou obscène, ni ne contiendront de virus informatique ou autre logiciel malveillant susceptible d'affecter de quelque manière que ce soit le fonctionnement du Service ou de tout site web connexe.",
+                "Vous ne pouvez pas utiliser une fausse adresse e-mail, prétendre être quelqu'un d'autre que vous-même, ou nous induire en erreur ou induire des tiers en erreur quant à l'origine de tout commentaire.",
+                "Vous êtes seul responsable de tout commentaire que vous faites et de leur exactitude.",
+                "Nous n'assumons aucune responsabilité et ne prenons aucune responsabilité pour les commentaires publiés par vous ou un tiers."
+            ]
+        },
+        "section10": {
+            "title": "INFORMATIONS PERSONNELLES",
+            "content": [
+                "Votre soumission d'informations personnelles via le magasin est régie par notre Politique de Confidentialité. Pour consulter notre Politique de Confidentialité."
+            ]
+        },
+        "section11": {
+            "title": "ERREURS, INEXACTITUDES ET OMISSIONS",
+            "content": [
+                "Occasionnellement, il peut y avoir des informations sur notre site ou dans le Service qui contiennent des erreurs typographiques, des inexactitudes ou des omissions qui peuvent concerner les descriptions de produits, les prix, les promotions, les offres, les frais d'expédition de produits, les délais de transit et la disponibilité.",
+                "Nous nous réservons le droit de corriger toute erreur, inexactitude ou omission, et de changer ou de mettre à jour des informations ou d'annuler des commandes si toute information dans le Service ou sur tout site web connexe est inexacte à tout moment sans préavis (y compris après que vous ayez soumis votre commande).",
+                "Nous n'assumons aucune obligation de mettre à jour, de modifier ou de clarifier les informations dans le Service ou sur tout site web connexe, y compris, sans s'y limiter, les informations de prix, sauf si la loi l'exige.",
+                "Aucune date de mise à jour ou d'actualisation spécifiée appliquée dans le Service ou sur tout site web connexe ne doit être interprétée comme indiquant que toutes les informations dans le Service ou sur tout site web connexe ont été modifiées ou mises à jour."
+            ]
+        },
+        "section12": {
+            "title": "UTILISATIONS INTERDITES",
+            "content": [
+                "En plus des autres interdictions énoncées dans les Conditions de Service, il vous est interdit d'utiliser le site ou son contenu :",
+                "(a) à toute fin illégale ;",
+                "(b) pour solliciter d'autres personnes à accomplir ou à participer à des actes illégaux ;",
+                "(c) pour violer les réglementations, règles, lois ou ordonnances locales, provinciales, fédérales ou internationales ;",
+                "(d) pour enfreindre nos droits de propriété intellectuelle ou les droits de propriété intellectuelle d'autrui ;",
+                "(e) pour harceler, abuser, insulter, blesser, diffamer, calomnier, dénigrer, intimider ou discriminer sur la base du sexe, de l'orientation sexuelle, de la religion, de l'origine ethnique, de la race, de l'âge, de l'origine nationale ou du handicap ;",
+                "(f) pour soumettre des informations fausses ou trompeuses ;",
+                "(g) pour télécharger ou transmettre des virus ou tout autre type de code malveillant qui sera ou pourra être utilisé de quelque manière que ce soit pour affecter la fonctionnalité ou le fonctionnement du Service ou de tout site web connexe, d'autres sites web ou d'Internet ;",
+                "(h) pour collecter ou suivre les informations personnelles d'autrui ;",
+                "(i) pour spammer, hameçonner, pharming, prétexter, spider, crawler ou scraper ;",
+                "(j) à toute fin obscène ou immorale ;",
+                "(k) pour interférer avec ou contourner les dispositifs de sécurité du Service ou de tout site web connexe, d'autres sites web ou d'Internet.",
+                "Nous nous réservons le droit de résilier votre utilisation du Service ou de tout site web connexe en cas de violation de l'une des utilisations interdites."
+            ]
+        },
+        "section13": {
+            "title": "EXCLUSION DE GARANTIES ; LIMITATION DE RESPONSABILITÉ",
+            "content": [
+                "Nous ne garantissons pas, ne déclarons pas et ne garantissons pas que votre utilisation de notre service sera ininterrompue, opportune, sécurisée ou exempte d'erreurs.",
+                "Nous ne garantissons pas que les résultats qui peuvent être obtenus par l'utilisation du service seront précis ou fiables.",
+                "Vous acceptez que, de temps à autre, nous puissions supprimer le service pour des périodes indéfinies ou annuler le service à tout moment, sans préavis.",
+                "Vous acceptez expressément que votre utilisation ou votre incapacité à utiliser le service est à vos seuls risques.",
+                "Le service et tous les produits et services qui vous sont livrés par le biais du service sont (sauf indication contraire expresse de notre part) fournis 'tels quels' et 'tels que disponibles' pour votre usage, sans aucune représentation, garantie ou condition d'aucune sorte, expresse ou implicite, y compris toutes les garanties ou conditions implicites de qualité marchande, de qualité marchande, d'adéquation à un usage particulier, de durabilité, de titre et de non-contrefaçon.",
+                "En aucun cas Idealistic Solutions, nos directeurs, dirigeants, employés, affiliés, agents, sous-traitants, stagiaires, fournisseurs, prestataires de services ou concédants de licence ne seront responsables de toute blessure, perte, réclamation ou de tout dommage direct, indirect, accessoire, punitif, spécial ou consécutif de quelque nature que ce soit, y compris, sans s'y limiter, les pertes de profits, les pertes de revenus, les pertes d'économies, la perte de données, les coûts de remplacement ou tout dommage similaire, qu'il soit basé sur un contrat, un délit (y compris la négligence), une responsabilité stricte ou autre, découlant de votre utilisation de tout service ou de tout produit obtenu à l'aide du service, ou pour toute autre réclamation liée de quelque manière que ce soit à votre utilisation du service ou de tout produit, y compris, mais sans s'y limiter, toute erreur ou omission dans tout contenu, ou toute perte ou dommage de quelque nature que ce soit encouru à la suite de l'utilisation du service ou de tout contenu (ou produit) publié, transmis ou autrement mis à disposition via le service, même si nous avons été informés de leur possibilité.",
+                "Étant donné que certains États ou juridictions n'autorisent pas l'exclusion ou la limitation de responsabilité pour les dommages consécutifs ou accessoires, dans ces États ou juridictions, notre responsabilité sera limitée dans la mesure maximale permise par la loi."
+            ]
+        },
+        "section14": {
+            "title": "INDEMNISATION",
+            "content": [
+                "Vous acceptez d'indemniser, de défendre et de dégager de toute responsabilité Idealistic Solutions et notre société mère, filiales, affiliés, partenaires, dirigeants, directeurs, agents, sous-traitants, concédants de licence, prestataires de services, sous-traitants, fournisseurs, stagiaires et employés, de toute réclamation ou demande, y compris les honoraires d'avocats raisonnables, faite par un tiers en raison de ou découlant de votre violation de ces Conditions de Service ou des documents qu'elles incorporent par référence ou de votre violation de toute loi ou des droits d'un tiers."
+            ]
+        },
+        "section15": {
+            "title": "DIVISIBILITÉ",
+            "content": [
+                "Dans le cas où une disposition de ces Conditions de Service serait jugée illégale, nulle ou inapplicable, cette disposition sera néanmoins applicable dans toute la mesure permise par la loi applicable, et la partie inapplicable sera considérée comme étant dissociée de ces Conditions de Service, une telle détermination n'affectera pas la validité et l'applicabilité des autres dispositions restantes."
+            ]
+        },
+        "section16": {
+            "title": "RÉSILIATION",
+            "content": [
+                "Les obligations et responsabilités des parties encourues avant la date de résiliation survivront à la résiliation de cet accord à toutes fins utiles.",
+                "Ces Conditions de Service sont effectives à moins et jusqu'à ce qu'elles soient résiliées par vous ou par nous.",
+                "Vous pouvez résilier ces Conditions de Service à tout moment en nous informant que vous ne souhaitez plus utiliser nos Services, ou lorsque vous cessez d'utiliser notre site.",
+                "Si, à notre seule discrétion, vous ne respectez pas, ou nous soupçonnons que vous n'avez pas respecté, une quelconque disposition de ces Conditions de Service, nous pouvons également résilier cet accord à tout moment sans préavis et vous resterez responsable de tous les montants dus jusqu'à et y compris la date de résiliation ; et/ou par conséquent, nous pouvons vous refuser l'accès à nos Services (ou à toute partie de ceux-ci)."
+            ]
+        },
+        "section17": {
+            "title": "INTÉGRALITÉ DE L'ACCORD",
+            "content": [
+                "Le fait que nous n'exercions pas ou n'appliquions pas un droit ou une disposition de ces Conditions de Service ne constitue pas une renonciation à ce droit ou à cette disposition.",
+                "Ces Conditions de Service et toutes les politiques ou règles d'exploitation publiées par nous sur ce site ou concernant le Service constituent l'intégralité de l'accord et de l'entente entre vous et nous et régissent votre utilisation du Service, remplaçant tous les accords, communications et propositions antérieurs ou contemporains, qu'ils soient oraux ou écrits, entre vous et nous (y compris, mais sans s'y limiter, toutes les versions antérieures des Conditions de Service).",
+                "Toute ambiguïté dans l'interprétation de ces Conditions de Service ne sera pas interprétée contre la partie rédactrice."
+            ]
+        },
+        "section18": {
+            "title": "LOI APPLICABLE",
+            "content": [
+                "Ces Conditions de Service et tout accord séparé par lequel nous vous fournissons des Services seront régis et interprétés conformément aux lois des États-Unis."
+            ]
+        },
+        "section19": {
+            "title": "MODIFICATIONS DES CONDITIONS DE SERVICE",
+            "content": [
+                "Vous pouvez consulter la version la plus récente des Conditions de Service à tout moment sur cette page.",
+                "Nous nous réservons le droit, à notre seule discrétion, de mettre à jour, de changer ou de remplacer toute partie de ces Conditions de Service en publiant des mises à jour et des changements sur notre site web.",
+                "Il est de votre responsabilité de vérifier périodiquement notre site web pour les changements.",
+                "Votre utilisation continue ou votre accès à notre site web ou au Service après la publication de tout changement à ces Conditions de Service constitue l'acceptation de ces changements."
+            ]
+        },
+        "section20": {
+            "title": "COORDONNÉES",
+            "content": [
+                "Les questions concernant les Conditions de Service doivent nous être envoyées à info@idealisticsolutions.com"
+            ]
+        }
+    },
+    "privacyPolicy": {
+        "mainTitle": "Politique de confidentialité",
+        "sections": [
+            {
+                "content": [
+                    "Cette politique de confidentialité décrit comment vos informations personnelles sont collectées, utilisées et partagées lorsque vous visitez ou effectuez un achat sur Idealistic Solutions à idealisticsolutions.com."
+                ]
+            },
+            {
+                "title": "INFORMATIONS PERSONNELLES QUE NOUS COLLECTONS",
+                "content": [
+                    "Lorsque vous visitez le Site, nous collectons automatiquement certaines informations sur votre appareil, y compris des informations sur votre navigateur web, votre adresse IP, votre fuseau horaire et certains des cookies qui sont installés sur votre appareil. De plus, lorsque vous naviguez sur le Site, nous collectons des informations sur les pages web individuelles ou les produits que vous consultez, les sites web ou les termes de recherche qui vous ont renvoyé vers le Site, et des informations sur la manière dont vous interagissez avec le Site. Nous appelons ces informations collectées automatiquement \"Informations sur l'appareil\"."
+                ]
+            },
+            {
+                "title": "NOUS COLLECTONS LES INFORMATIONS SUR L'APPAREIL EN UTILISANT LES TECHNOLOGIES SUIVANTES :",
+                "content": [
+                    "- Les \"Cookies\" sont des fichiers de données qui sont placés sur votre appareil ou votre ordinateur et incluent souvent un identifiant unique anonyme. Pour plus d'informations sur les cookies et comment les désactiver, visitez http://www.allaboutcookies.org.",
+                    "- Les \"Fichiers journaux\" suivent les actions se produisant sur le Site et collectent des données telles que votre adresse IP, le type de navigateur, le fournisseur d'accès Internet, les pages de renvoi/sortie et les horodatages.",
+                    "- Les \"Balises web\", \"balises\" et \"pixels\" sont des fichiers électroniques utilisés pour enregistrer des informations sur la façon dont vous naviguez sur le Site.",
+                    "De plus, lorsque vous effectuez un achat ou tentez d'effectuer un achat via le Site, nous collectons certaines informations vous concernant, notamment votre nom, votre adresse de facturation, votre adresse de livraison, vos informations de paiement (y compris les numéros de carte de crédit, l'adresse e-mail du compte Paypal, l'adresse e-mail et le numéro de téléphone). Nous appelons ces informations \"Informations de commande\".",
+                    "Lorsque nous parlons d'\"Informations personnelles\" dans la présente Politique de confidentialité, nous faisons référence à la fois aux Informations sur l'appareil et aux Informations de commande."
+                ]
+            },
+            {
+                "title": "COMMENT UTILISONS-NOUS VOS INFORMATIONS PERSONNELLES ?",
+                "content": [
+                    "Nous utilisons les Informations de commande que nous collectons généralement pour exécuter toutes les commandes passées via le Site (y compris le traitement de vos informations de paiement, l'organisation de l'expédition et la fourniture de factures et/ou de confirmations de commande). De plus, nous utilisons ces Informations de commande pour :",
+                    "- Communiquer avec vous ;",
+                    "- Filtrer nos commandes pour détecter les risques potentiels ou la fraude ; et",
+                    "- Lorsque cela est conforme aux préférences que vous avez partagées avec nous, vous fournir des informations ou des publicités relatives à nos produits ou services.",
+                    "Nous utilisons les Informations sur l'appareil que nous collectons pour nous aider à détecter les risques potentiels et la fraude (en particulier, votre adresse IP), et plus généralement pour améliorer et optimiser notre Site (par exemple, en générant des analyses sur la manière dont nos clients naviguent et interagissent avec le Site, et pour évaluer le succès de nos campagnes de marketing et de publicité)."
+                ]
+            },
+            {
+                "title": "PARTAGE DE VOS INFORMATIONS PERSONNELLES",
+                "content": [
+                    "Nous partageons vos Informations personnelles avec des tiers pour nous aider à utiliser vos Informations personnelles, comme décrit ci-dessus. Par exemple, nous utilisons Shopify pour faire fonctionner notre boutique en ligne -- vous pouvez en savoir plus sur la façon dont Shopify utilise vos Informations personnelles ici : https://www.shopify.com/legal/privacy. Nous utilisons également Google Analytics pour nous aider à comprendre comment nos clients utilisent le Site -- vous pouvez en savoir plus sur la façon dont Google utilise vos Informations personnelles ici : https://www.google.com/intl/fr/policies/privacy/. Vous pouvez également vous désinscrire de Google Analytics ici : https://tools.google.com/dlpage/gaoptout.",
+                    "Enfin, nous pouvons également partager vos Informations personnelles pour nous conformer aux lois et réglementations applicables, pour répondre à une citation à comparaître, un mandat de perquisition ou toute autre demande légale d'informations que nous recevons, ou pour autrement protéger nos droits."
+                ]
+            },
+            {
+                "title": "PUBLICITÉ COMPORTEMENTALE",
+                "content": [
+                    "Comme décrit ci-dessus, nous utilisons vos Informations personnelles pour vous fournir des publicités ciblées ou des communications marketing susceptibles de vous intéresser. Pour plus d'informations sur le fonctionnement de la publicité ciblée, vous pouvez visiter la page éducative de la Network Advertising Initiative (\"NAI\") à l'adresse http://www.networkadvertising.org/understanding-online-advertising/how-does-it-work."
+                ]
+            },
+            {
+                "title": "VOUS POUVEZ VOUS DÉSINCRIRE DE LA PUBLICITÉ CIBLÉE EN UTILISANT LES LIENS CI-DESSOUS :",
+                "content": [
+                    "- Facebook : https://www.facebook.com/settings/?tab=ads",
+                    "- Google : https://www.google.com/settings/ads/anonymous",
+                    "- Bing : https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads",
+                    "De plus, vous pouvez vous désinscrire de certains de ces services en visitant le portail de désinscription de la Digital Advertising Alliance à l'adresse : http://optout.aboutads.info/."
+                ]
+            },
+            {
+                "title": "NE PAS SUIVRE",
+                "content": [
+                    "Veuillez noter que nous ne modifions pas nos pratiques de collecte et d'utilisation de données sur le Site lorsque nous voyons un signal 'Do Not Track' (Ne pas suivre) de votre navigateur."
+                ]
+            },
+            {
+                "title": "VOS DROITS",
+                "content": [
+                    "Si vous êtes un résident européen, vous avez le droit d'accéder aux informations personnelles que nous détenons à votre sujet et de demander que vos informations personnelles soient corrigées, mises à jour ou supprimées. Si vous souhaitez exercer ce droit, veuillez nous contacter en utilisant les informations de contact ci-dessous.",
+                    "De plus, si vous êtes un résident européen, nous notons que nous traitons vos informations afin d'exécuter les contrats que nous pourrions avoir avec vous (par exemple si vous passez une commande via le Site), ou autrement pour poursuivre nos intérêts commerciaux légitimes énumérés ci-dessus. De plus, veuillez noter que vos informations seront transférées en dehors de l'Europe, y compris au Canada et aux États-Unis."
+                ]
+            },
+            {
+                "title": "CONSERVATION DES DONNÉES",
+                "content": [
+                    "Lorsque vous passez une commande via le Site, nous conserverons vos Informations de commande dans nos registres à moins que et jusqu'à ce que vous nous demandiez de supprimer ces informations."
+                ]
+            },
+            {
+                "title": "MODIFICATIONS",
+                "content": [
+                    "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre afin de refléter, par exemple, des changements à nos pratiques ou pour d'autres raisons opérationnelles, légales ou réglementaires."
+                ]
+            },
+            {
+                "title": "NOUS CONTACTER",
+                "content": [
+                    "Pour plus d'informations sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une plainte, veuillez nous contacter par e-mail à info@idealisticsolutions.com"
+                ]
+            }
+        ]
+    },
+    "about": {
+        "Hero": {
+            "heading": "À propos d'Idealistic Solutions",
+            "subHeading": "Découvrez notre parcours, notre mission et l'équipe derrière notre succès",
+            "contact Us": "Nous contacter"
+        },
+        "ourStory": {
+            "heading": "Notre histoire",
+            "content": [
+                "Nous sommes une équipe de passionnés qui pensent que trouver le bon partenaire technologique peut faire la différence entre une croissance stagnante et une croissance active pour toute entreprise.",
+                "Idealistic Solutions LLC est là pour offrir les meilleures fonctionnalités de technologie et de développement-en-tant-que-service que vous avez toujours souhaitées, le tout dans un package abordable et professionnel. Notre engagement est d'aider votre entreprise à croître et à atteindre de nouveaux sommets tout en se développant et en repoussant les limites.",
+                "Nous fournissons des services allant de la création de nouvelles solutions à l'automatisation des tâches commerciales, en passant par le déploiement de Jenkins dans le cloud. Que vous migriez un système hérité vers le cloud, créiez des systèmes d'alerte ou exportiez des données d'une plateforme à une autre, nous avons la solution.",
+                "Chaque solution est entièrement adaptable et personnalisable à vos besoins. Notre mission est de fournir une qualité de service exceptionnelle, de dépasser les attentes et de vous accompagner avec une communication d'expert et une assistance continue.",
+                "Essayez nos services et découvrez des solutions technologiques professionnelles et fiables qui aident votre entreprise à croître, à optimiser les flux de travail et à atteindre de nouveaux clients, quelle que soit la taille ou la complexité du projet."
+            ]
+        },
+        "ourMission": {
+            "label": "Notre mission",
+            "detail": "Offrir des solutions technologiques abordables et professionnelles qui permettent aux entreprises d'atteindre une croissance active et d'optimiser leurs opérations."
+        },
+        "ourVision": {
+            "label": "Notre vision",
+            "detail": "Être le partenaire technologique de confiance qui aide les entreprises à dépasser les attentes, à atteindre de nouveaux clients et à repousser les limites de l'innovation."
+        },
+        "coreValues": {
+            "values": {
+                "title1": "Innovation",
+                "description1": "Repousser les limites avec des solutions créatives.",
+                "title2": "Intégrité",
+                "description2": "Maintenir l'honnêteté et la transparence dans tout ce que nous faisons.",
+                "title3": "Collaboration",
+                "description3": "Travailler ensemble pour atteindre des objectifs communs.",
+                "title4": "Excellence",
+                "description4": "Viser la plus haute qualité dans chaque projet.",
+                "title5": "Orientation client",
+                "description5": "Placer nos clients au cœur de notre travail.",
+                "title6": "Durabilité",
+                "description6": "Construire des solutions ayant un impact à long terme."
+            },
+            "label": "Nos valeurs fondamentales",
+            "stand": "Ce que nous représentons"
+        },
+        "team": [
+            {
+                "name": "Sophie Gilbert",
+                "position": "Cheffe de projet",
+                "image": "/images/front-pages/landing-page/sophie.png",
+                "color": "var(--mui-palette-primary-mainOpacity)"
+            },
+            {
+                "name": "Paul Miles",
+                "position": "Designer UI",
+                "image": "/images/front-pages/landing-page/paul.png",
+                "color": "var(--mui-palette-info-mainOpacity)"
+            },
+            {
+                "name": "Nannie Ford",
+                "position": "Développeuse",
+                "image": "/images/front-pages/landing-page/nannie.png",
+                "color": "var(--mui-palette-error-mainOpacity)"
+            },
+            {
+                "name": "Chris Watkins",
+                "position": "Responsable marketing",
+                "image": "/images/front-pages/landing-page/chris.png",
+                "color": "var(--mui-palette-success-mainOpacity)"
+            }
+        ],
+        "ourteam": "Notre super équipe",
+        "Supported": "Pris en charge",
+        "byrealpeople": "Par de vraies personnes",
+        "whoisbehind": "Qui est derrière ces superbes interfaces ?"
+    },
+    "landingPage": {
+        "heroSection": {
+            "heading": "Proposition de valeur claire et convaincante",
+            "subheading": "Brève explication de ce que fait Idealistic Solutions",
+            "buttons": {
+                "explore": "Découvrez nos services",
+                "demo": "Obtenez une démo",
+                "contact": "Contactez-nous"
+            }
+        },
+        "aboutUsTeaser": {
+            "label": "À propos de nous",
+            "title": "En savoir plus sur nous",
+            "subtitle": "Nous nous engageons à fournir des solutions innovantes qui font la différence.",
+            "missionTitle": "Notre mission",
+            "missionDescription": "Notre mission est de donner aux entreprises les moyens d’agir grâce à une technologie de pointe, un service exceptionnel et une valeur inégalée pour favoriser leur succès.",
+            "learnMoreButton": "En savoir plus sur nous"
+        },
+        "usefulFeature": {
+            "label": "Fonctionnalité utile",
+            "title": "Tout ce dont vous avez besoin pour démarrer votre prochain projet",
+            "subtitle": "Il ne s’agit pas seulement d’un ensemble d’outils, mais d’un package prêt à l’emploi pour une application conceptuelle.",
+            "features": [
+                {
+                    "title": "Gestion du personnel",
+                    "description": "Gérez efficacement vos membres d’équipe, rôles et autorisations d’accès."
+                },
+                {
+                    "title": "Contrôle des autorisations",
+                    "description": "Contrôle granulaire des autorisations utilisateur et accès aux données sensibles."
+                },
+                {
+                    "title": "Conformité légale",
+                    "description": "Outils et fonctionnalités pour garantir la conformité légale et la confidentialité des données."
+                },
+                {
+                    "title": "Gestion des clients",
+                    "description": "Gérez les relations clients, suivez les interactions et améliorez le service client."
+                },
+                {
+                    "title": "Gestion des documents",
+                    "description": "Stockez, organisez et gérez efficacement les documents et fichiers importants."
+                },
+                {
+                    "title": "Traitement des paiements",
+                    "description": "Traitement des paiements sécurisé et fiable pour les transactions et la facturation."
+                }
+            ]
+        },
+        "customerReviews": {
+            "label": "Avis de vrais clients",
+            "title": "Ce que disent les gens",
+            "subtitle": "Découvrez ce que nos clients pensent de leur expérience.",
+            "reviews": [
+                {
+                    "name": "Eugenia Moore",
+                    "position": "Fondatrice de Pinterest",
+                    "description": "Je n’ai jamais utilisé un thème aussi polyvalent et flexible que Vuexy. C’est mon choix préféré pour créer des tableaux de bord."
+                },
+                {
+                    "name": "Tommy haffman",
+                    "position": "Fondateur de Netflix",
+                    "description": "Materio est génial, et j’apprécie particulièrement de savoir que je peux obtenir de l’aide si je suis bloqué."
+                },
+                {
+                    "name": "Eugenia Moore",
+                    "position": "CTO de Airbnb",
+                    "description": "Ce modèle est supérieur à bien des égards. Le code, le design, les mises à jour régulières, le support… C’est un package complet. Excellent travail."
+                },
+                {
+                    "name": "Sara Smith",
+                    "position": "Fondatrice de Coinbase",
+                    "description": "Toutes les exigences des développeurs ont été prises en compte, je peux donc créer n’importe quelle interface que je souhaite."
+                },
+                {
+                    "name": "Tommy haffman",
+                    "position": "Fondateur de Dribbble",
+                    "description": "Je n’ai jamais utilisé un thème aussi polyvalent et flexible que Vuexy. C’est mon choix préféré pour créer des tableaux de bord."
+                },
+                {
+                    "name": "Eugenia Moore",
+                    "position": "Fondatrice de Pinterest",
+                    "description": "Je n’ai jamais utilisé un thème aussi polyvalent et flexible que Vuexy. C’est mon choix préféré pour créer des tableaux de bord."
+                },
+                {
+                    "name": "Tommy haffman",
+                    "position": "Fondateur de HubSpot",
+                    "description": "Materio est génial, et j’apprécie particulièrement de savoir que je peux obtenir de l’aide si je suis bloqué."
+                },
+                {
+                    "name": "Eugenia Moore",
+                    "position": "CTO de Airbnb",
+                    "description": "Ce modèle est supérieur à bien des égards. Le code, le design, les mises à jour régulières, le support… C’est un package complet. Excellent travail."
+                },
+                {
+                    "name": "Sara Smith",
+                    "position": "Fondatrice de Coinbase",
+                    "description": "Toutes les exigences des développeurs ont été prises en compte, je peux donc créer n’importe quelle interface que je souhaite."
+                },
+                {
+                    "name": "Tommy haffman",
+                    "position": "Fondateur de Dribbble",
+                    "description": "Materio est génial, et j’apprécie particulièrement de savoir que je peux obtenir de l’aide si je suis bloqué."
+                }
+            ]
+        }
+    },
+    "contact": {
+        "sectionId": "contact-us",
+        "chipLabel": "Contactez-nous",
+        "header": {
+            "title": "Travaillons ensemble",
+            "subtitle": "Une question ou une remarque ? Écrivez-nous simplement un message"
+        },
+        "formCard": {
+            "title": "Envoyer un message",
+            "description": "Si vous souhaitez discuter de tout ce qui concerne le paiement, le compte, les licences, les partenariats ou avez des questions avant l'achat, vous êtes au bon endroit.",
+            "fields": {
+                "name": "Nom complet",
+                "email": "Adresse e-mail",
+                "phone": "Téléphone (optionnel)",
+                "message": "Message"
+            },
+            "submitButton": {
+                "default": "Envoyer la demande",
+                "loading": "Envoi en cours..."
+            }
+        },
+        "contactInfo": {
+            "emailLabel": "E-mail",
+            "emailValue": "exemple@gmail.com",
+            "phoneLabel": "Téléphone",
+            "phoneValue": "+123 568 963"
+        }
+    },
+    "coupons": {
+        "form": {
+            "create": "Créer un coupon",
+            "edit": "Modifier le coupon",
+            "code": "Code",
+            "discount_value": "Valeur de la réduction",
+            "valid_from": "Valide à partir du",
+            "valid_until": "Valide jusqu'au",
+            "discount_type": "Type de réduction",
+            "select_discount_type": "Sélectionner le type de réduction",
+            "percentage": "Pourcentage",
+            "fixed": "Montant fixe",
+            "description": "Description",
+            "success_create": "Coupon créé avec succès",
+            "success_edit": "Coupon modifié avec succès"
+        },
+        "table": {
+            "title": "Coupons",
+            "description": "Description",
+            "code": "Code",
+            "is_active": "Statut",
+            "discount_type": "Type de réduction",
+            "discount_value": "Valeur de la réduction",
+            "valid_from": "Valide à partir du",
+            "valid_until": "Valide jusqu'au",
+            "created_at": "Date de création",
+            "updated_at": "Date de mise à jour",
+            "actions": "Actions",
+            "add_coupon": "Ajouter un coupon",
+            "delete_coupons": "Supprimer les coupons",
+            "delete_coupon": "Supprimer le coupon",
+            "success_delete": "Coupon supprimé avec succès",
+            "success_delete_bulk": "Coupons supprimés avec succès",
+            "search": "Rechercher",
+            "active": "Actif",
+            "expired": "Expiré",
+            "used_count": "Nombre d'utilisations"
+        }
+    },
+    "orders": {
+        "table": {
+            "title": "Commandes",
+            "notes": "Notes",
+            "amount": "Montant",
+            "order_number": "Numéro de commande",
+            "created_at": "Date de création",
+            "updated_at": "Date de mise à jour",
+            "actions": "Actions",
+            "delete_orders": "Supprimer les commandes",
+            "cancel_order": "Annuler la commande",
+            "create_order": "Créer une commande",
+            "status": "Statut",
+            "createOrder": "Créer une commande",
+            "delete_order": "Supprimer la commande",
+            "search": "Rechercher",
+            "search_placeholder": "Rechercher des commandes...",
+            "no_data": "Aucune commande trouvée",
+            "delete_confirm": "Êtes-vous sûr de vouloir supprimer cette commande ?",
+            "delete_success": "Commande supprimée avec succès",
+            "delete_bulk_success": "Commandes supprimées avec succès",
+            "cancel_confirmation": "Annuler la commande",
+            "cancel_confirmation_message": "Êtes-vous sûr de vouloir annuler cette commande",
+            "cancel_success": "Commande annulée avec succès",
+            "statuses": {
+                "pending": "En attente",
+                "confirmed": "Confirmé",
+                "cancelled": "Annulé",
+                "completed": "Terminé",
+                "refunded": "Remboursé",
+                "cancellation_requested": "Annulation demandée",
+                "upgraded": "Mis à niveau"
+            }
+        }
+    },
+    "imageUploader": {
+        "selectFile": "Télécharger votre image",
+        "dragDrop": "Cliquer pour parcourir ou glisser-déposer"
+    },
+    "keyValuePair": {
+        "featuresList": "Liste des fonctionnalités",
+        "limitsList": "Liste des limites",
+        "key": "Clé",
+        "value": "Valeur",
+        "text": "Texte",
+        "number": "Nombre",
+        "yesNo": "Oui/Non",
+        "cancel": "Annuler",
+        "add": "Ajouter",
+        "update": "Mettre à jour",
+        "noOtherKeys": "Aucune autre clé disponible",
+        "noMatchingKeys": "Aucune clé correspondante trouvée",
+        "allKeysUsed": "Toutes les clés sont utilisées"
+    },
+    "htmlEditor": {
+        "title": "Éditeur HTML",
+        "preview": "Aperçu",
+        "editor": "Éditeur"
+    },
+    "blog": {
+        "Views": "Vues",
+        "Published": "Publié le",
+        "Tags": "Étiquettes",
+        "errorHeading": "Erreur lors du chargement de l'article",
+        "errorMessage": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+        "notFound": "Article de blog introuvable",
+        "heading": "Nos Blogs",
+        "subheading": "Restez informé grâce à nos derniers articles",
+        "contact": "Contactez-nous",
+        "latestPosts": "Derniers articles",
+        "noPosts": "Aucun article trouvé",
+        "readMore": "Lire la suite",
+        "title": "Blog",
+        "posts": "Articles",
+        "categories": "Catégories",
+        "tags": "Étiquettes",
+        "comments": "Commentaires",
+        "createPost": "Créer un Article",
+        "createCategory": "Créer une Catégorie",
+        "createTag": "Créer une Étiquette",
+        "editPost": "Modifier l'Article",
+        "editCategory": "Modifier la Catégorie",
+        "editTag": "Modifier l'Étiquette",
+        "deletePost": "Supprimer l'Article",
+        "deleteCategory": "Supprimer la Catégorie",
+        "deleteTag": "Supprimer l'Étiquette",
+        "postDetails": "Détails de l'Article",
+        "categoryDetails": "Détails de la Catégorie",
+        "tagDetails": "Détails de l'Étiquette",
+        "status": {
+            "draft": "Brouillon",
+            "published": "Publié"
+        },
+        "filter": {
+            "all": "Tous",
+            "published": "Publié",
+            "draft": "Brouillon"
+        },
+        "form": {
+            "title": "Titre",
+            "content": "Contenu",
+            "category": "Catégorie",
+            "tags": "Étiquettes",
+            "featuredImage": "Image à la Une",
+            "status": "Statut",
+            "publishDate": "Date de Publication"
+        },
+        "table": {
+            "title": "TITRE",
+            "author": "AUTEUR",
+            "status": "STATUT",
+            "category": "CATÉGORIE",
+            "publishDate": "DATE DE PUBLICATION",
+            "views": "VUES",
+            "actions": "ACTIONS"
+        }
+    },
+    "subscriptions": {
+        "subscriptionRefundSuccess": "Abonnement remboursé avec succès",
+        "subscriptionsCancelModal": {
+            "title": "Confirmer l'annulation de l'abonnement",
+            "message": "Êtes-vous sûr de vouloir annuler cet abonnement ?",
+            "warning": "Cette action ne peut pas être annulée.",
+            "reason": "Raison de l'annulation",
+            "confirm": "Confirmer l'annulation"
+        },
+        "subscriptionRefundModal": {
+            "title": "Confirmer le remboursement de l'abonnement",
+            "message": "Êtes-vous sûr de vouloir rembourser cet abonnement ?",
+            "warning": "Cette action ne peut pas être annulée.",
+            "reason": "Raison du remboursement",
+            "amount": "Montant du remboursement (Optionnel)",
+            "confirm": "Confirmer le remboursement"
+        },
+        "table": {
+            "title": "Abonnements",
+            "notes": "Notes",
+            "billing_cycle": "Cycle de Facturation",
+            "provider": "Fournisseur",
+            "status": "Statut",
+            "created_at": "Créé le",
+            "updated_at": "Mis à jour le",
+            "actions": "Actions",
+            "search": "Rechercher",
+            "no_data": "Aucun abonnement trouvé",
+            "status_active": "Actif",
+            "status_trialing": "En essai",
+            "status_cancelled": "Annulé",
+            "status_expired": "Expiré",
+            "status_upgraded": "Mis à niveau",
+            "provider_paypal": "PayPal",
+            "provider_stripe": "Stripe",
+            "billing_cycle_monthly": "Mensuel",
+            "billing_cycle_yearly": "Annuel",
+            "reference_id": "ID de Référence"
+        }
+    },
+    "transactions": {
+        "table": {
+            "title": "Transactions",
+            "referenceId": "ID de Référence",
+            "amount": "Montant",
+            "status": "Statut",
+            "createdAt": "Créé le",
+            "updatedAt": "Mis à jour le",
+            "paymentMethod": "Méthode de paiement",
+            "actions": "Actions",
+            "search": "Rechercher",
+            "noData": "Aucune transaction trouvée",
+            "statuses": {
+                "initiated": "Initié",
+                "processing": "En cours de traitement",
+                "completed": "Terminé",
+                "failed": "Échoué",
+                "refunded": "Remboursé",
+                "partially_refunded": "Partiellement remboursé",
+                "cancelled": "Annulé"
+            },
+            "paymentMethods": {
+                "paypal": "PayPal",
+                "stripe": "Stripe",
+                "manual": "Manuel"
+            }
+        },
+        "transactionRefundModal": {
+            "title": "Confirmer le remboursement de la transaction",
+            "message": "Êtes-vous sûr de vouloir rembourser cette transaction ?",
+            "warning": "Laissez le montant vide pour un remboursement complet. Entrez un montant spécifique pour un remboursement partiel.",
+            "reason": "Raison du remboursement",
+            "amount": "Montant du remboursement (Optionnel)",
+            "amountPlaceholder": "Entrez le montant pour un remboursement partiel",
+            "confirm": "Confirmer le remboursement",
+            "processing": "Traitement en cours..."
+        }
+    },
+    "frontMenu": {
+        "home": "Accueil",
+        "about": "À propos",
+        "contact": "Contact",
+        "services": "Services",
+        "blogs": "Blogs",
+        "privacyPolicy": "Politique de confidentialité",
+        "terms": "Termes",
+        "button": {
+            "openApp": "Ouvrir l'application",
+            "purchaseNow": "Acheter maintenant"
+        }
+    },
+    "planTypeToggle": {
+        "monthly": "Mensuel",
+        "yearly": "Annuel",
+        "oneTime": "Une fois"
+    }
+}
