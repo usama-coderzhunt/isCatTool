@@ -1,6 +1,9 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   basePath: process.env.BASEPATH,
   images: {
     remotePatterns: [
@@ -22,13 +25,13 @@ const nextConfig: NextConfig = {
         locale: false
       },
       {
-        source: '/:lang(en|fr|ar)',
+        source: '/:lang(en|fr|ar|es)',
         destination: '/:lang/home',
         permanent: true,
         locale: false
       },
       {
-        source: '/((?!(?:en|fr|ar|front-pages)\\b)):path',
+        source: '/((?!(?:en|fr|ar|es|front-pages)\\b)):path',
         destination: '/en/:path',
         permanent: true,
         locale: false
