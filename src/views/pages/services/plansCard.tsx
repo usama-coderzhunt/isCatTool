@@ -126,6 +126,9 @@ const PlansCard: React.FC<PlansCardProps> = ({
       ...prev,
       [planId]: null
     }))
+
+    localStorage.removeItem('selectedPlan')
+    localStorage.removeItem('returnUrl')
   }
 
   const formatValue = (value: number | boolean | string) => {

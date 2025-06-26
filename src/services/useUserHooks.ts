@@ -65,41 +65,6 @@ export const useUserHooks = () => {
 
         return axiosInstance.post(API_ROUTES.AUTH.loginUrl, useLoginData)
       },
-      // onSuccess: async ({ data }: { data: LoginResponse }) => {
-      //   const token = data?.accessToken
-      //   const tokenExpiry = data?.tokenExpiry
-      //   const userRole = data?.user?.role
-      //   const isSuperuser = data?.user?.is_superuser
-      //   const userID = data?.user?.id
-      //   const userName = data?.user?.username
-
-      //   if (token) {
-      //     setToken(token)
-      //     localStorage.setItem('tokenExpiry', tokenExpiry)
-      //     localStorage.setItem('userRole', cipher(userRole))
-      //     localStorage.setItem('userName', cipher(userName))
-      //     localStorage.setItem('isSuperUser', cipher(isSuperuser))
-      //     localStorage.setItem('userID', cipher(userID.toString()))
-
-      //     if (!isSuperuser || userRole !== 'Admin') {
-      //       const { data: loggedInUser } = await axiosInstance.get(API_ROUTES.AUTH.userDetails, {
-      //         requiresAuth: true
-      //       } as any)
-
-      //       setUserPermissions(loggedInUser?.user_permissions || [])
-      //     }
-      //   }
-
-      //   if (localStorage.getItem('returnUrl')) {
-      //     const returnUrl = decipher(localStorage.getItem('returnUrl') || '')
-
-      //     router.push(returnUrl || `/${lang}/dashboard`)
-      //     localStorage.removeItem('returnUrl')
-      //   } else {
-      //     router.push(`/${lang}/dashboard`)
-      //   }
-      // },
-
       onSuccess: async ({ data }: { data: LoginResponse }) => {
         const token = data?.accessToken
         const tokenExpiry = data?.tokenExpiry
@@ -125,17 +90,15 @@ export const useUserHooks = () => {
           }
         }
 
-        // 🔐 Handle returnUrl redirect safely
-        const encryptedReturnUrl = localStorage.getItem('returnUrl')
-        const returnUrl = encryptedReturnUrl ? decipher(encryptedReturnUrl) : null
-        localStorage.removeItem('returnUrl')
+        if (localStorage.getItem('returnUrl')) {
+          const returnUrl = decipher(localStorage.getItem('returnUrl') || '')
 
-        const redirectTo = returnUrl || `/${lang}/dashboard`
-
-        // Add a short delay to ensure store updates sync (optional but helpful)
-        await new Promise(res => setTimeout(res, 100))
-
-        router.push(redirectTo)
+          router.push(returnUrl)
+          // console.log('>>returnUrl', returnUrl)
+          // localStorage.removeItem('returnUrl')
+        } else {
+          router.push(`/${lang}/dashboard`)
+        }
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         let errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'

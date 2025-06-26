@@ -44,11 +44,11 @@ const CompanyHistory = ({ mode }: any) => {
 
       <Box className='max-w-[800px] mli-auto text-center' color={textColor}>
         {contents.content.map((item, index) => (
-          <>
-            <Typography key={index} variant='body1' paragraph>
+          <div key={index}>
+            <Typography variant='body1' paragraph>
               {item}
             </Typography>
-          </>
+          </div>
         ))}
       </Box>
     </section>

@@ -21,9 +21,12 @@ export default function AuthGuard({ children, locale }: ChildrenType & { locale:
   const pathnameWithoutId = pathname.split('/').slice(0, -1).join('/')
   const isPublicRoute = publicRoutes.includes(Number(id) ? pathnameWithoutId : pathname)
   useEffect(() => {
+    if (!token && !localStorage.getItem('returnUrl')) {
+      localStorage.setItem('returnUrl', cipher(window.location.pathname))
+    }
     const redirectUrl = getDecryptedLocalStorage('returnUrl')
 
-    if (!token && pathname.includes('/dashboards')) {
+    if (!token && pathname.includes('/dashboard')) {
       router.push(`/${locale}/login`)
     }
 
@@ -41,28 +44,17 @@ export default function AuthGuard({ children, locale }: ChildrenType & { locale:
       const currentPath = pathname
       const tokenExpiry = localStorage.getItem('tokenExpiry')
 
-      // if (
-      //   token &&
-      //   tokenExpiry &&
-      //   (pathname.includes('login') ||
-      //     pathname.includes('register') ||
-      //     pathname.includes('forgot-password') ||
-      //     pathname.includes('reset-password')) &&
-      //   !redirectUrl
-      // ) {
-      //   router.push(`/${locale}/dashboard`)
-
-      //   return
-      // }
-
       if (
         token &&
         tokenExpiry &&
-        (pathname.includes('/login') || pathname.includes('/register')) // etc
+        (pathname.includes('login') ||
+          pathname.includes('register') ||
+          pathname.includes('forgot-password') ||
+          pathname.includes('reset-password')) &&
+        !redirectUrl
       ) {
-        const redirectTo = redirectUrl ? getDecryptedLocalStorage('returnUrl') : `/${locale}/dashboard`
-        localStorage.removeItem('returnUrl')
-        router.push(redirectTo)
+        router.push(`/${locale}/dashboard`)
+
         return
       }
 
@@ -126,9 +118,16 @@ export default function AuthGuard({ children, locale }: ChildrenType & { locale:
 
         return
       }
-
+      const returnUrl = getDecryptedLocalStorage('returnUrl')
       if (!isSuperUser && userRole !== 'Admin') {
-        if (requiredPermission && !hasPermission) {
+        if (returnUrl && !token) {
+          router.push(`/${locale}/login`)
+          return
+        } else if (returnUrl && token) {
+          router.push(returnUrl)
+          localStorage.removeItem('returnUrl')
+          return
+        } else if (requiredPermission && !hasPermission) {
           router.push(`/${locale}/dashboard`)
         }
       }

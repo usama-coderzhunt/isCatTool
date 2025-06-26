@@ -22,43 +22,75 @@
 
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { publicRoutes } from './utils/permissionUtils' // adjust path as needed
+
+const PUBLIC_ROUTES = [
+  '/login',
+  '/register',
+  '/pages/auth/forgot-password',
+  '/pages/auth/forgot-password/reset',
+  '/home',
+  '/about',
+  '/contact',
+  '/privacy-policy',
+  '/terms-of-service',
+  '/services',
+  '/service-details',
+  '/blogs',
+  '/blog-details',
+  '/apps/subscriptions'
+]
+
+const PROTECTED_PREFIXES = ['/dashboard', '/apps']
+
+function isPublicRoute(pathname: string) {
+  const withoutLang = pathname.replace(/^\/(en|fr|ar|es)/, '')
+  return PUBLIC_ROUTES.some(route => withoutLang.startsWith(route))
+}
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-  const token = request.cookies.get('token')?.value
+  const { pathname, origin } = request.nextUrl
+  const localeMatch = pathname.match(/^\/(en|fr|ar|es)/)
+  const locale = localeMatch ? localeMatch[0] : '/en'
 
-  // 1. Handle payment callback route
-  if (pathname.startsWith('/payment-callback')) {
+  const token = request.cookies.get('accessToken')?.value
+
+  const isAuthPage =
+    pathname.endsWith('/login') ||
+    pathname.endsWith('/register') ||
+    pathname.includes('forgot-password') ||
+    pathname.includes('reset-password')
+
+  const isProtected = PROTECTED_PREFIXES.some(prefix => pathname.includes(prefix))
+
+  // ✅ 1. Handle payment callback route
+
+  if (request.nextUrl.pathname.startsWith('/payment-callback')) {
     const orderId = request.cookies.get('pendingOrderId')?.value
-
     if (orderId) {
+      // Clear the cookie
       const response = NextResponse.redirect(new URL(`/en/dashboard/service-details/${orderId}`, request.url))
       response.cookies.delete('pendingOrderId')
       return response
     }
-
-    return NextResponse.next()
   }
 
-  // 2. Check if route is public
-  const isPublicRoute = publicRoutes.some(route => {
-    const regexPattern = '^' + route.replace(/:\w+/g, '[^/]+').replace(/\//g, '\\/') + '$'
-    return new RegExp(regexPattern).test(pathname)
-  })
+  // ✅ 2. Redirect authenticated user away from login/register/forgot pages
+  if (token && isAuthPage) {
+    return NextResponse.redirect(new URL(`${locale}/dashboard`, origin))
+  }
 
-  // 3. Redirect if protected and not authenticated
-  if (!token && !isPublicRoute) {
-    const locale = pathname.split('/')[1] || 'en'
-    const loginUrl = new URL(`/${locale}/login`, request.url)
-    loginUrl.searchParams.set('returnUrl', pathname)
-    return NextResponse.redirect(loginUrl)
+  // ✅ 3. Redirect unauthenticated users from protected routes
+  if (!token && isProtected && !isPublicRoute(pathname)) {
+    const encodedRedirect = encodeURIComponent(pathname)
+    return NextResponse.redirect(new URL(`${locale}/login?redirect=${encodedRedirect}`, origin))
   }
 
   return NextResponse.next()
 }
 
-// ✅ Required config block to enable middleware
 export const config = {
-  matcher: ['/((?!_next|static|favicon.ico|api).*)']
+  matcher: [
+    // Match all routes except static, API, and internal Next.js paths
+    '/((?!_next|favicon.ico|api|static|.*\\..*).*)'
+  ]
 }

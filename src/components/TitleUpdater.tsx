@@ -23,7 +23,9 @@ export const TitleUpdater = () => {
       const translatedPageName = t(`page_titles.${pageName}`, { defaultValue: pageName })
 
       document.title = `${translatedPageName} - ${
-        generalSettings?.main_title[lang as keyof typeof generalSettings.main_title] || generalSettings?.main_title.en
+        generalSettings?.main_title[lang as keyof typeof generalSettings.main_title] ||
+        generalSettings?.main_title.en ||
+        ' '
       }`
     }
   }, [pathname, generalSettings, lang, t])
