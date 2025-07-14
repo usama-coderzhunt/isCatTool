@@ -26,7 +26,6 @@ export const EditorBody = ({
   const hasHydrated = useRef(false)
   const isInternalChange = useRef(false)
 
-  // Handle initial hydration and external value changes
   useEffect(() => {
     if (!editor || isInternalChange.current) {
       isInternalChange.current = false
