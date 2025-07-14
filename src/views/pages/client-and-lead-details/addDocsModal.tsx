@@ -39,6 +39,7 @@ type DocumentFormData = {
   case_list?: number[] | null
   clients?: number[] | null
   cases?: number[] | null
+  client_info?: any[] | null
 }
 
 interface AddDocsModalProps {
@@ -124,7 +125,9 @@ const AddDocsModal = ({
 
   React.useEffect(() => {
     const loadLawyerClients = async () => {
-      if (mode === 'edit' && selectedDocumentData?.clients?.length) {
+      if (mode === 'edit' && selectedDocumentData?.client_info?.length) {
+        setSelectedClients(selectedDocumentData.client_info)
+      } else if (mode === 'edit' && selectedDocumentData?.clients?.length) {
         const clientsData = await fetchClientsByIds(selectedDocumentData.clients)
         setSelectedClients(clientsData)
       } else {
@@ -153,14 +156,27 @@ const AddDocsModal = ({
     loadLawyerClients()
     loadCases()
     loadDocumentType()
-  }, [mode, selectedDocumentData?.clients, selectedDocumentData?.cases, selectedDocumentData?.document_type])
+  }, [
+    mode,
+    selectedDocumentData?.client_info,
+    selectedDocumentData?.clients,
+    selectedDocumentData?.cases,
+    selectedDocumentData?.document_type
+  ])
 
   React.useEffect(() => {
     if (mode === 'edit' && selectedDocumentData) {
       setValue('document_type', selectedDocumentData.document_type || '')
       setValue('note', selectedDocumentData.note || '')
       setValue('name', selectedDocumentData.name || '')
-      setValue('client_list', selectedDocumentData.client_list || [])
+
+      if (selectedDocumentData.client_info?.length) {
+        const clientIds = selectedDocumentData.client_info.map((client: any) => client.id)
+        setValue('client_list', clientIds)
+      } else {
+        setValue('client_list', selectedDocumentData.client_list || [])
+      }
+
       setValue('case_list', selectedDocumentData.case_list || [])
     } else if (mode === 'create') {
       reset({
@@ -177,6 +193,13 @@ const AddDocsModal = ({
   React.useEffect(() => {
     clearErrors()
   }, [clearErrors, open])
+
+  React.useEffect(() => {
+    if (mode === 'edit' && selectedClients.length > 0) {
+      const clientIds = selectedClients.map((client: any) => client.id)
+      setValue('client_list', clientIds)
+    }
+  }, [selectedClients, mode, setValue])
 
   const onSubmit: SubmitHandler<DocumentFormData> = async (data: DocumentFormData) => {
     clearErrors()
@@ -197,33 +220,30 @@ const AddDocsModal = ({
     const updatedClientList = selectedClientData?.id
       ? [...new Set([selectedClientData?.id, ...(data.client_list || [])])]
       : data.client_list || []
-    const formattedClientList = updatedClientList.join(',')
-
-    const payload: any = {}
-
-    // Only include fields that have changed from the original data
-    if (data.name !== selectedDocumentData?.name) {
-      payload.name = data.name
-    }
-    if (data.document_type !== selectedDocumentData?.document_type) {
-      payload.document_type = data.document_type || ''
-    }
-    if (data.note !== selectedDocumentData?.note) {
-      payload.note = data.note || ''
-    }
-    if (JSON.stringify(updatedClientList) !== JSON.stringify(selectedDocumentData?.client_list)) {
-      payload.client_list = formattedClientList
-    }
-    if (JSON.stringify(data.case_list) !== JSON.stringify(selectedDocumentData?.case_list)) {
-      payload.case_list = (data.case_list || []).join(',')
-    }
-
-    // Only include file if a new one is selected and it's actually a File object
-    if (data.file?.[0] && data.file[0] instanceof File) {
-      payload.file = data.file[0]
-    }
 
     if (mode === 'edit' && docId) {
+      const payload: any = {}
+
+      if (data.name !== selectedDocumentData?.name) {
+        payload.name = data.name
+      }
+      if (data.document_type !== selectedDocumentData?.document_type) {
+        payload.document_type = data.document_type || ''
+      }
+      if (data.note !== selectedDocumentData?.note) {
+        payload.note = data.note || ''
+      }
+      if (JSON.stringify(updatedClientList) !== JSON.stringify(selectedDocumentData?.client_list)) {
+        payload.clients = updatedClientList // Send as array for update
+      }
+      if (JSON.stringify(data.case_list) !== JSON.stringify(selectedDocumentData?.case_list)) {
+        payload.cases = data.case_list || [] // Send as array for update
+      }
+
+      if (data.file?.[0] && data.file[0] instanceof File) {
+        payload.file = data.file[0]
+      }
+
       updateDocument(
         { id: docId, ...payload },
         {
@@ -234,7 +254,8 @@ const AddDocsModal = ({
         }
       )
     } else {
-      // For create mode, send all fields
+      const formattedClientList = updatedClientList.join(',')
+
       createDocument(
         {
           name: data.name,
@@ -356,8 +377,9 @@ const AddDocsModal = ({
               <SearchableMultiSelect<DocumentFormData>
                 options={
                   isLawyerClientPath
-                    ? (pageSize, page, search) => getLawyerClients(pageSize, page, search, undefined, undefined, true)
-                    : useFetchClientTransactions
+                    ? (pageSize, page, search) => getLawyerClients(pageSize, page, search, 'client', undefined, true)
+                    : (pageSize, page, search) =>
+                        useFetchClientTransactions(pageSize, page, search, 'client', undefined, true)
                 }
                 name='client_list'
                 returnAsArray={true}
@@ -376,6 +398,7 @@ const AddDocsModal = ({
                     : undefined
                 }
                 selectedOptionsList={mode === 'edit' ? selectedClients : undefined}
+                showStatusBadge={true}
               />
               {pathname?.startsWith('/en/dashboard/lawyer-client/') && (
                 <SearchableMultiSelect<DocumentFormData>
@@ -427,7 +450,7 @@ const AddDocsModal = ({
                   }}
                   type='submit'
                 >
-                  {mode === 'edit' ? t('cases.form.updateDocument') : t('cases.form.createDocument')}
+                  {mode === 'edit' ? t('cases.form.updateDocument') : t('documents.addNew')}
                 </Button>
               </div>
             </form>

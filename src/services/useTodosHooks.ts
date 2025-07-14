@@ -167,29 +167,22 @@ export const useTodosHooks = () => {
   }
 
   const useDeleteTodoItem = () => {
-    const mutation = useMutation({
-      mutationFn: (id: string) => {
+    return useMutation({
+      mutationFn: async (id: number) => {
         return axiosInstance.delete(`${API_ROUTES.TODOS.deleteTodoItem}${id}/`, {
           requiresAuth: true,
           requiredPermission: 'delete_todoitem'
         } as any)
       },
       onSuccess: () => {
-        toast.success('Todo Item deleted successfully')
-        queryClient.invalidateQueries({ queryKey: ['todo-items'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['todo-items'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
-        const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
-        toast.error(errorMessage)
+        toast.error(error.response?.data?.message || 'Failed to delete todo item')
       }
     })
-    return {
-      data: mutation.data,
-      error: mutation.error,
-      isLoading: mutation.isPending,
-      isSuccess: mutation.isSuccess,
-      mutate: mutation.mutate
-    }
   }
 
   const useBulkDeleteTodoItems = () => {

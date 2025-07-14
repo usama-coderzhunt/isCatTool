@@ -99,8 +99,20 @@ const StaffListings = () => {
 
   const confirmDelete = () => {
     if (selectedStaff) {
-      deleteStaff.mutate(selectedStaff)
-      setDeleteModalOpen(false)
+      deleteStaff.mutate(selectedStaff, {
+        onSuccess: () => {
+          const newTotalPages = Math.ceil((staffData?.data?.count - 1) / pagination.pageSize)
+          if (pagination.pageIndex >= newTotalPages) {
+            setPagination(prev => ({
+              ...prev,
+              pageIndex: Math.max(0, newTotalPages - 1)
+            }))
+          }
+          toast.success(t('staffTable.staffDeleted'))
+          setRowSelection({})
+          setDeleteModalOpen(false)
+        }
+      })
     }
   }
 
@@ -291,13 +303,8 @@ const StaffListings = () => {
           )}
 
           {hasPermissions(userPermissions, ['add_staff']) && (
-            <Button
-              variant='contained'
-              onClick={() => setOpen(true)}
-              className='bg-primary hover:bg-primaryDark'
-              startIcon={<i className='tabler-plus text-lg' />}
-            >
-              {t('staffTable.createStaff')}
+            <Button variant='contained' onClick={() => setOpen(true)} className='bg-primary hover:bg-primaryDark'>
+              {t('staffTable.addStaff')}
             </Button>
           )}
         </div>
@@ -343,6 +350,7 @@ const StaffListings = () => {
           setStatusModalOpen(false)
           setPendingStatusChange(null)
         }}
+        isShowAddNotesField={false}
         handleStatusChange={confirmStatusChange}
         title={t('modal.confirmation.status.title')}
         userName={pendingStatusChange?.userName || ''}

@@ -186,7 +186,7 @@ const StaffDialog = ({ open, onClose, initialData, isUpdate }: StaffDialogProps)
   return (
     <Dialog open={open} onClose={handleCloseModal} maxWidth={'md'} fullWidth>
       <DialogTitle className='text-[24px] font-normal flex justify-between items-center'>
-        {isUpdate ? t('staffDialog.updateTitle') : t('staffDialog.createTitle')}
+        {isUpdate ? t('staffDialog.updateStaff') : t('staffDialog.addStaff')}
         <Button
           onClick={handleCloseModal}
           variant='outlined'
@@ -330,12 +330,14 @@ const StaffDialog = ({ open, onClose, initialData, isUpdate }: StaffDialogProps)
 
           <div className='md:col-span-2 flex justify-end mt-4'>
             <Button
-              type='submit'
               variant='contained'
-              className='bg-[#7367F0] hover:bg-[#6054e0] text-white text-[18px] py-4 px-10 rounded-lg'
-              // disabled={createStaff.isPending || updateStaff.isPending || process.env.NEXT_PUBLIC_ENV === 'development' ? false : !recaptchaToken}
+              type='submit'
+              sx={{
+                width: 'max-content',
+                padding: '0.5rem 1rem'
+              }}
             >
-              {isUpdate ? t('staffDialog.updateStaff') : t('staffDialog.createStaff')}
+              {isUpdate ? t('staffDialog.updateStaff') : t('staffDialog.addStaff')}
             </Button>
           </div>
         </form>

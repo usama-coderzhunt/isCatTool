@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
 // MUI Imports
-import { Button, Typography, IconButton, useColorScheme } from '@mui/material'
+import { Button, Typography, IconButton, useColorScheme, Tooltip } from '@mui/material'
 import { MaterialReactTable, MRT_Cell, MRT_Row, MRT_SortingState, MRT_RowSelectionState } from 'material-react-table'
 
 // Hooks & Services
@@ -36,6 +36,7 @@ export type TableDataType = {
   updated_by: number | null
   clients: number[]
   cases: number[]
+  client_info?: any[]
 }
 
 interface DocsTableProps {
@@ -79,7 +80,13 @@ const DebouncedInput = ({
   }, [value, onChange])
 
   return (
-    <CustomTextField label={t('common.search')} {...props} value={value} onChange={e => setValue(e.target.value)} />
+    <CustomTextField
+      label={t('common.search')}
+      {...props}
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
+    />
   )
 }
 
@@ -130,6 +137,13 @@ const DocsTable: React.FC<DocsTableProps> = ({
     if (docId === null) return
     deleteDocument(docId, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((docsData?.data?.count - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(t('documents.documentDeleted'))
         setOpenDeleteModal(false)
       }
@@ -166,7 +180,14 @@ const DocsTable: React.FC<DocsTableProps> = ({
     {
       accessorKey: 'note',
       header: t('documents.table.note'),
-      Cell: ({ cell }: { cell: MRT_Cell<TableDataType> }) => getDisplayValue(cell.getValue())
+      Cell: ({ cell }: { cell: MRT_Cell<TableDataType> }) => {
+        const note = getDisplayValue(cell.getValue())
+        return (
+          <Tooltip title={note} arrow>
+            <Typography className='truncate max-w-[200px] w-full'>{note}</Typography>
+          </Tooltip>
+        )
+      }
     },
     {
       accessorKey: 'expiration_date',
@@ -275,11 +296,7 @@ const DocsTable: React.FC<DocsTableProps> = ({
         onIsFullScreenChange={updateFullScreen}
         renderTopToolbarCustomActions={() => (
           <div className='flex items-center gap-3'>
-            <DebouncedInput
-              value={globalFilter ?? ''}
-              onChange={value => setGlobalFilter(String(value))}
-              placeholder={t('common.search')}
-            />
+            <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
             <IconButton onClick={() => exportDocumentsToCSV(data)} title={t('table.export')}>
               <i className='tabler-file-download text-[28px] cursor-pointer' />
             </IconButton>

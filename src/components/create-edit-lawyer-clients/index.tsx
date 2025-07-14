@@ -15,10 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import CustomTextField from '@/@core/components/mui/TextField'
 import CustomDatePicker from '@/@core/components/mui/DatePicker'
 
-// Goggle ReCaptcha
-import Recaptcha from '@/components/Recaptcha'
 import PhoneInput from '@/components/phoneInput'
-import { useRecaptchaStore } from '@/store/recaptchaStore'
 import { useLawyerClientsHooks } from '@/services/lawyerClients'
 import { LawyerClientTypes } from '@/types/lawyerClients'
 import { toast } from 'react-toastify'
@@ -43,8 +40,6 @@ const AddLawyerClientModal: React.FC<AddLawyerClientModalProps> = ({
   mode,
   entity
 }) => {
-  // store
-  // const { recaptchaToken, setRecaptchaToken } = useRecaptchaStore();
   const { t } = useTranslation('global')
 
   // hooks
@@ -97,9 +92,6 @@ const AddLawyerClientModal: React.FC<AddLawyerClientModalProps> = ({
   }, [lawyerClientData, mode, setValue])
 
   const onSubmit: SubmitHandler<LawyerClientTypes> = (data: any) => {
-    // if (!recaptchaToken && process.env.NEXT_PUBLIC_ENV !== "development") {
-    //     return;
-    // }
     if (mode === 'create') {
       createLawyerClient(data as LawyerClientTypes, {
         onSuccess: () => {
@@ -274,10 +266,26 @@ const AddLawyerClientModal: React.FC<AddLawyerClientModalProps> = ({
                   helperText={errors.address?.message}
                 />
               </div>
-            </div>
 
-            {/* Recaptcha */}
-            {/* <Recaptcha /> */}
+              {/* Notes */}
+              <div className='col-span-12 relative'>
+                <CustomTextField
+                  className='hover:appearance-none focus:outline-none'
+                  fullWidth
+                  label={t('clientModal.fields.notes')}
+                  type='text'
+                  {...register('notes')}
+                  defaultValue={lawyerClientData?.notes || null}
+                  error={!!errors.notes}
+                  helperText={errors.notes?.message}
+                  id='notes'
+                  multiline
+                  minRows={3}
+                  maxRows={4}
+                  sx={{ '& .MuiOutlinedInput-root': { height: 'auto' } }}
+                />
+              </div>
+            </div>
 
             {/* Submit Button */}
             {(mode === 'create' || mode === 'edit') && (
@@ -290,11 +298,10 @@ const AddLawyerClientModal: React.FC<AddLawyerClientModalProps> = ({
                   }}
                   className='capitalize'
                   type='submit'
-                  // disabled={process.env.NEXT_PUBLIC_ENV === 'development' ? false : !recaptchaToken}
                 >
                   {mode === 'create'
-                    ? t('lawyerClients.form.createNew', { type: entity })
-                    : t('lawyerClients.form.update', { type: entity })}
+                    ? t(`${entity === 'lead' ? 'lawyerClients.form.addLead' : 'lawyerClients.form.addClient'}`)
+                    : t(`${entity === 'lead' ? 'lawyerClients.form.updateLead' : 'lawyerClients.form.updateClient'}`)}
                 </Button>
               </div>
             )}

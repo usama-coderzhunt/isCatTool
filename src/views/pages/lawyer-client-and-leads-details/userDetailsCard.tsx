@@ -153,6 +153,7 @@ const LawyerClientDetailsCard = ({ row }: { row: any }) => {
         title='Confirm Promotion'
         userName={row.first_name}
         newStatus={true}
+        isShowAddNotesField={false}
       />
       <StatusConfModal
         open={promotionModalOpen}
@@ -162,6 +163,7 @@ const LawyerClientDetailsCard = ({ row }: { row: any }) => {
         userName={row.first_name}
         newStatus={null}
         message={t('modal.confirmation.promotion.message', { name: row.first_name })}
+        isShowAddNotesField={false}
       />
     </>
   )

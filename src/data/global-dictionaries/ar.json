@@ -155,6 +155,7 @@
         "resetPassword": "إعادة تعيين كلمة المرور"
     },
     "clientTable": {
+        "note": "ملاحظات",
         "name": "الاسم",
         "fullName": "الاسم الكامل",
         "firstName": "الاسم الأول",
@@ -169,8 +170,8 @@
         "inactive": "غير نشط",
         "allStatus": "جميع الحالات",
         "search": "ابحث",
-        "createClient": "إنشاء عميل",
-        "createLead": "إنشاء عميل محتمل",
+        "addClient": "إضافة عميل",
+        "addLead": "إضافة عميل محتمل",
         "clients": "العملاء",
         "leads": "العملاء المحتملون",
         "promoteToClient": "ترقية إلى عميل",
@@ -354,10 +355,11 @@
         "createdAt": "تاريخ الإنشاء",
         "updatedAt": "تاريخ التحديث",
         "actions": "الإجراءات",
-        "createPosition": "إنشاء منصب",
+        "addPosition": "إضافة منصب",
         "confirmDelete": "تأكيد الحذف",
         "deleteMessage": "هل أنت متأكد من حذف",
         "deletePositionBulk": "حذف الوظائف",
+        "updatePosition": "تحديث المنصب",
         "toasts": {
             "positionDeletedSuccess": "تم حذف المنصب بنجاح",
             "positionDeletedBulkSuccess": "تم حذف المناصب بنجاح",
@@ -371,7 +373,7 @@
         "search": "ابحث",
         "staffSearchPlaceholder": "ابحث عن الموظفين...",
         "title": "الموظفون",
-        "createStaff": "إضافة موظف",
+        "addStaff": "إضافة موظف",
         "firstName": "الاسم الأول",
         "lastName": "الاسم الأخير",
         "email": "البريد الإلكتروني",
@@ -398,7 +400,8 @@
         }
     },
     "groupDialog": {
-        "createGroupDialogTitle": "إنشاء مجموعة جديدة",
+        "addGroup": "إضافة مجموعة",
+        "updateGroup": "تحديث المجموعة",
         "createGroupDialogFieldLab": "اسم المجموعة",
         "createGroupDialogFieldLabRequired": "اسم المجموعة مطلوب",
         "createGroupDialogCancel": "إلغاء",
@@ -415,7 +418,7 @@
         "inactive": "غير نشط"
     },
     "staffDialog": {
-        "createTitle": "إنشاء موظف جديد",
+        "addStaff": "إضافة موظف",
         "updateTitle": "تحديث منصب الموظف",
         "username": "اسم المستخدم",
         "middleName": "الاسم الأوسط",
@@ -437,6 +440,7 @@
         "contact": "اتصل بنا",
         "search": "ابحث",
         "image": "الصورة",
+        "categories": "الفئات",
         "serviceSearchPlaceholder": "ابحث عن الخدمات...",
         "transServicesTitle": "الخدمات",
         "servicesTitle": "الخدمات",
@@ -496,7 +500,9 @@
             "createdAt": "تاريخ الإنشاء",
             "updatedAt": "تاريخ التحديث",
             "search": "ابحث",
-            "serviceSearchPlaceholder": "ابحث عن الخدمات..."
+            "serviceSearchPlaceholder": "ابحث عن الخدمات...",
+            "inactiveClientEditMessage": "لا يمكن تحديث الخدمات للعملاء غير النشطين. يرجى تنشيط العميل أولاً لتعديل خدماته.",
+            "inactiveClientCreateMessage": "لا يمكن إنشاء الخدمات للعملاء غير النشطين. يرجى تنشيط العميل أولاً لإنشاء خدمات."
         },
         "communicationPlatform": "منصة التواصل",
         "translationType": "نوع الترجمة",
@@ -535,8 +541,8 @@
         "openServiceDetails": "فتح تفاصيل الخدمة",
         "servicePlans": {
             "title": "الخطط الخدمية",
-            "addNewPlan": "إضافة خطة جديدة",
-            "editPlan": "تعديل الخطة",
+            "addPlan": "إضافة خطة جديدة",
+            "updatePlan": "تعديل الخطة",
             "deletePlan": "حذف الخطة",
             "getStarted": "ابدأ",
             "edit": "تعديل",
@@ -597,15 +603,17 @@
     },
     "documents": {
         "title": "المستندات",
-        "uploadNew": "تحميل مستند جديد",
-        "addNew": "إضافة مستند جديد",
-        "edit": "تعديل المستند",
+        "uploadNew": "إضافة مستند",
+        "addNew": "إضافة مستند",
+        "edit": "تحديث المستند",
         "view": "عرض المستند",
         "selectFile": "اختر ملفاً للتحميل",
         "deleteDocuments": "حذف المستندات",
         "documentCreated": "تم إنشاء المستند بنجاح",
         "documentUpdated": "تم تحديث المستند بنجاح",
         "documentDeleted": "تم حذف المستند بنجاح",
+        "inactiveClientCreateMessage": "لا يمكن إنشاء المستندات للعملاء غير النشطين. يرجى تنشيط العميل أولاً لإنشاء المستندات.",
+        "inactiveClientEditMessage": "لا يمكن تحديث المستندات للعملاء غير النشطين. يرجى تنشيط العميل أولاً لتحديث المستندات.",
         "deleteConfirmationModal": {
             "title": "تأكيد الحذف"
         },
@@ -625,8 +633,8 @@
         },
         "types": {
             "title": "أنواع المستندات",
-            "create": "إنشاء نوع مستند",
-            "edit": "تعديل نوع المستند",
+            "add": "إضافة نوع مستند",
+            "update": "تحديث نوع المستند",
             "name": "الاسم",
             "created": "تاريخ الإنشاء",
             "updated": "تاريخ التحديث",
@@ -733,8 +741,8 @@
             "edit": "تعديل",
             "view": "عرض"
         },
-        "create": "إنشاء عميل",
-        "createLead": "إنشاء عميل محتمل",
+        "create": "إضافة عميل",
+        "createLead": "إضافة عميل محتمل",
         "delete": "حذف عملاء المحامين",
         "deleteLead": "حذف عملاء المحامين",
         "table": {
@@ -748,6 +756,7 @@
             "inactive": "غير نشط",
             "allStatus": "جميع الحالات",
             "search": "بحث",
+            "note": "ملاحظات",
             "lawyerClientSearchPlaceholder": "ابحث عن العملاء المحامون...",
             "lawyerLeadSearchPlaceholder": "ابحث عن العملاء المحتملون المحامون...",
             "confirmDelete": "تأكيد الحذف",
@@ -781,6 +790,10 @@
             "backToList": "العودة إلى القائمة"
         },
         "form": {
+            "addClient": "إضافة عميل",
+            "addLead": "إضافة عميل محتمل",
+            "updateClient": "تحديث العميل",
+            "updateLead": "تحديث العميل المحتمل",
             "firstName": "الاسم الأول",
             "lastName": "اسم العائلة",
             "middleName": "الاسم الأوسط",
@@ -791,14 +804,15 @@
             "createNew": "إنشاء محامي جديد",
             "update": "تحديث محامي",
             "lawyer": "محامي",
+            "notes": "الملاحظات",
             "updatedSuccess": "تم تحديث العميل المحامي بنجاح",
             "createdSuccess": "تم إنشاء العميل المحامي بنجاح"
         }
     },
     "cases": {
         "title": "القضايا",
-        "create": "إنشاء قضية",
-        "edit": "تعديل القضية",
+        "addCase": "إضافة قضية",
+        "updateCase": "تحديث القضية",
         "deletebulkcases": "حذف الحالات",
         "delete": {
             "title": "حذف القضية",
@@ -818,7 +832,9 @@
             "caseClosed": "مغلق",
             "caseOpen": "مفتوح",
             "allStatus": "جميع الحالات",
-            "open": "مفتوح"
+            "open": "مفتوح",
+            "inactiveClientCreateMessage": "لا يمكن إنشاء القضايا للعملاء غير النشطين. يرجى تنشيط العميل أولاً لإنشاء القضايا.",
+            "inactiveClientEditMessage": "لا يمكن تحديث القضايا للعملاء غير النشطين. يرجى تنشيط العميل أولاً لتحديث القضايا."
         },
         "form": {
             "title": "العنوان",
@@ -828,7 +844,7 @@
             "staff": "الموظفين",
             "paymentSchedule": "جدول الدفع",
             "summary": "الملخص",
-            "createCase": "إنشاء قضية",
+            "addCase": "إضافة قضية",
             "updateCase": "تحديث القضية",
             "note": "الملاحظة",
             "createDocument": "إنشاء مستند",
@@ -853,9 +869,9 @@
             "todo": "المهام",
             "case": "القضية",
             "title": "المهام",
-            "addNew": "إضافة مهمة جديدة",
-            "edit": "تعديل المهمة",
-            "view": "تفاصيل المهمة",
+            "addTodoItem": "إضافة مهمة جديدة",
+            "updateTodoItem": "تعديل المهمة",
+            "viewTodoItem": "تفاصيل المهمة",
             "status": "الحالة",
             "subject": "الموضوع",
             "dueDate": "تاريخ الاستحقاق",
@@ -906,15 +922,14 @@
         "addCaseTypeModal": {
             "title": "إضافة نوع قضية",
             "update": "تحديث نوع القضية",
-            "create": "إنشاء نوع قضية جديد",
-            "edit": "تعديل نوع القضية"
+            "add": "إضافة نوع قضية"
         },
         "fields": {
             "name": "الاسم",
             "required": "الاسم مطلوب"
         },
         "buttons": {
-            "create": "إنشاء نوع قضية",
+            "add": "إضافة نوع قضية",
             "update": "تحديث نوع القضية",
             "delete": "حذف أنواع القضايا"
         },
@@ -955,7 +970,8 @@
             "phoneNumber": "رقم الهاتف",
             "dateOfBirth": "تاريخ الميلاد",
             "address": "العنوان",
-            "country": "البلد"
+            "country": "البلد",
+            "notes": "الملاحظات"
         },
         "buttons": {
             "create": "إنشاء عميل جديد",
@@ -1008,22 +1024,46 @@
         "updateUsers": "تحديث المستخدمين",
         "noData": "لم يتم العثور على مستخدمين",
         "search": "ابحث",
-        "groupUsersSearchPlaceholder": "ابحث عن مستخدمين المجموعة..."
+        "groupUsersSearchPlaceholder": "ابحث عن مستخدمين المجموعة...",
+        "usersNotInGroup": "المستخدمون غير الموجودون في المجموعة",
+        "usersInGroup": "المستخدمون في المجموعة",
+        "addSelectedUsers": "إضافة المستخدمين المحددين",
+        "removeSelectedUsers": "إزالة المستخدمين المحددين",
+        "addUser": "إضافة",
+        "removeUser": "إزالة",
+        "addUserTooltip": "إضافة {{username}} إلى هذه المجموعة",
+        "removeUserTooltip": "إزالة {{username}} من هذه المجموعة"
     },
     "permissions": {
         "title": "الصلاحيات",
         "noData": "لم يتم العثور على صلاحيات",
         "model": "النموذج",
         "totalPermissions": "إجمالي الصلاحيات",
-        "permissions": "صلاحيات",
+        "permissions": "الصلاحيات",
         "updatePermissions": "تحديث الصلاحيات",
-        "update": "تحديث",
-        "search": "ابحث",
-        "permissionsSearchPlaceholder": "ابحث عن الصلاحيات..."
+        "noData": "لم يتم العثور على صلاحيات",
+        "search": "بحث",
+        "permissionsSearchPlaceholder": "البحث في الصلاحيات...",
+        "addTranslationModelPermission": "إضافة صلاحية نموذج الترجمة",
+        "businessUnitAssignToUser": "تعيين وحدة الأعمال للمستخدم",
+        "availablePermissions": "الصلاحيات المتاحة",
+        "assignedPermissions": "الصلاحيات المعينة",
+        "addSelectedPermissions": "إضافة الصلاحيات المحددة",
+        "removeSelectedPermissions": "إزالة الصلاحيات المحددة",
+        "addModel": "إضافة النموذج",
+        "removeModel": "إزالة النموذج",
+        "addModelPermissions": "إضافة جميع صلاحيات {{model}}",
+        "removeModelPermissions": "إزالة جميع صلاحيات {{model}}",
+        "addPermissionTooltip": "إضافة صلاحية {{name}}",
+        "removePermissionTooltip": "إزالة صلاحية {{name}}",
+        "noAvailablePermissions": "لا توجد صلاحيات متاحة",
+        "noAssignedPermissions": "لا توجد صلاحيات معينة",
+        "searchAvailablePermissions": "البحث في الصلاحيات المتاحة...",
+        "searchAssignedPermissions": "البحث في الصلاحيات المعينة..."
     },
     "notifications": {
         "title": "الإشعارات",
-        "createNotification": "إنشاء إشعار",
+        "addNotification": "إضافة إشعار",
         "delNotificationbulk": "حذف الإشعارات",
         "name": "الاسم",
         "actions": "الإجراءات",
@@ -1048,8 +1088,8 @@
             }
         },
         "modal": {
-            "create": "إنشاء إشعار",
-            "edit": "تعديل الإشعار",
+            "add": "إضافة إشعار",
+            "update": "تحديث الإشعار",
             "name": "الاسم",
             "method": "الطريقة",
             "selectMethod": "اختر الطريقة",
@@ -1723,8 +1763,8 @@
     },
     "coupons": {
         "form": {
-            "create": "إنشاء كوبون",
-            "edit": "تعديل الكوبون",
+            "add": "إضافة كوبون",
+            "update": "تحديث الكوبون",
             "code": "الكود",
             "discount_value": "قيمة الخصم",
             "usage_limit": "حد الاستخدام",
@@ -2045,6 +2085,7 @@
             "title": "المعاملات",
             "referenceId": "رقم المرجع",
             "amount": "المبلغ",
+            "note": "ملاحظات",
             "status": "الحالة",
             "createdAt": "تاريخ الإنشاء",
             "updatedAt": "تاريخ التحديث",
@@ -2251,6 +2292,7 @@
         "table": {
             "title": "الفواتير",
             "invoiceNumber": "رقم الفاتورة",
+            "notes": "ملاحظات",
             "subtotal": "المبلغ الإجمالي",
             "status": "الحالة",
             "createdAt": "تاريخ الإنشاء",
@@ -2276,6 +2318,7 @@
             "refundReferenceId": "معرف مرجع الاسترداد",
             "amount": "المبلغ",
             "reason": "السبب",
+            "notes": "ملاحظات",
             "status": "الحالة",
             "createdAt": "تاريخ الإنشاء",
             "updatedAt": "تاريخ التحديث",
@@ -2329,5 +2372,531 @@
         "title": "تعليمات الدفع",
         "instructions": "التعليمات:",
         "additionalDetails": "التفاصيل الإضافية:"
+    },
+    "llmOperators": {
+        "title": "مشغلات LLM",
+        "add": "إضافة مشغلات LLM",
+        "update": "تحديث مشغلات LLM",
+        "view": "عرض مشغلات LLM",
+        "deleteBulk": "حذف مشغلات LLM",
+        "table": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على مشغلات LLM"
+        },
+        "addLlmOperatorModal": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "metadata": "البيانات"
+        },
+        "toasts": {
+            "llmOperatorCreatedSuccess": "تم إنشاء مشغل LLM بنجاح",
+            "llmOperatorUpdatedSuccess": "تم تحديث مشغل LLM بنجاح",
+            "llmOperatorDeletedSuccess": "تم حذف مشغل LLM بنجاح",
+            "llmOperatorDeletedBulkSuccess": "تم حذف مشغلات LLM بنجاح"
+        },
+        "deleteModal": {
+            "deleteLlmOperator": "حذف مشغل LLM",
+            "deleteLlmOperators": "حذف مشغلات LLM",
+            "deleteLlmOperatorMessage": "هل أنت متأكد أنك تريد حذف هذا المشغل LLM {{name}}؟",
+            "deleteLlmOperatorsMessage": "هل أنت متأكد أنك تريد حذف هذه المشغلات LLM؟"
+        }
+    },
+    "projects": {
+        "title": "المشاريع",
+        "projectDetailsTitle": "تفاصيل المشروع",
+        "addBtnText": "إضافة مشروع",
+        "bulkDeleteBtnText": "حذف المشاريع",
+        "table": {
+            "name": "الاسم",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل",
+            "translationModel": "نموذج الترجمة",
+            "translationSubject": "الموضوع",
+            "status": "الحالة",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على مشاريع"
+        },
+        "deleteModal": {
+            "deleteProject": "حذف المشروع",
+            "deleteProjects": "حذف المشاريع",
+            "message": "هل أنت متأكد أنك تريد حذف هذا المشروع {{name}}؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه المشاريع؟"
+        },
+        "addProjectModal": {
+            "add": "إضافة مشروع",
+            "update": "تعديل المشروع",
+            "name": "الاسم",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل",
+            "translationModel": "نموذج الترجمة",
+            "translationSubject": "الموضوع"
+        },
+        "toasts": {
+            "projectCreatedSuccess": "تم إنشاء المشروع بنجاح",
+            "projectUpdatedSuccess": "تم تحديث المشروع بنجاح",
+            "projectDeletedSuccess": "تم حذف المشروع بنجاح",
+            "projectDeletedBulkSuccess": "تم حذف المشاريع بنجاح"
+        },
+        "projectDetailsCard": {
+            "noData": "لم يتم العثور على بيانات",
+            "name": "الاسم:",
+            "sourceLanguage": "اللغة المصدر:",
+            "targetLanguage": "اللغة المستقبل:",
+            "translationModel": "نموذج الترجمة:",
+            "translationSubject": "الموضوع:",
+            "status": "الحالة:",
+            "createdAt": "تم الإنشاء في:",
+            "updatedAt": "تم التحديث في:",
+            "backToProjects": "العودة إلى المشاريع"
+        }
+    },
+    "tasks": {
+        "title": "المهام",
+        "detailsPageTitle": "تفاصيل المهمة",
+        "addBtnText": "إضافة مهمة",
+        "bulkDeleteBtnText": "حذف المهام",
+        "table": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "dueDate": "تاريخ الإنتهاء",
+            "status": "الحالة",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على مهام"
+        },
+        "deleteModal": {
+            "deleteTask": "حذف المهمة",
+            "deleteTasks": "حذف المهام",
+            "message": "هل أنت متأكد أنك تريد حذف هذه المهمة {{name}}؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه المهام؟"
+        },
+        "form": {
+            "add": "إضافة مهمة",
+            "update": "تحديث المهمة",
+            "name": "الاسم",
+            "description": "الوصف",
+            "dueDate": "تاريخ الإنتهاء",
+            "similarityThreshold": "الحد المماثل",
+            "isSubtask": "هل هي مهمة ثانوية",
+            "isSplit": "هل هي مهمة ثانوية",
+            "customPrompt": "التعليمات المخصصة",
+            "assignedTo": "مسؤول المهمة",
+            "parentTask": "المهمة الأصلية",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل",
+            "translationModel": "نموذج الترجمة",
+            "translationSubject": "الموضوع",
+            "project": "المشروع",
+            "numberOfSubtasks": "عدد المهام الفرعية"
+        },
+        "toasts": {
+            "taskCreatedSuccess": "تم إنشاء المهمة بنجاح",
+            "taskUpdatedSuccess": "تم تحديث المهمة بنجاح",
+            "taskDeletedSuccess": "تم حذف المهمة بنجاح",
+            "taskDeletedBulkSuccess": "تم حذف المهام بنجاح"
+        },
+        "detailsCard": {
+            "name": "الاسم:",
+            "description": "الوصف:",
+            "createdAt": "تم الإنشاء في:",
+            "updatedAt": "تم التحديث في:",
+            "backToTasks": "العودة إلى المهام",
+            "status": "الحالة:",
+            "dueDate": "تاريخ الإنتهاء:",
+            "noDataFound": "لم يتم العثور على بيانات المهمة"
+        },
+        "splitTaskModal": {
+            "splitTask": "تقسيم المهمة",
+            "numberOfSubtasks": "عدد المهام الفرعية",
+            "cancel": "إلغاء"
+        }
+    },
+    "translationMemories": {
+        "title": "ذكريات الترجمة",
+        "detailsPageTitle": "تفاصيل ذاكرة الترجمة",
+        "addBtnText": "إضافة ذكرية الترجمة",
+        "bulkDeleteBtnText": "حذف ذكريات الترجمة",
+        "exportBtnText": "تصدير ذكرية الترجمة",
+        "importBtnText": "استيراد ذكرية الترجمة",
+        "table": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على ذكريات الترجمة"
+        },
+        "form": {
+            "addTitle": "إضافة ذكرية الترجمة",
+            "updateTitle": "تحديث ذكرية الترجمة",
+            "addBtnText": "إضافة ذكرية الترجمة",
+            "updateBtnText": "تحديث ذكرية الترجمة",
+            "name": "الاسم",
+            "description": "الوصف",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل"
+        },
+        "toasts": {
+            "translationMemoryCreatedSuccess": "تم إنشاء ذكرية الترجمة بنجاح",
+            "translationMemoryUpdatedSuccess": "تم تحديث ذكرية الترجمة بنجاح",
+            "translationMemoryDeletedSuccess": "تم حذف ذكرية الترجمة بنجاح",
+            "translationMemoryDeletedBulkSuccess": "تم حذف ذكريات الترجمة بنجاح",
+            "translationMemoryImportedSuccess": "تم استيراد ذكرية الترجمة بنجاح"
+        },
+        "deleteModal": {
+            "deleteTranslationMemory": "حذف ذكرية الترجمة",
+            "deleteTranslationMemories": "حذف ذكريات الترجمة",
+            "message": "هل أنت متأكد أنك تريد حذف هذه الذكرية الترجمة {{name}}؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه الذكريات الترجمة؟"
+        },
+        "exportModal": {
+            "title": "تصدير ذكرية الترجمة",
+            "message": "هل أنت متأكد أنك تريد تصدير هذه الذكرية الترجمة؟"
+        },
+        "importModal": {
+            "title": "استيراد ذكرية الترجمة",
+            "uploadFile": "رفع ملف TMX أو CSV لاستيراد ذكرية الترجمة.",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل",
+            "cancel": "إلغاء",
+            "import": "استيراد"
+        },
+        "detailsCard": {
+            "name": "الاسم:",
+            "targetLanguage": "اللغة المستهدفة:",
+            "sourceLanguage": "اللغة المصدر:",
+            "updatedAt": "تم التحديث في:",
+            "createdAt": "تم الإنشاء في:",
+            "description": "الوصف",
+            "backToMainPageBtnText": "العودة إلى ذاكرات الترجمة",
+            "noDataFound": "لم يتم العثور على بيانات لذاكرة الترجمة"
+        }
+    },
+    "translationMemoryEntries": {
+        "title": "الإدخالات",
+        "addBtnText": "إضافة إدخال",
+        "bulkDeleteBtnText": "حذف الإدخالات",
+        "table": {
+            "sourceText": "النص المصدر",
+            "targetText": "النص المستهدف",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على إدخالات"
+        },
+        "form": {
+            "addTitle": "إضافة إدخال",
+            "updateTitle": "تعديل الإدخال",
+            "addBtnText": "إنشاء الإدخال",
+            "updateBtnText": "تحديث الإدخال",
+            "reference": "المرجع",
+            "translationMemory": "ذاكرة الترجمة",
+            "sourceText": "النص المصدر",
+            "targetText": "النص المستهدف"
+        },
+        "toasts": {
+            "entryCreatedSuccess": "تم إنشاء الإدخال بنجاح",
+            "entryUpdatedSuccess": "تم تحديث الإدخال بنجاح",
+            "entryDeletedSuccess": "تم حذف الإدخال بنجاح",
+            "entryDeletedBulkSuccess": "تم حذف الإدخالات بنجاح"
+        },
+        "deleteModal": {
+            "deleteEntry": "حذف الإدخال",
+            "deleteEntries": "حذف الإدخالات",
+            "message": "هل أنت متأكد أنك تريد حذف هذا الإدخال؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه الإدخالات؟"
+        }
+    },
+    "translationModels": {
+        "title": "نماذج الترجمة",
+        "addBtnText": "إضافة نموذج ترجمة",
+        "bulkDeleteBtnText": "حذف نماذج الترجمة",
+        "table": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdAt": "تاريخ الإنشاء",
+            "updatedAt": "تاريخ التحديث",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على بيانات نماذج الترجمة"
+        },
+        "form": {
+            "add": "إضافة نموذج ترجمة",
+            "edit": "تحديث نموذج الترجمة",
+            "name": "الاسم",
+            "modelName": "اسم النموذج",
+            "operator": "المشغل",
+            "allowedUsers": "المستخدمون المسموح لهم",
+            "allowedGroups": "المجموعات المسموح لها",
+            "description": "الوصف"
+        },
+        "toasts": {
+            "translationModelCreatedSuccess": "تم إنشاء نموذج الترجمة بنجاح",
+            "translationModelUpdatedSuccess": "تم تحديث نموذج الترجمة بنجاح",
+            "translationModelDeletedSuccess": "تم حذف نموذج الترجمة بنجاح",
+            "translationModelDeletedBulkSuccess": "تم حذف نماذج الترجمة بنجاح"
+        },
+        "deleteModal": {
+            "deleteTranslationModel": "حذف نموذج الترجمة",
+            "deleteTranslationModels": "حذف نماذج الترجمة",
+            "message": "هل أنت متأكد أنك تريد حذف نموذج الترجمة {{name}}؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف نماذج الترجمة هذه؟"
+        }
+    },
+    "termBases": {
+        "title": "قواعد المصطلحات",
+        "detailsPageTitle": "تفاصيل القاعدة المصطلحية",
+        "addBtnText": "إضافة قاعدة مصطلحية",
+        "bulkDeleteBtnText": "حذف القواعد المصطلحية",
+        "exportBtnText": "تصدير قاعدة المصطلحات",
+        "importBtnText": "استيراد قاعدة المصطلحات",
+        "table": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على قواعد مصطلحية"
+        },
+        "form": {
+            "add": "إضافة قاعدة مصطلحية",
+            "edit": "تحديث قاعدة مصطلحية",
+            "name": "الاسم",
+            "description": "الوصف",
+            "sourceLanguage": "اللغة المصدر",
+            "targetLanguage": "اللغة المستقبل"
+        },
+        "toasts": {
+            "termBaseCreatedSuccess": "تم إنشاء قاعدة مصطلحية بنجاح",
+            "termBaseUpdatedSuccess": "تم تحديث قاعدة مصطلحية بنجاح",
+            "termBaseDeletedSuccess": "تم حذف قاعدة مصطلحية بنجاح",
+            "termBaseDeletedBulkSuccess": "تم حذف قواعد مصطلحية بنجاح",
+            "termBaseImportedSuccess": "تم استيراد قاعدة مصطلحية بنجاح"
+        },
+        "deleteModal": {
+            "deleteTermBase": "حذف قاعدة مصطلحية",
+            "deleteTermBases": "حذف قواعد مصطلحية",
+            "message": "هل أنت متأكد أنك تريد حذف هذه القاعدة المصطلحية {{name}}؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه القواعد المصطلحية؟"
+        },
+        "exportModal": {
+            "title": "تصدير قاعدة المصطلحات",
+            "message": "هل أنت متأكد أنك تريد تصدير هذه القاعدة المصطلحية؟"
+        },
+        "importModal": {
+            "title": "استيراد قاعدة المصطلحات",
+            "uploadFile": "رفع ملف CSV لاستيراد قاعدة المصطلحات.",
+            "cancel": "إلغاء",
+            "import": "استيراد"
+        },
+        "detailsCard": {
+            "name": "الاسم:",
+            "targetLanguage": "اللغة المستقبل:",
+            "sourceLanguage": "اللغة المصدر:",
+            "updatedAt": "تم التحديث في:",
+            "createdAt": "تم الإنشاء في:",
+            "description": "الوصف",
+            "backToMainPageBtnText": "العودة إلى قواعد المصطلحات"
+        }
+    },
+    "termBaseEntries": {
+        "title": "المدخلات",
+        "addBtnText": "إضافة مدخل",
+        "bulkDeleteBtnText": "حذف المدخلات",
+        "table": {
+            "originalTerm": "المصطلح الأصلي",
+            "translation": "الترجمة",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على مدخلات"
+        },
+        "form": {
+            "add": "إضافة مدخل",
+            "update": "تحديث المدخل",
+            "termBase": "قاعدة المصطلح",
+            "originalTerm": "المصطلح الأصلي",
+            "translation": "الترجمة"
+        },
+        "toasts": {
+            "entryCreatedSuccess": "تم إنشاء المدخل بنجاح",
+            "entryUpdatedSuccess": "تم تحديث المدخل بنجاح",
+            "entryDeletedSuccess": "تم حذف المدخل بنجاح",
+            "entryDeletedBulkSuccess": "تم حذف المدخلات بنجاح"
+        },
+        "deleteModal": {
+            "deleteEntry": "حذف المدخل",
+            "deleteEntries": "حذف المدخلات",
+            "message": "هل أنت متأكد أنك تريد حذف هذا المدخل؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه المدخلات؟"
+        }
+    },
+    "translationSubjects": {
+        "title": "موضوعات الترجمة",
+        "addBtnText": "إضافة موضوع ترجمة",
+        "bulkDeleteBtnText": "حذف موضوعات الترجمة",
+        "table": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على موضوعات الترجمة"
+        },
+        "form": {
+            "add": "إضافة موضوع ترجمة",
+            "update": "تحديث موضوع الترجمة",
+            "name": "الاسم",
+            "description": "الوصف"
+        },
+        "toasts": {
+            "translationSubjectCreatedSuccess": "تم إنشاء موضوع الترجمة بنجاح",
+            "translationSubjectUpdatedSuccess": "تم تحديث موضوع الترجمة بنجاح",
+            "translationSubjectDeletedSuccess": "تم حذف موضوع الترجمة بنجاح",
+            "translationSubjectDeletedBulkSuccess": "تم حذف موضوعات الترجمة بنجاح"
+        },
+        "deleteModal": {
+            "deleteTranslationSubject": "حذف موضوع الترجمة",
+            "deleteTranslationSubjects": "حذف موضوعات الترجمة",
+            "message": "هل أنت متأكد أنك تريد حذف هذا الموضوع الترجمة {{name}}؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه الموضوعات الترجمة؟"
+        }
+    },
+    "exportDataConfModal": {
+        "exportBtnText": "تصدير",
+        "cancelBtnText": "إلغاء"
+    },
+    "taskFiles": {
+        "title": "الملفات",
+        "addBtnText": "إضافة ملف",
+        "bulkDeleteBtnText": "حذف الملفات",
+        "table": {
+            "task": "رقم المهمة",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على ملفات"
+        },
+        "form": {
+            "add": "إضافة ملف",
+            "cancel": "إلغاء",
+            "update": "تحديث الملف",
+            "uploadFile": "رفع ملف",
+            "task": "المهمة"
+        },
+        "toasts": {
+            "fileCreatedSuccess": "تم إنشاء الملف بنجاح",
+            "fileUpdatedSuccess": "تم تحديث الملف بنجاح",
+            "fileDeletedSuccess": "تم حذف الملف بنجاح",
+            "fileDeletedBulkSuccess": "تم حذف الملفات بنجاح",
+            "pleaseSelectFile": "يرجى تحديد ملف للرفع"
+        },
+        "deleteModal": {
+            "deleteFile": "حذف الملف",
+            "deleteFiles": "حذف الملفات",
+            "message": "هل أنت متأكد أنك تريد حذف هذا الملف؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه الملفات؟"
+        }
+    },
+    "translationModelPermissionModal": {
+        "title": "إضافة إذن نموذج الترجمة",
+        "btnText": "إضافة إذن",
+        "cancel": "إلغاء",
+        "translationModel": "نموذج الترجمة",
+        "toasts": {
+            "translationModelPermissionAddedSuccess": "تم إضافة إذن نموذج الترجمة بنجاح",
+            "pleaseSelectTranslationModel": "يرجى تحديد نموذج الترجمة"
+        }
+    },
+    "businessUnitAssignToUserModal": {
+        "title": "تعيين الوحدة التجارية إلى المستخدم",
+        "btnText": "تعيين",
+        "cancel": "إلغاء",
+        "businessUnit": "الوحدة التجارية",
+        "toasts": {
+            "pleaseSelectBusinessUnit": "يرجى تحديد وحدة تجارية"
+        }
+    },
+    "businessUnits": {
+        "title": "الوحدات التجارية",
+        "addBtnText": "إضافة وحدة تجارية",
+        "bulkDeleteBtnText": "حذف الوحدات التجارية",
+        "table": {
+            "name": "الاسم",
+            "description": "الوصف",
+            "notes": "الملاحظات",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على وحدات تجارية"
+        },
+        "form": {
+            "add": "إضافة وحدة تجارية",
+            "update": "تحديث وحدة تجارية",
+            "name": "الاسم",
+            "description": "الوصف",
+            "notes": "الملاحظات"
+        },
+        "toasts": {
+            "businessUnitCreatedSuccess": "تم إنشاء وحدة تجارية بنجاح",
+            "businessUnitUpdatedSuccess": "تم تحديث وحدة تجارية بنجاح",
+            "businessUnitDeletedSuccess": "تم حذف وحدة تجارية بنجاح",
+            "businessUnitDeletedBulkSuccess": "تم حذف وحدات تجارية بنجاح"
+        },
+        "deleteModal": {
+            "deleteBusinessUnit": "حذف وحدة تجارية",
+            "deleteBusinessUnits": "حذف وحدات تجارية",
+            "message": "هل أنت متأكد أنك تريد حذف هذه الوحدة التجارية {{name}}؟",
+            "bulkDeleteConfirmationMessage": "هل أنت متأكد أنك تريد حذف هذه الوحدات التجارية؟"
+        },
+        "detailsCard": {
+            "name": "الاسم:",
+            "description": "الوصف:",
+            "notes": "الملاحظات:",
+            "caseFlowMaxCases": "حد أقصى للحالات في Case Flow:",
+            "caseFlowMaxActiveUsers": "حد أقصى للمستخدمين النشطين في Case Flow:",
+            "caseFlowMaxActiveClients": "حد أقصى للعملاء النشطين في Case Flow:"
+        }
+    },
+    "languages": {
+        "title": "اللغات",
+        "addLanguage": "إضافة لغة",
+        "updateLanguage": "تحديث لغة",
+        "deleteLanguage": "حذف لغة",
+        "deleteLanguages": "حذف اللغات",
+        "table": {
+            "name": "الاسم",
+            "code": "الرمز",
+            "createdAt": "تم الإنشاء في",
+            "updatedAt": "تم التحديث في",
+            "actions": "الإجراءات",
+            "noData": "لم يتم العثور على لغات"
+        },
+        "addLanguageModal": {
+            "name": "الاسم",
+            "code": "الرمز"
+        },
+        "toasts": {
+            "languageCreatedSuccess": "تم إنشاء اللغة بنجاح",
+            "languageUpdatedSuccess": "تم تحديث اللغة بنجاح",
+            "languageDeletedSuccess": "تم حذف اللغة بنجاح",
+            "languageDeletedBulkSuccess": "تم حذف اللغات بنجاح"
+        },
+        "deleteModal": {
+            "deleteLanguage": "حذف اللغة",
+            "deleteLanguages": "حذف اللغات",
+            "deleteLanguageMessage": "هل أنت متأكد أنك تريد حذف هذه اللغة {{name}}؟",
+            "deleteLanguagesMessage": "هل أنت متأكد أنك تريد حذف هذه اللغات؟"
+        }
     }
 }

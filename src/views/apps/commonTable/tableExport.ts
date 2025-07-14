@@ -217,6 +217,16 @@ const exportConfigs: Record<string, ExportConfig> = {
       Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
     }
   },
+  llmOperators: {
+    fileName: 'llm-operators-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Description: { key: 'description', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
   todoItems: {
     fileName: 'todo-items-list.csv',
     mappings: {
@@ -225,6 +235,103 @@ const exportConfigs: Record<string, ExportConfig> = {
       Description: { key: 'description', transform: defaultTransforms.string },
       Due_Date: { key: 'due_date', transform: defaultTransforms.date },
       Completed: { key: 'completed', transform: defaultTransforms.boolean },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  tasks: {
+    fileName: 'tasks-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Description: { key: 'description', transform: defaultTransforms.string },
+      Due_Date: { key: 'due_date', transform: defaultTransforms.date },
+      Status: { key: 'status', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  translationMemory: {
+    fileName: 'translation-memory-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Description: { key: 'description', transform: defaultTransforms.string },
+      Source_Language: { key: 'source_language_detail.name', transform: defaultTransforms.string },
+      Target_Language: { key: 'target_language_detail.name', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  termBase: {
+    fileName: 'term-base-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Description: { key: 'description', transform: defaultTransforms.string },
+      Source_Language: { key: 'source_language_detail.name', transform: defaultTransforms.string },
+      Target_Language: { key: 'target_language_detail.name', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  translationModels: {
+    fileName: 'translation-models-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Description: { key: 'description', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  translationSubjects: {
+    fileName: 'translation-subjects-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Description: { key: 'description', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  translationMemoryEntries: {
+    fileName: 'translation-memory-entries-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Source_Text: { key: 'source_text', transform: defaultTransforms.string },
+      Target_Text: { key: 'target_text', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  termBaseEntries: {
+    fileName: 'term-base-entries-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Original_Term: { key: 'original_term', transform: defaultTransforms.string },
+      Translation: { key: 'translation', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+    businessUnits: {
+    fileName: 'business-units-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Description: { key: 'description', transform: defaultTransforms.string },
+      Notes: { key: 'notes', transform: defaultTransforms.string },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  languages: {
+    fileName: 'languages-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Name: { key: 'name', transform: defaultTransforms.string },
+      Code: { key: 'code', transform: defaultTransforms.string },
       Created_At: { key: 'created_at', transform: defaultTransforms.date },
       Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
     }
@@ -271,6 +378,15 @@ const exportConfigs: Record<string, ExportConfig> = {
       Amount: { key: 'amount' },
       Reason: { key: 'reason' },
       Status: { key: 'status' },
+      Created_At: { key: 'created_at', transform: defaultTransforms.date },
+      Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
+    }
+  },
+  files: {
+    fileName: 'files-list.csv',
+    mappings: {
+      ID: { key: 'id' },
+      Task: { key: 'task', transform: defaultTransforms.string },
       Created_At: { key: 'created_at', transform: defaultTransforms.date },
       Updated_At: { key: 'updated_at', transform: defaultTransforms.date }
     }
@@ -336,7 +452,20 @@ export const exportCouponsToCSV = (data: DataRecord[]): void => exportTableToCSV
 export const exportRefundsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'refunds')
 export const exportPaymentAuditLogsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'paymentAuditLogs')
 export const exportInvoicesToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'invoices')
+export const exportLlmOperatorsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'llmOperators')
 export const exportTodoItemsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'todoItems')
+export const exportTasksToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'tasks')
+export const exportTranslationMemoryToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'translationMemory')
+export const exportTermBaseToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'termBase')
+export const exportTranslationModelsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'translationModels')
+export const exportTranslationSubjectsToCSV = (data: DataRecord[]): void =>
+  exportTableToCSV(data, 'translationSubjects')
+export const exportTranslationMemoryEntriesToCSV = (data: DataRecord[]): void =>
+  exportTableToCSV(data, 'translationMemoryEntries')
+export const exportFilesToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'files')
+export const exportBusinessUnitsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'businessUnits')
+export const exportTermBaseEntriesToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'termBaseEntries')
+export const exportLanguagesToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'languages')
 export const exportBlogPostsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'blogPosts')
 export const exportBlogCategoriesToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'blogCategories')
 export const exportBlogTagsToCSV = (data: DataRecord[]): void => exportTableToCSV(data, 'blogTags')

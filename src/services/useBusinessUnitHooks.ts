@@ -1,180 +1,188 @@
-// React Imports
 import { toast } from 'react-toastify'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-// Types Import
-import type { AxiosError, AxiosResponse } from 'axios'
+// Axios Import
+import type { AxiosError } from 'axios'
 
+// Types Import
 import type { ErrorResponse } from '@/types/type'
-import type {
-  BusinessUnitType,
-  CreateBusinessUnitType,
-  UpdateBusinessUnitType,
-  ExtendedGroupType,
-  CreateExtendedGroupType
-} from '@/types/businessUnitTypes'
-import { API_ROUTES } from '@/utils/constants/apiRoutes'
 
 // Utils Import
 import axiosInstance from '@/utils/api/axiosInstance'
-import { mapCreateBusinessUnitData, mapUpdateBusinessUnitData } from './utility/businessUnit'
+import { API_ROUTES } from '@/utils/constants/apiRoutes'
 
-interface ListResponse<T> {
-  results: T[]
-}
+// Utility Import
+import { cleanApiParams } from '@/utils/utility/paramsUtils'
+import { BusinessUnitType } from '@/types/businessUnitTypes'
 
 export const useBusinessUnitHooks = () => {
   const queryClient = useQueryClient()
 
-  const useBusinessUnits = () => {
-    return useQuery<ListResponse<BusinessUnitType>>({
-      queryKey: ['businessUnits'],
-      queryFn: () =>
-        axiosInstance
-          .get<ListResponse<BusinessUnitType>>('/api/bu/')
-          .then((response: AxiosResponse<ListResponse<BusinessUnitType>>) => response.data)
+  const useCreateBusinessUnit = () => {
+    const mutation = useMutation({
+      mutationFn: async (businessUnitData: Partial<BusinessUnitType>) => {
+        return await axiosInstance.post(API_ROUTES.BUSINESS_UNIT.createBusinessUnit, businessUnitData, {
+          requiresAuth: true,
+          requiredPermission: 'adminAndSuperUserOnly'
+        } as any)
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['businessUnits'] })
+      },
+      onError: (error: AxiosError<ErrorResponse>) => {
+        const errorMessage =
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          error.message ||
+          'An unexpected error occurred.'
+        toast.error(errorMessage)
+      }
+    })
+
+    return {
+      data: mutation.data,
+      error: mutation.error,
+      isLoading: mutation.isPending,
+      isSuccess: mutation.isSuccess,
+      mutate: mutation.mutate
+    }
+  }
+
+  const useEditBusinessUnit = () => {
+    const mutation = useMutation({
+      mutationFn: async (businessUnitData: Partial<BusinessUnitType & { id: string | undefined }>) => {
+        return await axiosInstance.patch(
+          `${API_ROUTES.BUSINESS_UNIT.editBusinessUnit}${businessUnitData?.id}/`,
+          businessUnitData,
+          {
+            requiresAuth: true,
+            requiredPermission: 'adminAndSuperUserOnly'
+          } as any
+        )
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['businessUnits'] })
+      },
+      onError: (error: AxiosError<ErrorResponse>) => {
+        const errorMessage =
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          error.message ||
+          'An unexpected error occurred.'
+        toast.error(errorMessage)
+      }
+    })
+
+    return {
+      data: mutation.data,
+      error: mutation.error,
+      isLoading: mutation.isPending,
+      isSuccess: mutation.isSuccess,
+      mutate: mutation.mutate
+    }
+  }
+
+  const getBusinessUnits = (pageSize?: number, page?: number, search?: string, ordering?: string) => {
+    return useQuery({
+      queryKey: ['businessUnits', pageSize, page, search, ordering],
+      queryFn: () => {
+        const params = cleanApiParams({
+          page,
+          page_size: pageSize,
+          search,
+          ordering
+        })
+        return axiosInstance.get(API_ROUTES.BUSINESS_UNIT.getBusinessUnit, {
+          params,
+          requiresAuth: true,
+          requiredPermission: 'adminAndSuperUserOnly'
+        } as any)
+      }
     })
   }
 
-  const useBusinessUnit = (id: string) => {
-    return useQuery<BusinessUnitType>({
-      queryKey: ['businessUnits', id],
-      queryFn: () =>
-        axiosInstance
-          .get<BusinessUnitType>(`/api/bu/${id}/`)
-          .then((response: AxiosResponse<BusinessUnitType>) => response.data),
+  const getBusinessUnitById = (id: string) => {
+    return useQuery({
+      queryKey: ['businessUnit', id],
+      queryFn: async () => {
+        const response = await axiosInstance.get(`${API_ROUTES.BUSINESS_UNIT.getBusinessUnitById}${id}/`, {
+          requiresAuth: true,
+          requiredPermission: 'adminAndSuperUserOnly'
+        } as any)
+        return response.data
+      },
       enabled: !!id
     })
   }
 
-  const useCreateBusinessUnit = () => {
-    const mutation = useMutation<BusinessUnitType, AxiosError<ErrorResponse>, CreateBusinessUnitType>({
-      mutationFn: data => {
-        const buData = mapCreateBusinessUnitData(data)
-
-        return axiosInstance
-          .post<BusinessUnitType>('/api/bu/', buData)
-          .then((response: AxiosResponse<BusinessUnitType>) => response.data)
-      },
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['businessUnits'] })
-        toast.success('Business unit created successfully')
-      },
-      onError: error => {
-        const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
-
-        toast.error(errorMessage)
-      }
-    })
-
-    return {
-      data: mutation.data,
-      error: mutation.error,
-      isLoading: mutation.isPending,
-      isSuccess: mutation.isSuccess,
-      mutate: mutation.mutate
-    }
-  }
-
-  const useUpdateBusinessUnit = () => {
-    const mutation = useMutation<BusinessUnitType, AxiosError<ErrorResponse>, UpdateBusinessUnitType>({
-      mutationFn: data => {
-        const { id, ...updateData } = data
-        const buData = mapUpdateBusinessUnitData(updateData as any)
-
-        return axiosInstance
-          .patch<BusinessUnitType>(`/api/bu/${id}/`, buData)
-          .then((response: AxiosResponse<BusinessUnitType>) => response.data)
-      },
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['businessUnits'] })
-        toast.success('Business unit updated successfully')
-      },
-      onError: error => {
-        const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
-
-        toast.error(errorMessage)
-      }
-    })
-
-    return {
-      data: mutation.data,
-      error: mutation.error,
-      isLoading: mutation.isPending,
-      isSuccess: mutation.isSuccess,
-      mutate: mutation.mutate
-    }
-  }
-
   const useDeleteBusinessUnit = () => {
-    const mutation = useMutation<void, AxiosError<ErrorResponse>, string>({
-      mutationFn: id => {
-        return axiosInstance.delete(`/api/bu/${id}/`).then((response: AxiosResponse<void>) => response.data)
+    return useMutation({
+      mutationFn: async (id: string) => {
+        return axiosInstance.delete(`${API_ROUTES.BUSINESS_UNIT.deleteBusinessUnit}${id}/`, {
+          requiresAuth: true,
+          requiredPermission: 'adminAndSuperUserOnly'
+        } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['businessUnits'] })
-        toast.success('Business unit deleted successfully')
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['businessUnits'] })
+        }, 500)
       },
-      onError: error => {
-        const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
-
-        toast.error(errorMessage)
+      onError: (error: AxiosError<ErrorResponse>) => {
+        toast.error(error.response?.data?.message || error.response?.data?.error || 'Failed to delete business unit')
       }
-    })
-
-    return {
-      data: mutation.data,
-      error: mutation.error,
-      isLoading: mutation.isPending,
-      isSuccess: mutation.isSuccess,
-      mutate: mutation.mutate
-    }
-  }
-
-  const useExtendedGroups = () => {
-    return useQuery<ListResponse<ExtendedGroupType>>({
-      queryKey: ['extended-groups'],
-      queryFn: () =>
-        axiosInstance
-          .get<ListResponse<ExtendedGroupType>>(API_ROUTES.BUSINESS_UNIT.EXTENDED_GROUPS)
-          .then((response: AxiosResponse<ListResponse<ExtendedGroupType>>) => response.data)
     })
   }
 
-  const useCreateExtendedGroup = () => {
-    const mutation = useMutation<ExtendedGroupType, AxiosError<ErrorResponse>, CreateExtendedGroupType>({
-      mutationFn: data => {
-        return axiosInstance
-          .post<ExtendedGroupType>(API_ROUTES.BUSINESS_UNIT.EXTENDED_GROUPS, data)
-          .then((response: AxiosResponse<ExtendedGroupType>) => response.data)
+  const useBulkDeleteBusinessUnit = () => {
+    return useMutation({
+      mutationFn: async (ids: string[]) => {
+        return axiosInstance.delete(`${API_ROUTES.BUSINESS_UNIT.bulkDeleteBusinessUnit}`, {
+          data: { ids },
+          requiresAuth: true,
+          requiredPermission: 'adminAndSuperUserOnly'
+        } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['extended-groups'] })
-        toast.success('Extended group created successfully')
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['businessUnits'] })
+        }, 500)
       },
-      onError: error => {
-        const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
-
-        toast.error(errorMessage)
+      onError: (error: AxiosError<ErrorResponse>) => {
+        toast.error(error.response?.data?.message || error.response?.data?.error || 'Failed to delete business units')
       }
     })
+  }
 
-    return {
-      data: mutation.data,
-      error: mutation.error,
-      isLoading: mutation.isPending,
-      isSuccess: mutation.isSuccess,
-      mutate: mutation.mutate
-    }
+  const useBusinessUnitAssignToUser = () => {
+    return useMutation({
+      mutationFn: async (params: { id: number; business_unit: string }) => {
+        return axiosInstance.post(
+          `${API_ROUTES.BUSINESS_UNIT.businessUnitAssignToUser(params.id)}`,
+          { business_unit: params.business_unit },
+          {
+            requiresAuth: true,
+            requiredPermission: 'adminAndSuperUserOnly'
+          } as any
+        )
+      },
+      onSuccess: data => {
+        queryClient.invalidateQueries({ queryKey: ['permissions'] })
+        toast.success(data.data.message)
+      },
+      onError: (error: AxiosError<ErrorResponse>) => {
+        toast.error(error.response?.data?.message || error.response?.data?.error || 'Failed to assign business unit')
+      }
+    })
   }
 
   return {
-    useBusinessUnits,
-    useBusinessUnit,
     useCreateBusinessUnit,
-    useUpdateBusinessUnit,
+    useEditBusinessUnit,
+    getBusinessUnits,
+    getBusinessUnitById,
     useDeleteBusinessUnit,
-    useExtendedGroups,
-    useCreateExtendedGroup
+    useBulkDeleteBusinessUnit,
+    useBusinessUnitAssignToUser
   }
 }

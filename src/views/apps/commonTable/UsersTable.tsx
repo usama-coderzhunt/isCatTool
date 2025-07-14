@@ -59,10 +59,10 @@ const DebouncedInput = ({
   return (
     <CustomTextField
       label={t('table.search')}
-      placeholder={t('table.search')}
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -121,9 +121,7 @@ const UsersTable: FC<UsersTableProps> = ({
     if (userId === null) return
     deleteUser(userId, {
       onSuccess: () => {
-        // Calculate new total pages after deletion
         const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
-        // If current page is greater than new total pages, move to last page
         if (pagination.pageIndex >= newTotalPages) {
           setPagination(prev => ({
             ...prev,

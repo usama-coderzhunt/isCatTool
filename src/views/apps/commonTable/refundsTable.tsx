@@ -1,7 +1,7 @@
 'use client'
 
 import { Dispatch, FC, ReactElement, SetStateAction, useEffect, useState, useMemo } from 'react'
-import { Chip, IconButton, Typography, useColorScheme } from '@mui/material'
+import { Chip, IconButton, Tooltip, Typography, useColorScheme } from '@mui/material'
 import { MaterialReactTable, MRT_Cell, MRT_ColumnDef, MRT_SortingState, MRT_Row } from 'material-react-table'
 import { getDisplayDateTime, getDisplayValue } from '@/utils/utility/displayValue'
 import { useTranslation } from 'react-i18next'
@@ -53,7 +53,13 @@ const DebouncedInput = ({
   }, [value, onChange])
 
   return (
-    <CustomTextField label={t('common.search')} {...props} value={value} onChange={e => setValue(e.target.value)} />
+    <CustomTextField
+      label={t('common.search')}
+      {...props}
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
+    />
   )
 }
 
@@ -219,6 +225,19 @@ const RefundsTable: FC<RefundsTableProps> = ({
     ]
 
     if (isSuperUser || userRole === 'Admin') {
+      baseColumns.splice(3, 0, {
+        accessorKey: 'notes',
+        header: t('refunds.table.notes'),
+        Cell: ({ cell }: { cell: MRT_Cell<RefundsTypes> }) => {
+          const notes = getDisplayValue(cell.getValue())
+          return (
+            <Tooltip title={notes} arrow>
+              <Typography className='truncate max-w-[200px] w-full'>{notes}</Typography>
+            </Tooltip>
+          )
+        }
+      })
+
       const actionsColumn: MRT_ColumnDef<RefundsTypes, any> = {
         accessorKey: 'actions',
         header: t('refunds.table.actions'),
@@ -277,11 +296,7 @@ const RefundsTable: FC<RefundsTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('common.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportRefundsToCSV(refundsData)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>

@@ -15,8 +15,9 @@ import { API_ROUTES } from '@/utils/constants/apiRoutes'
 
 // Utility Import
 import { mapTransServiceData } from './utility/service'
-import { ServicePlanTypes } from '@/types/servicesPlans'
+import type { ServicePlanTypes } from '@/types/servicesPlans'
 import { cleanApiParams } from '@/utils/utility/paramsUtils'
+
 interface ServiceCategory {
   id: number
   name: string
@@ -27,6 +28,7 @@ interface ServiceCategory {
   created_at: string
   updated_at: string
 }
+
 export const useServicesHooks = () => {
   const queryClient = useQueryClient()
 
@@ -46,6 +48,7 @@ export const useServicesHooks = () => {
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+
         toast.error(errorMessage)
       }
     })
@@ -70,6 +73,7 @@ export const useServicesHooks = () => {
           ordering,
           translation_type: search
         })
+
         return axiosInstance.get(API_ROUTES.TRANSLATION_SERVICES.getTransServices, {
           params
         } as any)
@@ -86,7 +90,9 @@ export const useServicesHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['trans-services'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['trans-services'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
@@ -185,6 +191,7 @@ export const useServicesHooks = () => {
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+
         toast.error(errorMessage)
       }
     })
@@ -209,6 +216,7 @@ export const useServicesHooks = () => {
           search,
           category
         })
+
         return axiosInstance.get(API_ROUTES.SERVICE_MANAGEMENT.getServices, {
           params,
           requiresAuth: true,
@@ -243,21 +251,25 @@ export const useServicesHooks = () => {
           requiresAuth: true,
           requiredPermission: ''
         } as any)
+
         return response.data
       },
       enabled: !!slug
     })
   }
+
   const getFrontPagesServiceById = (slug: string | number | undefined) => {
     return useQuery({
       queryKey: ['service', slug],
       queryFn: async () => {
         const response = await axiosInstance.get(`${API_ROUTES.SERVICE_MANAGEMENT.getServiceById}${slug}/`)
+
         return response.data
       },
       enabled: !!slug
     })
   }
+
   const useEditService = () => {
     const mutation = useMutation({
       mutationFn: ({ id, data }: { id: number | undefined; data: FormData }) => {
@@ -275,6 +287,7 @@ export const useServicesHooks = () => {
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+
         toast.error(errorMessage)
       }
     })
@@ -297,7 +310,9 @@ export const useServicesHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['services'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['services'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
@@ -360,6 +375,7 @@ export const useServicesHooks = () => {
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+
         toast.error(errorMessage)
       }
     })
@@ -386,6 +402,7 @@ export const useServicesHooks = () => {
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+
         toast.error(errorMessage)
       }
     })
@@ -457,6 +474,7 @@ export const useServicesHooks = () => {
           ordering,
           search
         })
+
         return axiosInstance.get(API_ROUTES.SERVICE_CATEGORIES.getServiceCategories, {
           params
         } as any)
@@ -473,7 +491,9 @@ export const useServicesHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['service-categories'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['service-categories'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
@@ -537,6 +557,7 @@ export const useServicesHooks = () => {
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+
         toast.error(errorMessage)
       }
     })
@@ -568,6 +589,7 @@ export const useServicesHooks = () => {
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+
         toast.error(errorMessage)
       }
     })
@@ -602,8 +624,7 @@ export const useServicesHooks = () => {
       queryKey: ['service-plan', id],
       queryFn: () => {
         return axiosInstance.get(`${API_ROUTES.SERVICE_PLANS.getServicePlans}${id}/`, {
-          requiresAuth: true,
-          requiredPermission: 'view_serviceplan'
+          requiresAuth: true
         } as any)
       },
       enabled: !!id

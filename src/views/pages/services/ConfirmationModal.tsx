@@ -40,6 +40,7 @@ import { useParams } from 'next/navigation'
 import axiosInstance from '@/utils/api/axiosInstance'
 import { API_ROUTES } from '@/utils/constants/apiRoutes'
 import { useAuthStore } from '@/store/useAuthStore'
+import { useRouter } from 'next/navigation'
 
 interface ConfirmationModalProps {
   open: boolean
@@ -80,7 +81,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 
   const { lang } = useParams() as { lang: string }
   const currentLocale = Array.isArray(lang) ? lang[0] : lang
-
+  const router = useRouter()
   // States
   const [selectedMethod, setSelectedMethod] = useState<string>('')
   const [couponCode, setCouponCode] = useState<string>('')
@@ -328,6 +329,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                   toast.success(t('paymentConfirmationModal.toasts.manualPaymentTransactionCreatedSuccess'))
                   handleCloseModal()
                   setShowPaymentInstructions(true)
+                  router.push(`/${currentLocale}/dashboard`)
                 },
                 onError: () => {
                   toast.error(t('paymentConfirmationModal.toasts.failedToCreateManualPaymentTransaction'))

@@ -23,6 +23,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
+import { useTemplateStore } from '@/store/templateStore'
 
 // Hook for managing admin settings
 export const useAdminSettingsHook = (component?: 'left' | 'right') => {
@@ -397,10 +398,19 @@ export const useAdminSettingsHook = (component?: 'left' | 'right') => {
 
   // Add SEO hooks
   const useSEOSettings = () => {
+    console.log('>>im here')
+
+    const setSeoData = useTemplateStore(state => state.setSeoData)
     return useQuery<SEOSettings>({
       queryKey: ['seo-settings'],
       queryFn: async () => {
         const response = await axiosInstance.get(API_ROUTES.ADMIN_SETTINGS.SEO.get)
+        setSeoData({
+          meta_title: response.data.results[0].meta_title,
+          tagline: response.data.results[0].tagline,
+          meta_description: response.data.results[0].meta_description,
+          seo_keywords: response.data.results[0].seo_keywords
+        })
         return response.data.results[0]
       }
     })

@@ -7,7 +7,7 @@ import { Button, Card, Chip, Typography } from '@mui/material'
 import { Client } from '@/types/apps/TableDataTypes'
 import CircularLoader from '@/components/CircularLoader'
 
-const ClientDetails = ({ clientDetails, isLoading }: { clientDetails: Client, isLoading: boolean }) => {
+const ClientDetails = ({ clientDetails, isLoading }: { clientDetails: Client; isLoading: boolean }) => {
   const { t } = useTranslation('global')
   const params = useParams() as { lang: string }
   const { lang: currentLocale } = params
@@ -89,9 +89,7 @@ const ClientDetails = ({ clientDetails, isLoading }: { clientDetails: Client, is
                     {t('clientDetails.phoneNumber')}:
                   </Typography>
                   <Typography color='text.secondary' className='flex-1'>
-                    <span dir="ltr">
-                      {clientDetails?.phone_number?.length ? clientDetails?.phone_number : '-'}
-                    </span>
+                    <span dir='ltr'>{clientDetails?.phone_number?.length ? clientDetails?.phone_number : '-'}</span>
                   </Typography>
                 </div>
 
@@ -103,7 +101,7 @@ const ClientDetails = ({ clientDetails, isLoading }: { clientDetails: Client, is
                   <Chip
                     label={clientDetails?.is_active ? t('clientDetails.active') : t('clientDetails.inactive')}
                     color={clientDetails?.is_active ? 'success' : 'error'}
-                    size="small"
+                    size='small'
                     variant='tonal'
                   />
                 </div>
@@ -133,8 +131,12 @@ const ClientDetails = ({ clientDetails, isLoading }: { clientDetails: Client, is
 
           <div className='w-full flex items-center justify-start mt-10'>
             <Link href={`/${currentLocale}/apps/clients`}>
-              <Button variant='contained' color='primary' className='shadow-2xl'>
-                {t('clientDetails.backToList')}
+              <Button
+                variant='outlined'
+                color='inherit'
+                className='min-w-fit inline-flex items-center justify-center p-2 rounded-full'
+              >
+                <i className='tabler-arrow-left'></i>
               </Button>
             </Link>
           </div>

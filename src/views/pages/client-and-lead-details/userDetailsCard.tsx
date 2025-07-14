@@ -170,6 +170,7 @@ const UserDetailsCard = ({ row, isLeadOrClient }: { row: any; isLeadOrClient?: b
         title={t('clientTable.confirmStatusChange')}
         userName={row.first_name}
         newStatus={true}
+        isShowAddNotesField={false}
       />
       <StatusConfModal
         open={promotionModalOpen}
@@ -178,6 +179,7 @@ const UserDetailsCard = ({ row, isLeadOrClient }: { row: any; isLeadOrClient?: b
         title={t('clientTable.promoteToClient')}
         userName={row.first_name}
         newStatus={null}
+        isShowAddNotesField={false}
         message={`${t('clientTable.promoteMessage')} ${row.first_name}`}
       />
     </>

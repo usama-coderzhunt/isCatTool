@@ -528,7 +528,7 @@ const AddServicePlanModal: React.FC<AddServicePlanModalProps> = ({
                       padding: '0.5rem 1rem'
                     }}
                   >
-                    {mode === 'create' ? t('services.createNewPlan') : t('services.updatePlan')}
+                    {mode === 'create' ? t('services.servicePlans.addPlan') : t('services.servicePlans.updatePlan')}
                   </Button>
                 </div>
               )}

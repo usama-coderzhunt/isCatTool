@@ -97,15 +97,14 @@ const TransactionDetailsCard = ({
                   <Typography variant='body1'>${transactionDetails.amount || '-'}</Typography>
                 </div>
                 {/* Notes */}
-                {isSuperUser ||
-                  (userRole === 'Admin' && (
-                    <div className='flex items-center'>
-                      <Typography variant='subtitle1' className='font-bold w-36'>
-                        {t('transactions.transactionDetails.notes')}:
-                      </Typography>
-                      <Typography variant='body1'>{transactionDetails.notes || '-'}</Typography>
-                    </div>
-                  ))}
+                {(isSuperUser || userRole === 'Admin') && (
+                  <div className='flex items-center'>
+                    <Typography variant='subtitle1' className='font-bold w-36'>
+                      {t('transactions.transactionDetails.notes')}:
+                    </Typography>
+                    <Typography variant='body1'>{transactionDetails.notes || '-'}</Typography>
+                  </div>
+                )}
               </div>
               {/* Right Column */}
               <div className='flex flex-col gap-y-4'>
@@ -135,8 +134,12 @@ const TransactionDetailsCard = ({
             {/* Back Button */}
             <div className='w-full flex items-center justify-start mt-10'>
               <Link href={`/${currentLocale}/apps/transactions`}>
-                <Button variant='contained' color='primary' className='shadow-2xl'>
-                  {t('transactions.transactionDetails.backToTransactions')}
+                <Button
+                  variant='outlined'
+                  color='inherit'
+                  className='min-w-fit inline-flex items-center justify-center p-2 rounded-full'
+                >
+                  <i className='tabler-arrow-left'></i>
                 </Button>
               </Link>
             </div>

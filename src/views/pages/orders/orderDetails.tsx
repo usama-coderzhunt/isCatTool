@@ -16,6 +16,7 @@ import CircularLoader from '@/components/CircularLoader'
 import { getDisplayDateTime } from '@/utils/utility/displayValue'
 import { OrdersTypes } from '@/types/ordersTypes'
 import { UserType } from '@/types/userTypes'
+import { getDecryptedLocalStorage } from '@/utils/utility/decrypt'
 
 const OrderDetails = ({
   orderDetails,
@@ -30,6 +31,8 @@ const OrderDetails = ({
 }) => {
   const { t } = useTranslation('global')
   const theme = useTheme()
+  const isSuperUser = getDecryptedLocalStorage('isSuperUser')
+  const userRole = getDecryptedLocalStorage('userRole')
 
   const handleOrderStatusDisplay = (status: string) => {
     const statusMap: Record<
@@ -231,7 +234,7 @@ const OrderDetails = ({
               </Grid>
 
               {/* Notes Section */}
-              {orderDetails.notes && (
+              {(isSuperUser || userRole === 'Admin') && orderDetails.notes && (
                 <Box
                   mt={3}
                   display='flex'
@@ -258,19 +261,11 @@ const OrderDetails = ({
               <Box mt={2} display='flex' justifyContent='flex-start'>
                 <Button
                   onClick={handleBtnClick}
-                  variant='contained'
-                  color='primary'
-                  sx={{
-                    fontWeight: 600,
-                    boxShadow: 2,
-                    transition: 'all 0.2s',
-                    '&:hover': {
-                      background: theme.palette.primary.dark,
-                      boxShadow: 4
-                    }
-                  }}
+                  variant='outlined'
+                  color='inherit'
+                  className='min-w-fit inline-flex items-center justify-center p-2 rounded-full'
                 >
-                  {t('orders.orderDetailsPage.backToOrders')}
+                  <i className='tabler-arrow-left'></i>{' '}
                 </Button>
               </Box>
             </Box>

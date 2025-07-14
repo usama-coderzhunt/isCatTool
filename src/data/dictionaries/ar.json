@@ -127,6 +127,19 @@
     "subscriptions": "الاشتراكات",
     "transactions": "المعاملات",
     "invoices": "الفواتير",
-    "refunds": "الاستردادات"
+    "refunds": "الاستردادات",
+    "llmOperators": "المشغلات الذكية",
+    "projects": "المشاريع",
+    "istaTranslationAssistant": "مساعد الترجمة الذكية",
+    "tasks": "المهام",
+    "translationMemories": "الذكاء الاصطناعي للترجمة",
+    "translationMemoriesEntry": "المدخلات",
+    "translationModels": "نماذج الترجمة",
+    "termBases": "قواعد المصطلحات",
+    "termBaseEntries": "المدخلات",
+    "translationSubjects": "موضوعات الترجمة",
+    "files": "الملفات",
+    "businessUnits": "الوحدات التجارية",
+    "languages": "اللغات"
   }
 }

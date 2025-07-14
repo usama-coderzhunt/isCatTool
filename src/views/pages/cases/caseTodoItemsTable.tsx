@@ -62,7 +62,13 @@ const DebouncedInput = ({
   }, [value, onChange])
 
   return (
-    <CustomTextField label={t('common.search')} {...props} value={value} onChange={e => setValue(e.target.value)} />
+    <CustomTextField
+      label={t('common.search')}
+      {...props}
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
+    />
   )
 }
 
@@ -110,7 +116,7 @@ const CaseTodoItemsTable: React.FC<CaseTodoItemsTableProps> = ({
         filtersApplied
       )
 
-  const { mutate: deleteTodoItem } = useDeleteTodoItem()
+  const deleteTodoItem = useDeleteTodoItem()
   const { mutate: editTodoItem } = useEditTodoItem()
   const { mutate: bulkDeleteTodoItems } = useBulkDeleteTodoItems()
 
@@ -124,8 +130,15 @@ const CaseTodoItemsTable: React.FC<CaseTodoItemsTableProps> = ({
 
   const handleDeleteTodoItem = () => {
     if (todoId === null) return
-    deleteTodoItem(todoId.toString(), {
+    deleteTodoItem.mutate(todoId, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((todoItemsData?.data?.count - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         setData(prevData => prevData?.filter(delTodoId => delTodoId.id !== todoId))
         setDeleteModalOpen(false)
       }
@@ -323,11 +336,7 @@ const CaseTodoItemsTable: React.FC<CaseTodoItemsTableProps> = ({
         onPaginationChange={setPagination}
         renderTopToolbarCustomActions={() => (
           <div className='flex items-center gap-3'>
-            <DebouncedInput
-              value={globalFilter ?? ''}
-              onChange={value => setGlobalFilter(String(value))}
-              placeholder={t('cases.table.search')}
-            />
+            <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
             <IconButton onClick={() => exportTodoItemsToCSV(data)} title={t('table.export')}>
               <i className='tabler-file-download text-[28px] cursor-pointer' />
             </IconButton>
@@ -368,6 +377,7 @@ const CaseTodoItemsTable: React.FC<CaseTodoItemsTableProps> = ({
           setStatusModalOpen(false)
           setPendingStatusChange(null)
         }}
+        isShowAddNotesField={false}
         handleStatusChange={handleStatusConfirm}
         title={t('common.confirmStatusChange')}
         userName={pendingStatusChange?.userName || ''}

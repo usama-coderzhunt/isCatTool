@@ -19,7 +19,7 @@ const GroupDetails = ({ groupDetails: group, isLoading }: GroupDetailsProps) => 
       </Typography>
       <Card className='w-full max-w-full flex flex-col rounded-lg overflow-hidden shadow-lg'>
         {isLoading ? (
-          <div className="flex justify-center items-center py-10">
+          <div className='flex justify-center items-center py-10'>
             <CircularLoader />
           </div>
         ) : (
@@ -30,7 +30,7 @@ const GroupDetails = ({ groupDetails: group, isLoading }: GroupDetailsProps) => 
                 <Typography variant='body1' color='text.primary' className='font-bold min-w-[120px]'>
                   {t('groups.id')}:
                 </Typography>
-                <Typography color='text.secondary' className='flex-1'>
+                <Typography color='text.secondary' className='flex-1 '>
                   {group?.id || '-'}
                 </Typography>
               </div>
@@ -40,7 +40,7 @@ const GroupDetails = ({ groupDetails: group, isLoading }: GroupDetailsProps) => 
                 <Typography variant='body1' color='text.primary' className='font-bold min-w-[120px]'>
                   {t('groups.name')}:
                 </Typography>
-                <Typography color='text.secondary' className='flex-1'>
+                <Typography color='text.secondary' className='flex-1 break-all'>
                   {group?.name || '-'}
                 </Typography>
               </div>
@@ -52,4 +52,4 @@ const GroupDetails = ({ groupDetails: group, isLoading }: GroupDetailsProps) => 
   )
 }
 
-export default GroupDetails 
+export default GroupDetails

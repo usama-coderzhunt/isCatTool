@@ -23,17 +23,19 @@ export const useClientHooks = () => {
     page?: number,
     search?: string,
     client_type?: string,
-    ordering?: string
+    ordering?: string,
+    isActive?: boolean
   ) => {
     return useQuery<AxiosResponse<ClientData>>({
-      queryKey: ['clients', page, pageSize, search, client_type, ordering],
+      queryKey: ['clients', page, pageSize, search, client_type, ordering, isActive],
       queryFn: async () => {
         const params = cleanApiParams({
           page,
           page_size: pageSize,
           search,
           client_type,
-          ordering
+          ordering,
+          is_active: isActive
         })
 
         const response = await axiosInstance.get<ClientData>('/api/trans/clients/', {
@@ -109,7 +111,9 @@ export const useClientHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['clients'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['clients'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         toast.error(error.response?.data?.message || 'Failed to delete client')

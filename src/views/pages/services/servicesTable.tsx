@@ -84,7 +84,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
-      placeholder={t('services.search')}
+      shrinkLabel={false}
     />
   )
 }
@@ -134,6 +134,13 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
     if (serviceToDelete !== null) {
       deleteService(serviceToDelete, {
         onSuccess: () => {
+          const newTotalPages = Math.ceil((servicesData?.data?.count - 1) / pagination.pageSize)
+          if (pagination.pageIndex >= newTotalPages) {
+            setPagination(prev => ({
+              ...prev,
+              pageIndex: Math.max(0, newTotalPages - 1)
+            }))
+          }
           toast.success(t('services.toasts.serviceDeletedSuccess'))
           setOpenDeleteModal(false)
           setServiceToDelete(null)

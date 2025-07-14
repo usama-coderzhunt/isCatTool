@@ -58,6 +58,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -138,6 +139,13 @@ const CouponsTable: FC<CouponsTableProps> = ({
     if (!selectedCoupon) return
     deleteCoupon.mutate(selectedCoupon.id, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(t('coupons.table.couponDeletedSuccess'))
         handleCloseDeleteModal()
       }
@@ -357,11 +365,7 @@ const CouponsTable: FC<CouponsTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('documents.types.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportCouponsToCSV(couponsData)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>

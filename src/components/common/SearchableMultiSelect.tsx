@@ -8,7 +8,8 @@ import {
   AutocompleteRenderGetTagProps,
   Paper,
   PaperProps,
-  CircularProgress
+  CircularProgress,
+  useTheme
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { UseFormRegister, FieldError, Path, PathValue, FieldValues, Merge, UseFormSetValue } from 'react-hook-form'
@@ -48,6 +49,7 @@ interface SearchableMultiSelectProps<TFormValues extends FieldValues> {
   showAsterisk?: boolean
   defaultOption?: Option
   searchDebounceTime?: number
+  showStatusBadge?: boolean
 }
 
 const StyledChip = styled(Chip)(({ theme }) => ({
@@ -60,7 +62,7 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   }
 }))
 
-const StyledPaper = styled(Paper)({
+const StyledPaper = styled(Paper)(({ theme }) => ({
   maxHeight: '300px',
   overflowY: 'auto',
   '& .MuiAutocomplete-listbox': {
@@ -71,13 +73,13 @@ const StyledPaper = styled(Paper)({
     width: '8px'
   },
   '&::-webkit-scrollbar-thumb': {
-    backgroundColor: '#bdbdbd',
+    backgroundColor: theme.palette.grey[400],
     borderRadius: '4px'
   },
   '&::-webkit-scrollbar-track': {
-    backgroundColor: '#f5f5f5'
+    backgroundColor: theme.palette.grey[100]
   }
-})
+}))
 
 const CustomPaper = (props: PaperProps) => {
   return <StyledPaper {...props} />
@@ -104,8 +106,10 @@ const SearchableMultiSelect = <TFormValues extends FieldValues>({
   selectedOptionsList,
   showAsterisk,
   defaultOption,
-  searchDebounceTime = 500
+  searchDebounceTime = 500,
+  showStatusBadge = false
 }: SearchableMultiSelectProps<TFormValues>) => {
+  const theme = useTheme()
   const getInitialValue = (val: number | number[] | string | undefined): number[] => {
     if (!val) return []
     if (Array.isArray(val)) return val
@@ -211,14 +215,21 @@ const SearchableMultiSelect = <TFormValues extends FieldValues>({
       setSelectedOptionsData(selectedOptionsList)
       setSelectedIds(selectedOptionsList.map(opt => opt.id))
       if (setValue && name) {
-        setValue(name, selectedOptionsList.map(opt => opt.id) as PathValue<TFormValues, Path<TFormValues>>, {
+        const valueToSet = multiple
+          ? selectedOptionsList.map(opt => opt.id)
+          : returnAsArray
+            ? selectedOptionsList.map(opt => opt.id)
+            : returnAsString
+              ? selectedOptionsList[0]?.id?.toString() || null
+              : selectedOptionsList[0]?.id || null
+        setValue(name, valueToSet as PathValue<TFormValues, Path<TFormValues>>, {
           shouldValidate: true,
           shouldDirty: true,
           shouldTouch: true
         })
       }
     }
-  }, [selectedOptionsList, setValue, name])
+  }, [selectedOptionsList, setValue, name, multiple, returnAsArray, returnAsString])
 
   const handleScroll = useCallback(
     (event: React.UIEvent<HTMLUListElement>) => {
@@ -430,7 +441,7 @@ const SearchableMultiSelect = <TFormValues extends FieldValues>({
             showAsterisk ? (
               <span>
                 {label}
-                <span style={{ color: 'red' }}> *</span>
+                <span style={{ color: theme.palette.error.main }}> *</span>
               </span>
             ) : (
               label
@@ -461,6 +472,8 @@ const SearchableMultiSelect = <TFormValues extends FieldValues>({
           const canDelete = multiple && option.id !== defaultOption?.id
           const tagProps = getTagProps({ index })
           const { key: _, ...tagPropsWithoutKey } = tagProps
+          const isInactive = showStatusBadge && (option.status === false || option.is_active === false)
+
           return (
             <StyledChip
               {...tagPropsWithoutKey}
@@ -468,6 +481,17 @@ const SearchableMultiSelect = <TFormValues extends FieldValues>({
               label={getDisplayLabel(option)}
               deleteIcon={canDelete ? <CloseIcon /> : undefined}
               onDelete={canDelete ? () => handleDelete(option) : undefined}
+              sx={{
+                backgroundColor: isInactive ? theme.palette.error.light : undefined,
+                color: isInactive ? theme.palette.error.contrastText : undefined,
+                border: isInactive ? `1px solid ${theme.palette.error.main}` : undefined,
+                '& .MuiChip-deleteIcon': {
+                  color: isInactive ? theme.palette.error.contrastText : undefined,
+                  '&:hover': {
+                    color: isInactive ? theme.palette.error.dark : undefined
+                  }
+                }
+              }}
             />
           )
         })
@@ -475,6 +499,8 @@ const SearchableMultiSelect = <TFormValues extends FieldValues>({
       renderOption={(props, option: Option) => {
         const { key, ...propsWithoutKey } = props
         const isSelected = selectedIds.includes(option.id)
+        const isInactive = showStatusBadge && (option.status === false || option.is_active === false)
+
         return (
           <Box
             component='li'
@@ -482,12 +508,29 @@ const SearchableMultiSelect = <TFormValues extends FieldValues>({
             key={`option-${option.id}`}
             sx={{
               backgroundColor: isSelected ? 'primary.light' : 'inherit',
+              color: isInactive ? theme.palette.error.main : 'inherit',
+              fontWeight: isInactive ? 500 : 'inherit',
               '&:hover': {
                 backgroundColor: isSelected ? 'primary.main' : 'action.hover'
               }
             }}
           >
             {getDisplayLabel(option)}
+            {isInactive && (
+              <span
+                style={{
+                  marginLeft: '8px',
+                  fontSize: '12px',
+                  backgroundColor: theme.palette.error.light,
+                  color: theme.palette.error.contrastText,
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                  border: `1px solid ${theme.palette.error.main}`
+                }}
+              >
+                Inactive
+              </span>
+            )}
           </Box>
         )
       }}

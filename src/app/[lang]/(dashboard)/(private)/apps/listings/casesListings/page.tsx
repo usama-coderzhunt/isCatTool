@@ -9,14 +9,14 @@ import { getOrderingParam } from '@/utils/utility/sortingFn'
 import { useParams } from 'next/navigation'
 import { usePaginatedSearch } from '@/utils/usePaginatedSearch'
 
-const CasesListings = () => {
+const CasesListings = ({ isClientActive }: { isClientActive?: boolean }) => {
   const { getCases } = useCasesHooks()
   const params = useParams()
   const [clientId, setClientId] = useState<number>()
   const [globalFilter, setGlobalFilter] = useState('')
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [caseStatus, setCaseStatus] = useState<string | null>(null)
-    const { pagination, setPagination, appliedSearch } = usePaginatedSearch({
+  const { pagination, setPagination, appliedSearch } = usePaginatedSearch({
     initialPageSize: 5,
     globalFilter
   })
@@ -50,6 +50,7 @@ const CasesListings = () => {
           clientId={clientId}
           setCaseStatus={setCaseStatus}
           caseStatus={caseStatus}
+          isClientActive={isClientActive}
         />
       </Grid>
     </Grid>

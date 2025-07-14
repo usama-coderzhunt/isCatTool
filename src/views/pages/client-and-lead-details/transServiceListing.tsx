@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
-import { Button, Typography } from '@mui/material'
+import { Button, Tooltip, Typography } from '@mui/material'
 
 import TransServicesTable from './transServicesTable'
 import AddTransServiceModal from './addTransServicesModal'
@@ -10,7 +10,7 @@ import { hasPermissions } from '@/utils/permissionUtils'
 import { useAuthStore } from '@/store/useAuthStore'
 import { SortingState } from '@tanstack/react-table'
 
-const TransServicesListing = ({ clientId }: { clientId: number }) => {
+const TransServicesListing = ({ clientId, isClientActive }: { clientId: number; isClientActive: boolean }) => {
   const { t } = useTranslation('global')
   const userPermissions = useAuthStore(state => state.userPermissions)
 
@@ -59,9 +59,28 @@ const TransServicesListing = ({ clientId }: { clientId: number }) => {
               <></>
             )}
             {hasPermissions(userPermissions, ['add_transservice']) && (
-              <Button variant='contained' color='primary' className='shadow-2xl' onClick={() => handleOpen('create')}>
-                {t('services.addNew')}
-              </Button>
+              <Tooltip
+                title={!isClientActive ? t('services.table.inactiveClientCreateMessage') : ''}
+                placement='top'
+                arrow
+                slotProps={{
+                  tooltip: {
+                    className: '!bg-backgroundPaper !text-textPrimary !text-center'
+                  }
+                }}
+              >
+                <span>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    className='shadow-2xl'
+                    onClick={() => handleOpen('create')}
+                    disabled={!isClientActive}
+                  >
+                    {t('services.addNew')}
+                  </Button>
+                </span>
+              </Tooltip>
             )}
           </div>
         </div>
@@ -79,6 +98,7 @@ const TransServicesListing = ({ clientId }: { clientId: number }) => {
             setMultiple={setMultiple}
             setOpenDeleteModal={setOpenDeleteModal}
             openDeleteModal={openDeleteModal}
+            isClientActive={isClientActive}
           />
         </div>
       </div>

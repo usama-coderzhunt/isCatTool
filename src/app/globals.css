@@ -226,12 +226,12 @@ code {
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari and Opera */
+  display: none; /* Chrome, Safari and Opera */
 }
 .rdw-editor-toolbar {
   border-top: none !important;
@@ -255,4 +255,10 @@ code {
   @media (max-width: 900px) {
     display: none;
   }
+}
+
+.editor-input {
+  white-space: pre-wrap;
+  word-break: break-word;
+  width: 100%;
 }

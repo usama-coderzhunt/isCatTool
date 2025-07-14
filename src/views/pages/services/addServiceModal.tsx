@@ -1,8 +1,10 @@
 'use client'
 
 import * as React from 'react'
-import { useTranslation } from 'next-i18next'
+
 import { useParams } from 'next/navigation'
+
+import { useTranslation } from 'next-i18next'
 import {
   Backdrop,
   Box,
@@ -20,13 +22,15 @@ import {
   Autocomplete
 } from '@mui/material'
 import { useForm, Controller } from 'react-hook-form'
+
+import { toast } from 'react-toastify'
+
 import { useServicesHooks } from '@/services/useServicesHooks'
 import CustomTextField from '@/@core/components/mui/TextField'
 import { modalStyles } from '@/utils/constants/modalsStyles'
-import HTMLEditor from '@/components/common/htmlEditor'
+import LexicalEditor from '@/components/common/Lexical dev/LexicalEditor'
 import ImageUploader from '@/components/common/ImageUploader'
 import KeyValuePairInput from '@/components/common/KeyValuePairInput'
-import { toast } from 'react-toastify'
 
 type ValueType = 'string' | 'number' | 'boolean'
 
@@ -104,10 +108,12 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
     const newFeaturesList = pairs.reduce(
       (acc, { key, value }) => {
         acc[key] = String(value)
+
         return acc
       },
       {} as Record<string, string>
     )
+
     onChange(newFeaturesList)
   }
 
@@ -115,10 +121,12 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
     const newLimitsList = pairs.reduce(
       (acc, { key, value }) => {
         acc[key] = String(value)
+
         return acc
       },
       {} as Record<string, string>
     )
+
     onChange(newLimitsList)
   }
 
@@ -128,17 +136,19 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
         if (key !== 'additional_information') {
           acc[key] = String(value)
         }
+
         return acc
       },
       {} as Record<string, string>
     )
+
     onChange(newAdditionalInfo)
   }
 
   React.useEffect(() => {
     if (serviceData && (mode === 'edit' || mode === 'view') && categories && categories.length > 0) {
-      let description = serviceData.description || ''
-      let shortDescription = serviceData.short_description || ''
+      const description = serviceData.description || ''
+      const shortDescription = serviceData.short_description || ''
 
       if (serviceData.image) {
         setPreviewImage(serviceData.image)
@@ -169,9 +179,11 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
   const handleImageChange = (file: File | null) => {
     if (file) {
       const reader = new FileReader()
+
       reader.onloadend = () => {
         setPreviewImage(reader.result as string)
       }
+
       reader.readAsDataURL(file)
       setCurrentImage(file)
     } else {
@@ -182,8 +194,10 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
 
   const onSubmit = async (data: any) => {
     const formData = new FormData()
+
     formData.append('name', data.name)
     formData.append('description', data.description)
+
     // formData.append('categories', JSON.stringify(data.categories))
     // formData.append('categories', JSON.stringify(data.categories.map((id: string | number) => Number(id))))
     data.categories.forEach((id: string | number) => formData.append('categories', String(id)))
@@ -363,10 +377,12 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
                           options={categories || []}
                           getOptionLabel={option => {
                             if (typeof option === 'string') return option
+
                             return option.name || ''
                           }}
                           isOptionEqualToValue={(option, value) => {
                             if (typeof value === 'number') return option.id === value
+
                             return option.id === value.id
                           }}
                           value={categories?.filter((cat: ServiceCategory) => field.value.includes(cat.id)) || []}
@@ -384,13 +400,18 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
                             />
                           )}
                           renderTags={(value, getTagProps) =>
-                            value.map((option, index) => (
-                              <Chip
-                                label={option.name}
-                                {...getTagProps({ index })}
-                                onMouseDown={event => event.stopPropagation()}
-                              />
-                            ))
+                            value.map((option, index) => {
+                              const { key, ...tagProps } = getTagProps({ index })
+
+                              return (
+                                <Chip
+                                  key={option.id || option.name || index}
+                                  label={option.name}
+                                  {...tagProps}
+                                  onMouseDown={event => event.stopPropagation()}
+                                />
+                              )
+                            })
                           }
                           sx={{
                             '& .MuiInputLabel-root': {
@@ -503,7 +524,7 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
                 </div>
 
                 {/* Short Description */}
-                {mode === 'create' && (
+                {mode !== 'view' && (
                   <div className='col-span-12'>
                     <Controller
                       name='short_description'
@@ -516,7 +537,7 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
                           <label className='block text-sm font-medium text-textPrimary'>
                             {t('services.shortDescription')} <span className='text-red-500'>*</span>
                           </label>
-                          <HTMLEditor value={value} onChange={onChange} height='150px' />
+                          <LexicalEditor value={value} setValue={onChange} height='150px' />
                           {errors.short_description && (
                             <p className='text-red-500 text-sm mt-1'>{errors.short_description?.message}</p>
                           )}
@@ -528,7 +549,7 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
               </div>
 
               {/* Description */}
-              {mode === 'create' && (
+              {mode !== 'view' && (
                 <div className='col-span-12'>
                   <Controller
                     name='description'
@@ -539,7 +560,7 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
                         <label className='block text-sm font-medium text-textPrimary'>
                           {t('services.description')} <span className='text-red-500'>*</span>
                         </label>
-                        <HTMLEditor value={value} onChange={onChange} height='200px' />
+                        <LexicalEditor value={value} setValue={onChange} height='200px' />
                         {errors.description && (
                           <p className='text-red-500 text-sm mt-1'>{errors.description?.message}</p>
                         )}
@@ -550,7 +571,7 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
               )}
 
               {/* Additional Info Section */}
-              {mode === 'create' && (
+              {mode !== 'view' && (
                 <div className='col-span-12'>
                   <div className='col-span-12'>
                     <Controller
@@ -561,7 +582,7 @@ const AddServiceModal = ({ open, handleClose, serviceData, serviceID, mode, titl
                           <label className='block text-sm font-medium text-textPrimary'>
                             {t('services.additionalInformation')}
                           </label>
-                          <HTMLEditor value={value} onChange={onChange} height='200px' />
+                          <LexicalEditor value={value} setValue={onChange} height='200px' />
                         </div>
                       )}
                     />

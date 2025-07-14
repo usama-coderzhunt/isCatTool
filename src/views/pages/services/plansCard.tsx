@@ -491,35 +491,35 @@ const PlansCard: React.FC<PlansCardProps> = ({
                         )}
                       </div>
                     )}
-                    {/* {!(isSuperUser === true || userRole === 'Admin') && ( */}
-                    <div className='w-full mt-auto'>
-                      {plan.id === activePlanId && isPlanActive === 'active' ? (
-                        <Button
-                          variant='contained'
-                          className={`shadow-2xl w-full ${
-                            Number(plan.price) === 0 && Number(plan.yearly_price) === 0
-                              ? 'bg-primary text-white !cursor-not-allowed'
-                              : (activePlanBillingCycle === 'monthly' && planType === 'yearly') ||
-                                  (activePlanBillingCycle === 'yearly' && planType === 'monthly')
-                                ? 'bg-primary text-white'
-                                : 'bg-primary text-white !cursor-not-allowed'
-                          }`}
-                          disabled={Number(plan.price) === 0 && Number(plan.yearly_price) === 0}
-                          onClick={() => handleActivePlanAction(plan)}
-                        >
-                          {getButtonText(plan)}
-                        </Button>
-                      ) : (
-                        <Button
-                          variant='contained'
-                          className={`shadow-2xl w-full ${subscriptionId ? 'bg-primaryLight text-primary' : 'bg-primary text-white'}`}
-                          onClick={() => (subscriptionId ? handleUpgradePlan(plan) : handleGetStarted(plan))}
-                        >
-                          {getButtonText(plan)}
-                        </Button>
-                      )}
-                    </div>
-                    {/* )} */}
+                    {!(isSuperUser === true || userRole === 'Admin') && (
+                      <div className='w-full mt-auto'>
+                        {plan.id === activePlanId && isPlanActive === 'active' ? (
+                          <Button
+                            variant='contained'
+                            className={`shadow-2xl w-full ${
+                              Number(plan.price) === 0 && Number(plan.yearly_price) === 0
+                                ? 'bg-primary text-white !cursor-not-allowed'
+                                : (activePlanBillingCycle === 'monthly' && planType === 'yearly') ||
+                                    (activePlanBillingCycle === 'yearly' && planType === 'monthly')
+                                  ? 'bg-primary text-white'
+                                  : 'bg-primary text-white !cursor-not-allowed'
+                            }`}
+                            disabled={Number(plan.price) === 0 && Number(plan.yearly_price) === 0}
+                            onClick={() => handleActivePlanAction(plan)}
+                          >
+                            {getButtonText(plan)}
+                          </Button>
+                        ) : (
+                          <Button
+                            variant='contained'
+                            className={`shadow-2xl w-full ${subscriptionId ? 'bg-primaryLight text-primary' : 'bg-primary text-white'}`}
+                            onClick={() => (subscriptionId ? handleUpgradePlan(plan) : handleGetStarted(plan))}
+                          >
+                            {getButtonText(plan)}
+                          </Button>
+                        )}
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </Grid>

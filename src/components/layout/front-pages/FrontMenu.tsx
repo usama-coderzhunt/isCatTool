@@ -72,7 +72,7 @@ const Wrapper = (props: WrapperProps) => {
         <div className='p-4 flex flex-col gap-x-6'>
           <div className='w-full flex items-center justify-between'>
             <Link
-              href={`/${currentLocale}/home`}
+              href={`/${currentLocale}/`}
               className={`${currentLocale === 'ar' ? 'ml-2' : ''}`}
               onClick={() => setIsDrawerOpen(false)}
             >
@@ -125,15 +125,15 @@ const FrontMenu = (props: Props) => {
       <Typography
         color='text.primary'
         component={Link}
-        href={`/${currentLocale}/home`}
+        href={`/${currentLocale}/`}
         onClick={() => setIsDrawerOpen(false)}
         className={classnames(
-          pathname === `/${currentLocale}/home`
+          pathname === `/${currentLocale}/`
             ? ''
             : `font-medium plb-2 pli-2 transition duration-300 ease-in-out ${isBelowLgScreen ? 'hover:bg-primaryLight hover:text-primary rounded-md' : 'hover:text-primary'}`,
           {
             [`font-medium plb-2 pli-2 ${isBelowLgScreen ? 'text-white bg-primary rounded-md' : 'text-primary'}`]:
-              pathname === `/${currentLocale}/home`
+              pathname === `/${currentLocale}/`
           },
           currentLocale === 'ar' ? 'text-right' : 'text-left'
         )}

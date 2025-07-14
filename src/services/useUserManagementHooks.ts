@@ -153,7 +153,9 @@ export const useUserManagementHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['users'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['users'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         toast.error(error.response?.data?.message || 'Failed to delete case')
@@ -203,6 +205,25 @@ export const useUserManagementHooks = () => {
     } as any)
   }
 
+  const useGroupsTM = (pageSize: number, page: number, ordering?: string, search?: string) => {
+    return useQuery({
+      queryKey: ['groups', page, pageSize, ordering, search],
+      queryFn: () => {
+        const params = cleanApiParams({
+          page,
+          page_size: pageSize,
+          ordering,
+          search
+        })
+        return axiosInstance.get(API_ROUTES.GROUPS.LIST, {
+          params,
+          requiresAuth: true,
+          requiredPermission: 'view_group'
+        } as any)
+      }
+    })
+  }
+
   const deleteGroup = (id: number | null) => {
     return useMutation({
       mutationFn: () =>
@@ -211,7 +232,9 @@ export const useUserManagementHooks = () => {
           requiredPermission: 'delete_group'
         } as any),
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['groups'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['groups'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
@@ -590,6 +613,7 @@ export const useUserManagementHooks = () => {
 
     // Group hooks
     useGroups,
+    useGroupsTM,
     deleteGroup,
     useGroup,
     useCreateGroup,

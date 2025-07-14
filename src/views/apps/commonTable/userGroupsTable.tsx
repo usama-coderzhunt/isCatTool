@@ -49,7 +49,13 @@ const DebouncedInput = ({
   }, [value, onChange])
 
   return (
-    <CustomTextField label={t('common.search')} {...props} value={value} onChange={e => setValue(e.target.value)} />
+    <CustomTextField
+      label={t('common.search')}
+      {...props}
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
+    />
   )
 }
 
@@ -101,11 +107,7 @@ const UserGroupsTable: React.FC<UserGroupsTableProps> = ({ userGroupsData }: Use
           isFullScreen: tableState.isFullScreen
         }}
         renderTopToolbarCustomActions={() => (
-          <DebouncedInput
-            value={globalFilter ?? ''}
-            onChange={value => setGlobalFilter(String(value))}
-            placeholder={t('groups.search')}
-          />
+          <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
         )}
         localization={{
           noRecordsToDisplay: t('table.noData'),

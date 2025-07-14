@@ -22,13 +22,15 @@ export interface Document {
   updated_by?: number
   clients: string
   cases: string
+  client_info?: any[]
 }
 
 export interface CreateDocumentInput {
-  document_type: string | null;
+  document_type: string | null
   note: string | null
-  file?: File | any;
+  file?: File | any
   client_list?: number[]
   case_list?: number[]
   name?: string
+  client_info?: any[]
 }

@@ -68,7 +68,7 @@ const UserDropdown = () => {
   const { t, i18n } = useTranslation('global')
   const pathname = usePathname()
   const frontPageRoutes = [
-    `/${locale}/home`,
+    `/${locale}/`,
     `/${locale}/about`,
     `/${locale}/services`,
     `/${locale}/blogs`,

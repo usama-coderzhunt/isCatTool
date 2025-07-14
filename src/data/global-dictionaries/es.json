@@ -158,6 +158,7 @@
         "resetPassword": "Restablecer Contraseña"
     },
     "clientTable": {
+        "note": "Nota",
         "name": "NOMBRE",
         "fullName": "Nombre completo",
         "firstName": "Nombre",
@@ -171,8 +172,8 @@
         "active": "Activo",
         "inactive": "Inactivo",
         "allStatus": "Todos los estados",
-        "createClient": "Crear cliente",
-        "createLead": "Crear prospecto",
+        "addClient": "Agregar cliente",
+        "addLead": "Agregar prospecto",
         "clients": "Clientes",
         "leads": "Prospectos",
         "promoteToClient": "Promover a cliente",
@@ -326,15 +327,29 @@
         "permissions": "Permisos"
     },
     "permissions": {
-        "title": "Permisos",
-        "noData": "No se encontraron permisos",
         "model": "Modelo",
-        "totalPermissions": "Permisos Totales",
-        "permissions": "permisos",
+        "totalPermissions": "Total de Permisos",
+        "permissions": "Permisos",
         "updatePermissions": "Actualizar Permisos",
-        "update": "Actualizar",
+        "noData": "No se encontraron permisos",
         "search": "Buscar",
-        "permissionsSearchPlaceholder": "Buscar permisos..."
+        "permissionsSearchPlaceholder": "Buscar permisos...",
+        "addTranslationModelPermission": "Añadir Permiso de Modelo de Traducción",
+        "businessUnitAssignToUser": "Asignar Unidad de Negocio al Usuario",
+        "availablePermissions": "Permisos Disponibles",
+        "assignedPermissions": "Permisos Asignados",
+        "addSelectedPermissions": "Añadir Permisos Seleccionados",
+        "removeSelectedPermissions": "Eliminar Permisos Seleccionados",
+        "addModel": "Añadir Modelo",
+        "removeModel": "Eliminar Modelo",
+        "addModelPermissions": "Añadir todos los permisos de {{model}}",
+        "removeModelPermissions": "Eliminar todos los permisos de {{model}}",
+        "addPermissionTooltip": "Añadir permiso {{name}}",
+        "removePermissionTooltip": "Eliminar permiso {{name}}",
+        "noAvailablePermissions": "No se encontraron permisos disponibles",
+        "noAssignedPermissions": "No se encontraron permisos asignados",
+        "searchAvailablePermissions": "Buscar permisos disponibles...",
+        "searchAssignedPermissions": "Buscar permisos asignados..."
     },
     "positionsTable": {
         "search": "Buscar",
@@ -344,7 +359,6 @@
         "createdAt": "Creado el",
         "updatedAt": "Actualizado el",
         "actions": "Acciones",
-        "createPosition": "Crear un Puesto",
         "confirmDelete": "Confirmar Eliminación",
         "deleteMessage": "¿Estás seguro de que deseas eliminar?",
         "updatePosition": "Actualizar el Puesto",
@@ -363,7 +377,7 @@
         "search": "Buscar",
         "staffSearchPlaceholder": "Buscar miembros del personal...",
         "title": "Personal",
-        "createStaff": "Crear un miembro del personal",
+        "addStaff": "Agregar miembro del personal",
         "firstName": "Nombre",
         "lastName": "Apellido",
         "email": "Correo electrónico",
@@ -400,14 +414,15 @@
         "inactive": "Inactivo"
     },
     "groupDialog": {
-        "createGroupDialogTitle": "Crear un Nuevo Grupo",
+        "addGroup": "Agregar Grupo",
+        "updateGroup": "Actualizar Grupo",
         "createGroupDialogFieldLab": "Nombre del Grupo",
         "createGroupDialogFieldLabRequired": "El nombre del grupo es obligatorio",
         "createGroupDialogCancel": "Cancelar",
         "createGroupDialogCreate": "Crear"
     },
     "staffDialog": {
-        "createTitle": "Crear un nuevo miembro del personal",
+        "addStaff": "Agregar miembro del personal",
         "updateTitle": "Actualizar el puesto del miembro del personal",
         "username": "Nombre de usuario",
         "middleName": "Segundo Nombre",
@@ -429,12 +444,13 @@
         "contact": "Contáctanos",
         "search": "Buscar",
         "image": "Imagen",
+        "categories": "Categorías",
         "serviceSearchPlaceholder": "Buscar servicios...",
         "transServicesTitle": "Servicios",
         "servicesTitle": "Servicios",
-        "addNew": "Agregar Nuevo Servicio",
+        "addNew": "Agregar Servicio",
         "deltransservicebulk": "Eliminar servicios",
-        "editService": "Editar Servicio",
+        "editService": "Actualizar servicio",
         "serviceDetails": "Detalles del servicio",
         "view": "Detalles del Servicio",
         "delete": "Eliminar servicio",
@@ -474,7 +490,9 @@
             "createdAt": "Creado el",
             "updatedAt": "Actualizado el",
             "search": "Buscar",
-            "serviceSearchPlaceholder": "Buscar servicios..."
+            "serviceSearchPlaceholder": "Buscar servicios...",
+            "inactiveClientEditMessage": "No se pueden actualizar los servicios para clientes inactivos. Por favor, active el cliente primero para modificar sus servicios.",
+            "inactiveClientCreateMessage": "No se pueden crear servicios para clientes inactivos. Por favor, active el cliente primero para crear servicios."
         },
         "communicationPlatform": "Plataforma de comunicación",
         "translationType": "Tipo de traducción",
@@ -511,8 +529,8 @@
         "openServiceDetails": "Abrir Detalles del Servicio",
         "servicePlans": {
             "title": "Planes de Servicio",
-            "addNewPlan": "Agregar Nuevo Plan",
-            "editPlan": "Editar Plan",
+            "addPlan": "Agregar Plan",
+            "updatePlan": "Actualizar Plan",
             "deletePlan": "Eliminar Plan",
             "getStarted": "Comenzar",
             "edit": "Editar",
@@ -587,9 +605,9 @@
     },
     "documents": {
         "title": "Documentos",
-        "uploadNew": "Subir un Nuevo Documento",
-        "addNew": "Agregar un nuevo documento",
-        "edit": "Editar Documento",
+        "uploadNew": "Agregar Documento",
+        "addNew": "Agregar Documento",
+        "edit": "Actualizar Documento",
         "view": "Ver Documento",
         "selectFile": "Selecciona un archivo para subir",
         "deleteDocuments": "Eliminar documentos",
@@ -597,6 +615,8 @@
         "documentUpdated": "Documento actualizado con éxito",
         "documentDeleted": "Documento eliminado con éxito",
         "documentsBulkDeleted": "Documentos eliminados con éxito",
+        "inactiveClientCreateMessage": "No se pueden crear documentos para clientes inactivos. Por favor, active el cliente primero para crear documentos.",
+        "inactiveClientEditMessage": "No se pueden actualizar los documentos para clientes inactivos. Por favor, active el cliente primero para actualizar los documentos.",
         "deleteConfirmationModal": {
             "title": "Confirmar Eliminación"
         },
@@ -615,8 +635,8 @@
         },
         "types": {
             "title": "Tipos de Documentos",
-            "create": "Crear Tipo de Documento",
-            "edit": "Editar Tipo de Documento",
+            "add": "Agregar Tipo de Documento",
+            "update": "Actualizar Tipo de Documento",
             "name": "Nombre",
             "createdAt": "Creado el",
             "deletedocsBulk": "Eliminar tipos de documentos",
@@ -723,8 +743,8 @@
             "edit": "Editar",
             "view": "Ver"
         },
-        "create": "Crear Cliente",
-        "createLead": "Crear Prospecto",
+        "create": "Agregar Cliente",
+        "createLead": "Agregar Prospecto",
         "delete": "Eliminar clientes abogados",
         "deleteLead": "Eliminar prospectos abogados",
         "table": {
@@ -735,6 +755,7 @@
             "actions": "Acciones",
             "allStatus": "Todos los Estados",
             "search": "Buscar",
+            "note": "Nota",
             "lawyerClientSearchPlaceholder": "Buscar clientes abogados...",
             "lawyerLeadSearchPlaceholder": "Buscar prospectos abogados...",
             "confirmDelete": "Confirmar Eliminación",
@@ -771,6 +792,10 @@
             "backToList": "Volver a la Lista"
         },
         "form": {
+            "addClient": "Agregar Cliente",
+            "addLead": "Agregar Prospecto",
+            "updateClient": "Actualizar Cliente",
+            "updateLead": "Actualizar Prospecto",
             "firstName": "Nombre",
             "lastName": "Apellido",
             "middleName": "Segundo Nombre",
@@ -781,14 +806,15 @@
             "createNew": "Crear {{type}}",
             "update": "Editar {{type}}",
             "lawyer": "Abogado",
+            "notes": "Notas",
             "updatedSuccess": "Actualizado con éxito",
             "createdSuccess": "Creado con éxito"
         }
     },
     "cases": {
         "title": "Casos",
-        "create": "Crear un Caso",
-        "edit": "Editar el Caso",
+        "addCase": "Agregar Caso",
+        "updateCase": "Actualizar Caso",
         "deletebulkcases": "Eliminar casos",
         "delete": {
             "title": "Eliminar el Caso",
@@ -808,7 +834,9 @@
             "caseClosed": "Cerrado",
             "caseOpen": "Abierto",
             "allStatus": "Todos los Estados",
-            "open": "Abierto"
+            "open": "Abierto",
+            "inactiveClientCreateMessage": "No se pueden crear casos para clientes inactivos. Por favor, active el cliente primero para crear casos.",
+            "inactiveClientEditMessage": "No se pueden actualizar los casos para clientes inactivos. Por favor, active el cliente primero para actualizar los casos."
         },
         "form": {
             "title": "Título",
@@ -818,8 +846,8 @@
             "summary": "Resumen",
             "paymentSchedule": "Calendario de Pagos",
             "staff": "Personal",
-            "createCase": "Crear Caso",
-            "updateCase": "Actualizar el Caso",
+            "addCase": "Agregar Caso",
+            "updateCase": "Actualizar Caso",
             "note": "Nota",
             "createDocument": "Crear Documento",
             "updateDocument": "Actualizar Documento",
@@ -843,9 +871,9 @@
             "todo": "Tareas",
             "case": "Caso",
             "title": "Tareas Pendientes",
-            "addNew": "Agregar Nueva Tarea",
-            "edit": "Editar Tarea",
-            "view": "Detalles de la Tarea",
+            "addTodoItem": "Agregar Nueva Tarea",
+            "updateTodoItem": "Editar Tarea",
+            "viewTodoItem": "Detalles de la Tarea",
             "status": "Estado",
             "subject": "Asunto",
             "dueDate": "Fecha de Vencimiento",
@@ -895,15 +923,14 @@
         "addCaseTypeModal": {
             "title": "Agregar Tipo de Caso",
             "update": "Actualizar Tipo de Caso",
-            "create": "Crear Nuevo Tipo de Caso",
-            "edit": "Editar Tipo de Caso"
+            "add": "Agregar Tipo de Caso"
         },
         "fields": {
             "name": "Nombre",
             "required": "El nombre es obligatorio"
         },
         "buttons": {
-            "create": "Crear Tipo de Caso",
+            "add": "Agregar Tipo de Caso",
             "update": "Actualizar Tipo de Caso",
             "delete": "Eliminar Tipos de Caso"
         },
@@ -944,7 +971,8 @@
             "phoneNumber": "Número de teléfono",
             "dateOfBirth": "Fecha de nacimiento",
             "address": "Dirección",
-            "country": "País"
+            "country": "País",
+            "notes": "Notas"
         },
         "buttons": {
             "create": "Crear nuevo cliente",
@@ -999,11 +1027,19 @@
         "updateUsers": "Actualizar Usuarios",
         "noData": "No se encontraron usuarios",
         "search": "Buscar",
-        "groupUsersSearchPlaceholder": "Buscar usuarios del grupo..."
+        "groupUsersSearchPlaceholder": "Buscar usuarios del grupo...",
+        "usersNotInGroup": "Usuarios No en el Grupo",
+        "usersInGroup": "Usuarios en el Grupo",
+        "addSelectedUsers": "Agregar Usuarios Seleccionados",
+        "removeSelectedUsers": "Remover Usuarios Seleccionados",
+        "addUser": "Agregar",
+        "removeUser": "Remover",
+        "addUserTooltip": "Agregar {{username}} a este grupo",
+        "removeUserTooltip": "Remover {{username}} de este grupo"
     },
     "notifications": {
         "title": "Notificaciones",
-        "createNotification": "Crear Notificación",
+        "addNotification": "Agregar Notificación",
         "delNotificationbulk": "Eliminar notificaciones",
         "name": "Nombre",
         "actions": "Acciones",
@@ -1028,8 +1064,8 @@
             }
         },
         "modal": {
-            "create": "Crear Notificación",
-            "edit": "Editar Notificación",
+            "add": "Agregar Notificación",
+            "update": "Actualizar Notificación",
             "name": "Nombre",
             "method": "Método",
             "selectMethod": "Seleccionar método",
@@ -1700,8 +1736,8 @@
     },
     "coupons": {
         "form": {
-            "create": "Crear cupón",
-            "edit": "Editar cupón",
+            "add": "Agregar cupón",
+            "update": "Actualizar cupón",
             "code": "Código",
             "discount_value": "Valor del descuento",
             "valid_from": "Válido desde",
@@ -2023,6 +2059,7 @@
             "title": "Transacciones",
             "referenceId": "ID de referencia",
             "amount": "Monto",
+            "note": "Notas",
             "status": "Estado",
             "createdAt": "Creado el",
             "updatedAt": "Actualizado el",
@@ -2186,6 +2223,7 @@
         "table": {
             "title": "Facturas",
             "invoiceNumber": "Número de factura",
+            "notes": "Notas",
             "subtotal": "Subtotal",
             "status": "Estado",
             "createdAt": "Creado el",
@@ -2211,6 +2249,7 @@
             "refundReferenceId": "ID de referencia del reembolso",
             "amount": "Cantidad",
             "reason": "Motivo",
+            "notes": "Notas",
             "status": "Estado",
             "createdAt": "Creado el",
             "updatedAt": "Actualizado el",
@@ -2306,5 +2345,532 @@
         "title": "Instrucciones de pago",
         "instructions": "Instrucciones:",
         "additionalDetails": "Detalles adicionales:"
+    },
+    "llmOperators": {
+        "title": "Operadores de LLM",
+        "add": "Agregar Operador de LLM",
+        "update": "Actualizar Operador de LLM",
+        "view": "Ver Operador de LLM",
+        "deleteBulk": "Eliminar Operadores de LLM",
+        "table": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron operadores de LLM"
+        },
+        "addLlmOperatorModal": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "metadata": "Metadatos"
+        },
+        "toasts": {
+            "llmOperatorCreatedSuccess": "Operador de LLM creado con éxito",
+            "llmOperatorUpdatedSuccess": "Operador de LLM actualizado con éxito",
+            "llmOperatorDeletedSuccess": "Operador de LLM eliminado con éxito",
+            "llmOperatorDeletedBulkSuccess": "Operadores de LLM eliminados con éxito"
+        },
+        "deleteModal": {
+            "deleteLlmOperator": "Eliminar Operador de LLM",
+            "deleteLlmOperators": "Eliminar Operadores de LLM",
+            "deleteLlmOperatorMessage": "Está seguro de que desea eliminar este Operador de LLM {{name}}?",
+            "deleteLlmOperatorsMessage": "Está seguro de que desea eliminar estos Operadores de LLM?"
+        }
+    },
+    "projects": {
+        "title": "Proyectos",
+        "projectDetailsTitle": "Detalles del proyecto",
+        "addBtnText": "Agregar proyecto",
+        "bulkDeleteBtnText": "Eliminar proyectos",
+        "table": {
+            "name": "Nombre",
+            "sourceLanguage": "Idioma fuente",
+            "targetLanguage": "Idioma objetivo",
+            "translationModel": "Modelo de traducción",
+            "translationSubject": "Asunto de traducción",
+            "status": "Estado",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron proyectos"
+        },
+        "deleteModal": {
+            "deleteProject": "Eliminar proyecto",
+            "deleteProjects": "Eliminar proyectos",
+            "message": "¿Está seguro de querer eliminar este proyecto {{name}}?",
+            "bulkDeleteConfirmationMessage": "¿Está seguro de querer eliminar estos proyectos?"
+        },
+        "addProjectModal": {
+            "add": "Agregar proyecto",
+            "update": "Actualizar proyecto",
+            "name": "Nombre",
+            "sourceLanguage": "Idioma fuente",
+            "targetLanguage": "Idioma objetivo",
+            "translationModel": "Modelo de traducción",
+            "translationSubject": "Asunto de traducción"
+        },
+        "toasts": {
+            "projectCreatedSuccess": "Proyecto creado con éxito",
+            "projectUpdatedSuccess": "Proyecto actualizado con éxito",
+            "projectDeletedSuccess": "Proyecto eliminado con éxito",
+            "projectDeletedBulkSuccess": "Proyectos eliminados con éxito"
+        },
+        "projectDetailsCard": {
+            "noData": "No se encontraron datos",
+            "name": "Nombre:",
+            "sourceLanguage": "Idioma fuente:",
+            "targetLanguage": "Idioma objetivo:",
+            "translationModel": "Modelo de traducción:",
+            "translationSubject": "Asunto de traducción:",
+            "status": "Estado:",
+            "createdAt": "Creado el:",
+            "updatedAt": "Actualizado el:",
+            "backToProjects": "Volver a proyectos"
+        }
+    },
+    "tasks": {
+        "title": "Tareas",
+        "detailsPageTitle": "Detalles de la tarea",
+        "addBtnText": "Agregar tarea",
+        "bulkDeleteBtnText": "Eliminar tareas",
+        "table": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "dueDate": "Fecha de vencimiento",
+            "status": "Estado",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron tareas"
+        },
+        "deleteModal": {
+            "deleteTask": "Eliminar tarea",
+            "deleteTasks": "Eliminar tareas",
+            "message": "Está seguro de querer eliminar esta tarea {{name}}?",
+            "bulkDeleteConfirmationMessage": "Está seguro de querer eliminar estas tareas?"
+        },
+        "form": {
+            "add": "Agregar tarea",
+            "update": "Actualizar tarea",
+            "name": "Nombre",
+            "description": "Descripción",
+            "dueDate": "Fecha de vencimiento",
+            "similarityThreshold": "Umbral de similitud",
+            "isSubtask": "Es una tarea secundaria?",
+            "isSplit": "Es una tarea secundaria?",
+            "customPrompt": "Instrucciones personalizadas",
+            "assignedTo": "Asignado a",
+            "parentTask": "Tarea principal",
+            "sourceLanguage": "Idioma fuente",
+            "targetLanguage": "Idioma objetivo",
+            "translationModel": "Modelo de traducción",
+            "translationSubject": "Asunto de traducción",
+            "project": "Proyecto",
+            "numberOfSubtasks": "Número de tareas secundarias"
+        },
+        "toasts": {
+            "taskCreatedSuccess": "Tarea creada con éxito",
+            "taskUpdatedSuccess": "Tarea actualizada con éxito",
+            "taskDeletedSuccess": "Tarea eliminada con éxito",
+            "taskDeletedBulkSuccess": "Tareas eliminadas con éxito"
+        },
+        "detailsCard": {
+            "name": "Nombre:",
+            "description": "Descripción:",
+            "createdAt": "Creado el:",
+            "updatedAt": "Actualizado el:",
+            "backToTasks": "Volver a Tareas",
+            "status": "Estado:",
+            "dueDate": "Fecha de vencimiento:",
+            "noDataFound": "No se encontraron datos de la tarea"
+        },
+        "splitTaskModal": {
+            "splitTask": "Dividir tarea",
+            "numberOfSubtasks": "Número de tareas secundarias",
+            "cancel": "Cancelar"
+        }
+    },
+    "translationMemories": {
+        "title": "Memorias de traducción",
+        "detailsPageTitle": "Detalles de la Memoria de Traducción",
+        "addBtnText": "Agregar nueva memoria de traducción",
+        "bulkDeleteBtnText": "Eliminar memorias de traducción",
+        "exportBtnText": "Exportar memoria de traducción",
+        "importBtnText": "Importar memoria de traducción",
+        "table": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "sourceLanguage": "Idioma fuente",
+            "targetLanguage": "Idioma objetivo",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron memorias de traducción"
+        },
+        "form": {
+            "addTitle": "Agregar nueva memoria de traducción",
+            "updateTitle": "Actualizar memoria de traducción",
+            "addBtnText": "Agregar memoria de traducción",
+            "updateBtnText": "Actualizar memoria de traducción",
+            "name": "Nombre",
+            "description": "Descripción",
+            "sourceLanguage": "Idioma fuente",
+            "targetLanguage": "Idioma objetivo"
+        },
+        "toasts": {
+            "translationMemoryCreatedSuccess": "Memoria de traducción creada con éxito",
+            "translationMemoryUpdatedSuccess": "Memoria de traducción actualizada con éxito",
+            "translationMemoryDeletedSuccess": "Memoria de traducción eliminada con éxito",
+            "translationMemoryDeletedBulkSuccess": "Memorias de traducción eliminadas con éxito",
+            "translationMemoryImportedSuccess": "Memoria de traducción importada con éxito"
+        },
+        "deleteModal": {
+            "deleteTranslationMemory": "Eliminar memoria de traducción",
+            "deleteTranslationMemories": "Eliminar memorias de traducción",
+            "message": "Está seguro de querer eliminar esta memoria de traducción {{name}}?",
+            "bulkDeleteConfirmationMessage": "Está seguro de querer eliminar estas memorias de traducción?"
+        },
+        "exportModal": {
+            "title": "Exportar memoria de traducción",
+            "message": "Está seguro de querer exportar esta memoria de traducción?"
+        },
+        "importModal": {
+            "title": "Importar memoria de traducción",
+            "uploadFile": "Cargar un archivo TMX o CSV para importar la memoria de traducción.",
+            "sourceLanguage": "Idioma de origen",
+            "targetLanguage": "Idioma de destino",
+            "cancel": "Cancelar",
+            "import": "Importar"
+        },
+        "detailsCard": {
+            "name": "Nombre:",
+            "targetLanguage": "Idioma de destino:",
+            "sourceLanguage": "Idioma de origen:",
+            "updatedAt": "Actualizado el:",
+            "createdAt": "Creado el:",
+            "description": "Descripción",
+            "backToMainPageBtnText": "Volver a Memorias de Traducción",
+            "noDataFound": "No se encontraron datos de Memoria de Traducción"
+        }
+    },
+    "translationMemoryEntries": {
+        "title": "Entradas",
+        "addBtnText": "Agregar Entrada",
+        "bulkDeleteBtnText": "Eliminar Entradas",
+        "table": {
+            "sourceText": "Texto de Origen",
+            "targetText": "Texto de Destino",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron entradas"
+        },
+        "form": {
+            "addTitle": "Agregar Entrada",
+            "updateTitle": "Editar Entrada",
+            "addBtnText": "Crear Entrada",
+            "updateBtnText": "Actualizar Entrada",
+            "reference": "Referencia",
+            "translationMemory": "Memoria de Traducción",
+            "sourceText": "Texto de Origen",
+            "targetText": "Texto de Destino"
+        },
+        "toasts": {
+            "entryCreatedSuccess": "Entrada creada con éxito",
+            "entryUpdatedSuccess": "Entrada actualizada con éxito",
+            "entryDeletedSuccess": "Entrada eliminada con éxito",
+            "entryDeletedBulkSuccess": "Entradas eliminadas con éxito"
+        },
+        "deleteModal": {
+            "deleteEntry": "Eliminar Entrada",
+            "deleteEntries": "Eliminar Entradas",
+            "message": "Estás seguro de que deseas eliminar esta entrada?",
+            "bulkDeleteConfirmationMessage": "Estás seguro de que deseas eliminar estas entradas?"
+        }
+    },
+    "translationModels": {
+        "title": "Modelos de traducción",
+        "addBtnText": "Agregar modelo de traducción",
+        "bulkDeleteBtnText": "Eliminar modelos de traducción",
+        "table": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron datos de modelos de traducción"
+        },
+        "form": {
+            "add": "Agregar modelo de traducción",
+            "edit": "Actualizar modelo de traducción",
+            "name": "Nombre",
+            "modelName": "Nombre del modelo",
+            "operator": "Operador",
+            "allowedUsers": "Usuarios permitidos",
+            "allowedGroups": "Grupos permitidos",
+            "description": "Descripción"
+        },
+        "toasts": {
+            "translationModelCreatedSuccess": "Modelo de traducción creado exitosamente",
+            "translationModelUpdatedSuccess": "Modelo de traducción actualizado exitosamente",
+            "translationModelDeletedSuccess": "Modelo de traducción eliminado exitosamente",
+            "translationModelDeletedBulkSuccess": "Modelos de traducción eliminados exitosamente"
+        },
+        "deleteModal": {
+            "deleteTranslationModel": "Eliminar modelo de traducción",
+            "deleteTranslationModels": "Eliminar modelos de traducción",
+            "message": "¿Estás seguro de que deseas eliminar este modelo de traducción {{name}}?",
+            "bulkDeleteConfirmationMessage": "¿Estás seguro de que deseas eliminar estos modelos de traducción?"
+        }
+    },
+    "termBases": {
+        "title": "Bases de términos",
+        "detailsPageTitle": "Detalles de la Base de términos",
+        "addBtnText": "Agregar nueva base de términos",
+        "bulkDeleteBtnText": "Eliminar bases de términos",
+        "exportBtnText": "Exportar base de términos",
+        "importBtnText": "Importar base de términos",
+        "table": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "sourceLanguage": "Idioma fuente",
+            "targetLanguage": "Idioma objetivo",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron bases de términos"
+        },
+        "form": {
+            "add": "Agregar nueva base de términos",
+            "edit": "Editar base de términos",
+            "name": "Nombre",
+            "description": "Descripción",
+            "sourceLanguage": "Idioma fuente",
+            "targetLanguage": "Idioma objetivo"
+        },
+        "toasts": {
+            "termBaseCreatedSuccess": "Base de términos creada con éxito",
+            "termBaseUpdatedSuccess": "Base de términos actualizada con éxito",
+            "termBaseDeletedSuccess": "Base de términos eliminada con éxito",
+            "termBaseDeletedBulkSuccess": "Bases de términos eliminadas con éxito",
+            "termBaseImportedSuccess": "Base de términos importada con éxito"
+        },
+        "deleteModal": {
+            "deleteTermBase": "Eliminar base de términos",
+            "deleteTermBases": "Eliminar bases de términos",
+            "message": "Estás seguro de querer eliminar esta base de términos {{name}}?",
+            "bulkDeleteConfirmationMessage": "Estás seguro de querer eliminar estas bases de términos?"
+        },
+        "exportModal": {
+            "title": "Exportar base de términos",
+            "message": "Estás seguro de querer exportar esta base de términos?"
+        },
+        "importModal": {
+            "title": "Importar base de términos",
+            "uploadFile": "Cargar un archivo CSV para importar la base de términos.",
+            "cancel": "Cancelar",
+            "import": "Importar"
+        },
+        "detailsCard": {
+            "name": "Nombre:",
+            "targetLanguage": "Idioma objetivo:",
+            "sourceLanguage": "Idioma fuente:",
+            "updatedAt": "Actualizado el:",
+            "createdAt": "Creado el:",
+            "description": "Descripción",
+            "backToMainPageBtnText": "Volver a Bases de términos",
+            "noDataFound": "No se encontraron datos de base de términos"
+        }
+    },
+    "termBaseEntries": {
+        "title": "Entradas",
+        "addBtnText": "Agregar Entrada",
+        "bulkDeleteBtnText": "Eliminar Entradas",
+        "table": {
+            "originalTerm": "Término Original",
+            "translation": "Traducción",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron entradas"
+        },
+        "form": {
+            "add": "Agregar Entrada",
+            "update": "Actualizar Entrada",
+            "termBase": "Base de términos",
+            "originalTerm": "Término Original",
+            "translation": "Traducción"
+        },
+        "toasts": {
+            "entryCreatedSuccess": "Entrada creada con éxito",
+            "entryUpdatedSuccess": "Entrada actualizada con éxito",
+            "entryDeletedSuccess": "Entrada eliminada con éxito",
+            "entryDeletedBulkSuccess": "Entradas eliminadas con éxito"
+        },
+        "deleteModal": {
+            "deleteEntry": "Eliminar Entrada",
+            "deleteEntries": "Eliminar Entradas",
+            "message": "Estás seguro de querer eliminar esta entrada?",
+            "bulkDeleteConfirmationMessage": "Estás seguro de querer eliminar estas entradas?"
+        }
+    },
+    "translationSubjects": {
+        "title": "Asuntos de traducción",
+        "addBtnText": "Agregar Asunto de Traducción",
+        "bulkDeleteBtnText": "Eliminar Asuntos de Traducción",
+        "table": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron asuntos de traducción"
+        },
+        "form": {
+            "add": "Agregar Asunto de Traducción",
+            "update": "Actualizar Asunto de Traducción",
+            "name": "Nombre",
+            "description": "Descripción"
+        },
+        "toasts": {
+            "translationSubjectCreatedSuccess": "Asunto de traducción creado con éxito",
+            "translationSubjectUpdatedSuccess": "Asunto de traducción actualizado con éxito",
+            "translationSubjectDeletedSuccess": "Asunto de traducción eliminado con éxito",
+            "translationSubjectDeletedBulkSuccess": "Asuntos de traducción eliminados con éxito"
+        },
+        "deleteModal": {
+            "deleteTranslationSubject": "Eliminar Asunto de Traducción",
+            "deleteTranslationSubjects": "Eliminar Asuntos de Traducción",
+            "message": "Estás seguro de querer eliminar este asunto de traducción {{name}}?",
+            "bulkDeleteConfirmationMessage": "Estás seguro de querer eliminar estos asuntos de traducción?"
+        }
+    },
+    "exportDataConfModal": {
+        "exportBtnText": "Exportar",
+        "cancelBtnText": "Cancelar"
+    },
+    "taskFiles": {
+        "title": "Archivos",
+        "addBtnText": "Agregar Archivo",
+        "bulkDeleteBtnText": "Eliminar Archivos",
+        "table": {
+            "task": "ID de Tarea",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron archivos"
+        },
+        "form": {
+            "add": "Agregar Archivo",
+            "cancel": "Cancelar",
+            "update": "Actualizar Archivo",
+            "uploadFile": "Cargar Archivo",
+            "task": "Tarea"
+        },
+        "toasts": {
+            "fileCreatedSuccess": "Archivo creado con éxito",
+            "fileUpdatedSuccess": "Archivo actualizado con éxito",
+            "fileDeletedSuccess": "Archivo eliminado con éxito",
+            "fileDeletedBulkSuccess": "Archivos eliminados con éxito",
+            "pleaseSelectFile": "Por favor, seleccione un archivo para cargar"
+        },
+        "deleteModal": {
+            "deleteFile": "Eliminar Archivo",
+            "deleteFiles": "Eliminar Archivos",
+            "message": "Estás seguro de querer eliminar este archivo?",
+            "bulkDeleteConfirmationMessage": "Estás seguro de querer eliminar estos archivos?"
+        }
+    },
+    "translationModelPermissionModal": {
+        "title": "Agregar Permiso de Modelo de Traducción",
+        "btnText": "Agregar Permiso",
+        "cancel": "Cancelar",
+        "translationModel": "Modelo de Traducción",
+        "toasts": {
+            "translationModelPermissionAddedSuccess": "Permiso de Modelo de Traducción agregado con éxito",
+            "pleaseSelectTranslationModel": "Por favor, seleccione un modelo de traducción"
+        }
+    },
+    "businessUnitAssignToUserModal": {
+        "title": "Asignar Unidad de Negocio al Usuario",
+        "btnText": "Asignar",
+        "cancel": "Cancelar",
+        "businessUnit": "Unidad de Negocio",
+        "toasts": {
+            "pleaseSelectBusinessUnit": "Por favor, seleccione una unidad de negocio"
+        }
+    },
+    "businessUnits": {
+        "title": "Unidades de Negocio",
+        "addBtnText": "Agregar Unidad de Negocio",
+        "bulkDeleteBtnText": "Eliminar Unidades de Negocio",
+        "table": {
+            "name": "Nombre",
+            "description": "Descripción",
+            "notes": "Notas",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron unidades de negocio"
+        },
+        "form": {
+            "add": "Agregar Unidad de Negocio",
+            "update": "Actualizar Unidad de Negocio",
+            "name": "Nombre",
+            "description": "Descripción",
+            "notes": "Notas"
+        },
+        "toasts": {
+            "businessUnitCreatedSuccess": "Unidad de Negocio creada con éxito",
+            "businessUnitUpdatedSuccess": "Unidad de Negocio actualizada con éxito",
+            "businessUnitDeletedSuccess": "Unidad de Negocio eliminada con éxito",
+            "businessUnitDeletedBulkSuccess": "Unidades de Negocio eliminadas con éxito"
+        },
+        "deleteModal": {
+            "deleteBusinessUnit": "Eliminar Unidad de Negocio",
+            "deleteBusinessUnits": "Eliminar Unidades de Negocio",
+            "message": "Estás seguro de querer eliminar esta unidad de negocio {{name}}?",
+            "bulkDeleteConfirmationMessage": "Estás seguro de querer eliminar estas unidades de negocio?"
+        },
+        "detailsCard": {
+            "name": "Nombre:",
+            "description": "Descripción:",
+            "notes": "Notas:",
+            "caseFlowMaxCases": "Casos máximos en Case Flow:",
+            "caseFlowMaxActiveUsers": "Usuarios activos máximos en Case Flow:",
+            "caseFlowMaxActiveClients": "Clientes activos máximos en Case Flow:"
+        }
+    },
+    "languages": {
+        "title": "Idiomas",
+        "addLanguage": "Agregar idioma",
+        "updateLanguage": "Actualizar idioma",
+        "deleteLanguage": "Eliminar idioma",
+        "deleteLanguages": "Eliminar idiomas",
+        "table": {
+            "name": "Nombre",
+            "code": "Código",
+            "createdAt": "Creado el",
+            "updatedAt": "Actualizado el",
+            "actions": "Acciones",
+            "noData": "No se encontraron idiomas"
+        },
+        "addLanguageModal": {
+            "name": "Nombre",
+            "code": "Código"
+        },
+        "toasts": {
+            "languageCreatedSuccess": "Idioma creado con éxito",
+            "languageUpdatedSuccess": "Idioma actualizado con éxito",
+            "languageDeletedSuccess": "Idioma eliminado con éxito",
+            "languageDeletedBulkSuccess": "Idiomas eliminados con éxito"
+        },
+        "deleteModal": {
+            "deleteLanguage": "Eliminar idioma",
+            "deleteLanguages": "Eliminar idiomas",
+            "deleteLanguageMessage": "¿Está seguro de querer eliminar este idioma {{name}}?",
+            "deleteLanguagesMessage": "¿Está seguro de querer eliminar estos idiomas?"
+        }
     }
 }

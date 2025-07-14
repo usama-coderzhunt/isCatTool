@@ -11,6 +11,8 @@ import { useColorScheme } from '@mui/material/styles'
 import { useServicesHooks } from '@/services/useServicesHooks'
 import ServicePlans from '@/views/pages/services/servicesPlansListings'
 import ServiceDetailsHeroSection from '@/views/pages/services/servicesDetailsHeroSection'
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+import classNames from 'classnames'
 
 import ServiceFeaturesList from '@/views/pages/services/serviceFeaturesList'
 import ServiceFAQS from '@/views/pages/services/serviceFaqs'
@@ -42,8 +44,6 @@ const ServiceDetailsPage = () => {
   const { getFrontPagesServiceById } = useServicesHooks()
   const { data: serviceData, isLoading } = getFrontPagesServiceById(serviceId)
 
-  console.log('serviceData inside serviceDetailsPage', serviceData?.id)
-
   return (
     <>
       <ServiceDetailsHeroSection mode={mode} serviceData={serviceData} loading={isLoading} />
@@ -51,7 +51,9 @@ const ServiceDetailsPage = () => {
         <ServiceFeaturesList serviceData={serviceData} loading={isLoading} />
         {serviceId && (
           <div className='mt-8 bg-backgroundPaper'>
-            <ServicePlans serviceId={serviceData?.id} serviceData={serviceData} />
+            <div className={classNames('', frontCommonStyles.layoutSpacing)}>
+              <ServicePlans serviceId={serviceData?.id} serviceData={serviceData} isAddPlanBtnVisible={false} />
+            </div>
           </div>
         )}
         <ServiceFAQS serviceData={serviceData} loading={isLoading} />

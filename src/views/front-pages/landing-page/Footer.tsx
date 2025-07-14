@@ -16,17 +16,23 @@ const Footer = () => {
   const { data: footerSettings } = useFooterSettings()
   const { data: socialLinkSettings, isLoading: isSocialLinkLoading } = useSocialLinkSettings()
 
-  const routesToShowFooter = [
-    `/${currentLocale}/home`,
-    `/${currentLocale}/about`,
-    `/${currentLocale}/services`,
-    `/${currentLocale}/blogs`,
-    `/${currentLocale}/contact`,
-    `/${currentLocale}/service-details/[id]`,
-    `/${currentLocale}/terms-of-service`,
-    `/${currentLocale}/privacy-policy`
-    // Dynamic path
-  ]
+  const shouldShowFooter = (pathname: string) => {
+    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '/'
+
+    const footerRoutes = ['/', '/about', '/services', '/blogs', '/contact', '/terms-of-service', '/privacy-policy']
+
+    const isFooterRoute = footerRoutes.some(route => {
+      if (route === '/') {
+        return pathWithoutLocale === '/'
+      }
+      return pathWithoutLocale.startsWith(route)
+    })
+
+    const isDynamicRoute =
+      pathWithoutLocale.startsWith('/service-details/') || pathWithoutLocale.startsWith('/blog-details/')
+
+    return isFooterRoute || isDynamicRoute
+  }
 
   useEffect(() => {
     i18n.changeLanguage(currentLocale as string)
@@ -44,7 +50,7 @@ const Footer = () => {
 
       {/* Footer Content */}
       <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {routesToShowFooter.some(route => pathname.startsWith(route)) && (
+        {shouldShowFooter(pathname) && (
           <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
             {/* Company Information */}
             <div className='flex flex-col gap-4'>
@@ -59,7 +65,7 @@ const Footer = () => {
               <h3 className='text-lg font-semibold mb-4'>{t('footer.quick_links')}</h3>
               <ul className='flex flex-col gap-2'>
                 <li>
-                  <Link href={`/${currentLocale}/home`} className='text-sm hover:underline'>
+                  <Link href={`/${currentLocale}/`} className='text-sm hover:underline'>
                     {t('footer.home')}
                   </Link>
                 </li>
@@ -71,6 +77,11 @@ const Footer = () => {
                 <li>
                   <Link href={`/${currentLocale}/services`} className='text-sm hover:underline'>
                     {t('footer.services')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${currentLocale}/blogs`} className='text-sm hover:underline'>
+                    {t('footer.blogs')}
                   </Link>
                 </li>
                 <li>
@@ -157,7 +168,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div
-          className={`${routesToShowFooter.some(route => pathname.startsWith(route)) && 'mt-8 pt-8 border-t'} border-gray-600 flex items-center justify-between`}
+          className={`${shouldShowFooter(pathname) && 'mt-8 pt-8 border-t'} border-gray-600 flex items-center justify-between`}
         >
           <p className='text-sm'>{footerSettings?.copyright_text}</p>
           <div className='flex items-center gap-2'>

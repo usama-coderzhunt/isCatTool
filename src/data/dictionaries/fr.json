@@ -127,6 +127,19 @@
     "subscriptions": "Abonnements",
     "transactions": "Transactions",
     "invoices": "Factures",
-    "refunds": "Remboursements"
+    "refunds": "Remboursements",
+    "llmOperators": "Opérateurs de LLM",
+    "projects": "Projets",
+    "istaTranslationAssistant": "Assistant de traduction ISTA",
+    "tasks": "Tâches",
+    "translationMemories": "Memories de traduction",
+    "translationMemoriesEntry": "Entrées",
+    "translationModels": "Modèles de traduction",
+    "termBases": "Bases de termes",
+    "termBaseEntries": "Entrées",
+    "translationSubjects": "Sujets de traduction",
+    "files": "Fichiers",
+    "businessUnits": "Unités commerciales",
+    "languages": "Langues"
   }
 }

@@ -207,13 +207,15 @@
         "warning": "Warning"
     },
     "groupDialog": {
-        "createGroupDialogTitle": "Create New Group",
+        "addGroup": "Add Group",
+        "updateGroup": "Update Group",
         "createGroupDialogFieldLab": "Group Name",
         "createGroupDialogFieldLabRequired": "Group Name is required",
         "createGroupDialogCancel": "Cancel",
         "createGroupDialogCreate": "Create"
     },
     "clientTable": {
+        "note": "Note",
         "name": "Name",
         "fullName": "Full Name",
         "firstName": "First Name",
@@ -233,8 +235,8 @@
         "active": "Active",
         "inactive": "Inactive",
         "allStatus": "All Status",
-        "createClient": "Create Client",
-        "createLead": "Create Lead",
+        "addClient": "Add Client",
+        "addLead": "Add Lead",
         "clients": "Clients",
         "leads": "Leads",
         "promoteToClient": "Promote to Client",
@@ -392,7 +394,23 @@
         "updatePermissions": "Update Permissions",
         "noData": "No permissions found",
         "search": "Search",
-        "permissionsSearchPlaceholder": "Search permissions..."
+        "permissionsSearchPlaceholder": "Search permissions...",
+        "addTranslationModelPermission": "Add Translation Model Permission",
+        "businessUnitAssignToUser": "Business Unit Assign to User",
+        "availablePermissions": "Available Permissions",
+        "assignedPermissions": "Assigned Permissions",
+        "addSelectedPermissions": "Add Selected Permissions",
+        "removeSelectedPermissions": "Remove Selected Permissions",
+        "addModel": "Add Model",
+        "removeModel": "Remove Model",
+        "addModelPermissions": "Add all {{model}} permissions",
+        "removeModelPermissions": "Remove all {{model}} permissions",
+        "addPermissionTooltip": "Add {{name}} permission",
+        "removePermissionTooltip": "Remove {{name}} permission",
+        "noAvailablePermissions": "No available permissions found",
+        "noAssignedPermissions": "No assigned permissions found",
+        "searchAvailablePermissions": "Search available permissions...",
+        "searchAssignedPermissions": "Search assigned permissions..."
     },
     "positionsTable": {
         "search": "Search",
@@ -402,7 +420,7 @@
         "createdAt": "Created At",
         "updatedAt": "Updated At",
         "actions": "Actions",
-        "createPosition": "Create Position",
+        "addPosition": "Add Position",
         "confirmDelete": "Confirm Delete",
         "deleteMessage": "Are you sure you want to delete",
         "updatePosition": "Update Position",
@@ -420,7 +438,7 @@
         "search": "Search",
         "staffSearchPlaceholder": "Search staff...",
         "title": "Staff",
-        "createStaff": "Create Staff",
+        "addStaff": "Add Staff",
         "firstName": "First Name",
         "lastName": "Last Name",
         "email": "Email",
@@ -457,7 +475,7 @@
         "inactive": "Inactive"
     },
     "staffDialog": {
-        "createTitle": "Create New Staff",
+        "addStaff": "Add Staff",
         "updateTitle": "Update Staff Position",
         "username": "Username",
         "middleName": "Middle Name",
@@ -479,10 +497,12 @@
         "contact": "Contact Us",
         "search": "Search",
         "image": "Image",
+        "categories": "Categories",
         "serviceSearchPlaceholder": "Search services...",
         "transServicesTitle": "Services",
         "servicesTitle": "Services",
-        "addNew": "Add New Service",
+        "addNew": "Add Service",
+        "editService": "Update Service",
         "deltransservicebulk": "Delete Services",
         "name": "Name",
         "description": "Description",
@@ -557,7 +577,9 @@
             "createdAt": "Created At",
             "updatedAt": "Updated At",
             "search": "Search",
-            "serviceSearchPlaceholder": "Search by translation type..."
+            "serviceSearchPlaceholder": "Search by translation type...",
+            "inactiveClientEditMessage": "Cannot update services for inactive clients. Please activate the client first to modify their services.",
+            "inactiveClientCreateMessage": "Cannot create services for inactive clients. Please activate the client first to create services."
         },
         "communicationPlatform": "Communication Platform",
         "translationType": "Translation Type",
@@ -574,8 +596,8 @@
         "openServiceDetails": "Open Service Details",
         "servicePlans": {
             "title": "Service Plans",
-            "addNewPlan": "Add New Plan",
-            "editPlan": "Edit Plan",
+            "addPlan": "Add Plan",
+            "updatePlan": "Update Plan",
             "deletePlan": "Delete Plan",
             "getStarted": "Get Started",
             "edit": "Edit",
@@ -636,9 +658,9 @@
     },
     "documents": {
         "title": "Documents",
-        "uploadNew": "Upload New Document",
-        "addNew": "Add New Document",
-        "edit": "Edit Document",
+        "uploadNew": "Add Document",
+        "addNew": "Add Document",
+        "edit": "Update Document",
         "view": "View Document",
         "selectFile": "Select a file to upload",
         "deleteDocuments": "Delete Documents",
@@ -646,6 +668,8 @@
         "documentUpdated": "Document updated successfully",
         "documentDeleted": "Document deleted successfully",
         "documentsBulkDeleted": "Documents deleted successfully",
+        "inactiveClientCreateMessage": "Cannot create documents for inactive clients. Please activate the client first to create documents.",
+        "inactiveClientEditMessage": "Cannot update documents for inactive clients. Please activate the client first to update documents.",
         "deleteConfirmationModal": {
             "title": "Confirm Delete"
         },
@@ -666,8 +690,8 @@
         },
         "types": {
             "title": "Document Types",
-            "create": "Create Document Type",
-            "edit": "Edit Document Type",
+            "add": "Add Document Type",
+            "update": "Update Document Type",
             "name": "Name",
             "created": "Created At",
             "updated": "Updated At",
@@ -776,8 +800,8 @@
             "edit": "Edit",
             "view": "View"
         },
-        "create": "Create Client",
-        "createLead": "Create Lead",
+        "create": " Add Client",
+        "createLead": "Add Lead",
         "delete": "Delete Clients",
         "deleteLead": "Delete Leads",
         "table": {
@@ -790,6 +814,7 @@
             "inactive": "Inactive",
             "allStatus": "All Status",
             "search": "Search",
+            "note": "Note",
             "lawyerClientSearchPlaceholder": "Search lawyer clients...",
             "lawyerLeadSearchPlaceholder": "Search lawyer leads...",
             "confirmDelete": "Confirm Delete",
@@ -825,6 +850,10 @@
             "lawyerLeadStatusUpdatedSuccess": "Lawyer lead status updated successfully"
         },
         "form": {
+            "addClient": "Add Client",
+            "addLead": "Add Lead",
+            "updateClient": "Update Client",
+            "updateLead": "Update Lead",
             "firstName": "First Name",
             "lastName": "Last Name",
             "middleName": "Middle Name",
@@ -835,14 +864,15 @@
             "createNew": "Create {{type}}",
             "update": "Edit {{type}}",
             "lawyer": "Lawyer",
+            "notes": "Notes",
             "updatedSuccess": "updated successfully",
             "createdSuccess": "created successfully"
         }
     },
     "cases": {
         "title": "Cases",
-        "create": "Create Case",
-        "edit": "Edit Case",
+        "addCase": "Add Case",
+        "updateCase": "Update Case",
         "deletebulkcases": "Delete Cases",
         "delete": {
             "title": "Delete Case",
@@ -863,6 +893,8 @@
             "caseOpen": "Open",
             "allStatus": "All Status",
             "open": "Open",
+            "inactiveClientCreateMessage": "Cannot create cases for inactive clients. Please activate the client first to create cases.",
+            "inactiveClientEditMessage": "Cannot update cases for inactive clients. Please activate the client first to update cases.",
             "toasts": {
                 "caseDeletedSuccess": "Case deleted successfully",
                 "caseDeletedBulkSuccess": "Cases deleted successfully",
@@ -877,7 +909,7 @@
             "staff": "Staff",
             "paymentSchedule": "Payment Schedule",
             "summary": "Summary",
-            "createCase": "Create Case",
+            "addCase": "Add Case",
             "updateCase": "Update Case",
             "note": "Note",
             "createDocument": "Create Document",
@@ -902,9 +934,9 @@
             "todo": "Todo",
             "case": "Case",
             "title": "Todo Items",
-            "addNew": "Add New Todo Item",
-            "edit": "Edit Todo Item",
-            "view": "Todo Item Details",
+            "addTodoItem": "Add Todo Item",
+            "updateTodoItem": "Update Todo Item",
+            "viewTodoItem": "View Todo Item",
             "status": "Status",
             "subject": "Subject",
             "dueDate": "Due Date",
@@ -955,15 +987,14 @@
         "addCaseTypeModal": {
             "title": "Add Case Type",
             "update": "Update Case Type",
-            "create": "Create New Case Type",
-            "edit": "Edit Case Type"
+            "add": "Add Case Type"
         },
         "fields": {
             "name": "Name",
             "required": "Name is required"
         },
         "buttons": {
-            "create": "Create Case Type",
+            "add": "Add Case Type",
             "update": "Update Case Type",
             "delete": "Delete Case Types"
         },
@@ -1004,7 +1035,8 @@
             "phoneNumber": "Phone Number",
             "dateOfBirth": "Date of Birth",
             "address": "Address",
-            "country": "Country"
+            "country": "Country",
+            "notes": "Notes"
         },
         "buttons": {
             "create": "Create New Client",
@@ -1057,12 +1089,20 @@
         "updateUsers": "Update Users",
         "noData": "No users found",
         "search": "Search",
-        "groupUsersSearchPlaceholder": "Search group users..."
+        "groupUsersSearchPlaceholder": "Search group users...",
+        "usersNotInGroup": "Users",
+        "usersInGroup": "Users in Group",
+        "addSelectedUsers": "Add Selected Users",
+        "removeSelectedUsers": "Remove Selected Users",
+        "addUser": "Add",
+        "removeUser": "Remove",
+        "addUserTooltip": "Add {{username}} to this group",
+        "removeUserTooltip": "Remove {{username}} from this group"
     },
     "notifications": {
         "title": "Notifications",
         "delNotificationbulk": "Delete Notifications",
-        "createNotification": "Create Notification",
+        "addNotification": "Add Notification",
         "name": "Name",
         "actions": "Actions",
         "createdAt": "Created At",
@@ -1086,8 +1126,8 @@
             }
         },
         "modal": {
-            "create": "Create Notification",
-            "edit": "Edit Notification",
+            "add": "Add Notification",
+            "update": "Update Notification",
             "name": "Name",
             "method": "Method",
             "selectMethod": "Select Method",
@@ -1768,8 +1808,8 @@
     },
     "coupons": {
         "form": {
-            "create": "Create Coupon",
-            "edit": "Edit Coupon",
+            "add": "Add Coupon",
+            "update": "Update Coupon",
             "code": "Code",
             "discount_value": "Discount Value",
             "valid_from": "Valid From",
@@ -1827,7 +1867,7 @@
             "search": "Search",
             "search_placeholder": "Search orders...",
             "no_data": "No orders found",
-            "createOrder": "Create Order",
+            "addOrder": "Add Order",
             "delete_confirm": "Are you sure you want to delete this order?",
             "delete_success": "Order deleted successfully",
             "delete_bulk_success": "Orders deleted successfully",
@@ -1933,7 +1973,7 @@
             }
         },
         "form": {
-            "title": "Create Order",
+            "title": "Add Order",
             "servicePlan": "Service Plan",
             "couponCode": "Coupon Code",
             "billingCycle": "Billing Cycle",
@@ -2092,6 +2132,7 @@
             "referenceId": "Reference ID",
             "amount": "Amount",
             "paymentMethod": "Payment Method",
+            "note": "Notes",
             "status": "Status",
             "createdAt": "Created At",
             "updatedAt": "Updated At",
@@ -2299,6 +2340,7 @@
             "title": "Invoices",
             "invoiceNumber": "Invoice Number",
             "subtotal": "Subtotal",
+            "notes": "Notes",
             "status": "Status",
             "createdAt": "Created At",
             "updatedAt": "Updated At",
@@ -2323,6 +2365,7 @@
             "refundReferenceId": "Refund Reference ID",
             "amount": "Amount",
             "reason": "Reason",
+            "notes": "Notes",
             "status": "Status",
             "createdAt": "Created At",
             "updatedAt": "Updated At",
@@ -2369,11 +2412,539 @@
         "about_us": "About Us",
         "contact": "Contact",
         "services": "Services",
-        "blogs": "Blogs"
+        "blogs": "Blogs",
+        "blog_details": "Blog Details"
     },
     "paymentInstructionsModal": {
         "title": "Payment Instructions",
         "instructions": "Instructions:",
         "additionalDetails": "Additional Details:"
+    },
+    "llmOperators": {
+        "title": "LLM Operators",
+        "add": "Add LLM Operator",
+        "update": "Update LLM Operator",
+        "view": "View LLM Operator",
+        "deleteBulk": "Delete LLM Operators",
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No LLM Operators found"
+        },
+        "addLlmOperatorModal": {
+            "name": "Name",
+            "description": "Description",
+            "metadata": "Metadata"
+        },
+        "toasts": {
+            "llmOperatorCreatedSuccess": "LLM Operator created successfully",
+            "llmOperatorUpdatedSuccess": "LLM Operator updated successfully",
+            "llmOperatorDeletedSuccess": "LLM Operator deleted successfully",
+            "llmOperatorDeletedBulkSuccess": "LLM Operators deleted successfully"
+        },
+        "deleteModal": {
+            "deleteLlmOperator": "Delete LLM Operator",
+            "deleteLlmOperators": "Delete LLM Operators",
+            "deleteLlmOperatorMessage": "Are you sure you want to delete this LLM Operator {{name}}?",
+            "deleteLlmOperatorsMessage": "Are you sure you want to delete these LLM Operators?"
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "projectDetailsTitle": "Project Details",
+        "addBtnText": "Add Project",
+        "bulkDeleteBtnText": "Delete Projects",
+        "table": {
+            "name": "Name",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language",
+            "translationModel": "Translation Model",
+            "translationSubject": "Translation Subject",
+            "status": "Status",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No projects found"
+        },
+        "deleteModal": {
+            "deleteProject": "Delete Project",
+            "deleteProjects": "Delete Projects",
+            "message": "Are you sure you want to delete this project {{name}}?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these projects?"
+        },
+        "addProjectModal": {
+            "add": "Add Project",
+            "update": "Update Project",
+            "name": "Name",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language",
+            "translationModel": "Translation Model",
+            "translationSubject": "Translation Subject"
+        },
+        "toasts": {
+            "projectCreatedSuccess": "Project created successfully",
+            "projectUpdatedSuccess": "Project updated successfully",
+            "projectDeletedSuccess": "Project deleted successfully",
+            "projectDeletedBulkSuccess": "Projects deleted successfully"
+        },
+        "projectDetailsCard": {
+            "noData": "No data found",
+            "name": "Name:",
+            "sourceLanguage": "Source Language:",
+            "targetLanguage": "Target Language:",
+            "translationModel": "Translation Model:",
+            "translationSubject": "Translation Subject:",
+            "status": "Status:",
+            "createdAt": "Created At:",
+            "updatedAt": "Updated At:",
+            "backToProjects": "Back to Projects"
+        }
+    },
+    "tasks": {
+        "title": "Tasks",
+        "detailsPageTitle": "Task Details",
+        "addBtnText": "Add Task",
+        "bulkDeleteBtnText": "Delete Tasks",
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "dueDate": "Due Date",
+            "status": "Status",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No tasks found"
+        },
+        "deleteModal": {
+            "deleteTask": "Delete Task",
+            "deleteTasks": "Delete Tasks",
+            "message": "Are you sure you want to delete this task {{name}}?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these tasks?"
+        },
+        "form": {
+            "add": "Add Task",
+            "update": "Update Task",
+            "name": "Name",
+            "description": "Description",
+            "dueDate": "Due Date",
+            "similarityThreshold": "Similarity Threshold",
+            "isSubtask": "Is Subtask",
+            "isSplit": "Is Split",
+            "customPrompt": "Custom Prompt",
+            "assignedTo": "Assigned To",
+            "parentTask": "Parent Task",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language",
+            "translationModel": "Translation Model",
+            "translationSubject": "Translation Subject",
+            "project": "Project",
+            "numberOfSubtasks": "Number of Subtasks"
+        },
+        "toasts": {
+            "taskCreatedSuccess": "Task created successfully",
+            "taskUpdatedSuccess": "Task updated successfully",
+            "taskDeletedSuccess": "Task deleted successfully",
+            "taskDeletedBulkSuccess": "Tasks deleted successfully"
+        },
+        "detailsCard": {
+            "name": "Name:",
+            "description": "Description:",
+            "createdAt": "Created At:",
+            "updatedAt": "Updated At:",
+            "backToTasks": "Back to Tasks",
+            "status": "Status:",
+            "dueDate": "Due Date:",
+            "noDataFound": "No Task Data Found"
+        },
+        "splitTaskModal": {
+            "splitTask": "Split Task",
+            "numberOfSubtasks": "Number of Subtasks",
+            "cancel": "Cancel"
+        }
+    },
+    "translationMemories": {
+        "title": "Translation Memories",
+        "detailsPageTitle": "Translation Memory Details",
+        "addBtnText": "Add Translation Memory",
+        "bulkDeleteBtnText": "Delete Translation Memories",
+        "exportBtnText": "Export Translation Memory",
+        "importBtnText": "Import Translation Memory",
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No translation memories found"
+        },
+        "form": {
+            "addTitle": "Add Translation Memory",
+            "updateTitle": "Update Translation Memory",
+            "addBtnText": "Add Translation Memory",
+            "updateBtnText": "Update Translation Memory",
+            "name": "Name",
+            "description": "Description",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language"
+        },
+        "toasts": {
+            "translationMemoryCreatedSuccess": "Translation memory created successfully",
+            "translationMemoryUpdatedSuccess": "Translation memory updated successfully",
+            "translationMemoryDeletedSuccess": "Translation memory deleted successfully",
+            "translationMemoryDeletedBulkSuccess": "Translation memories deleted successfully",
+            "translationMemoryImportedSuccess": "Translation memory imported successfully"
+        },
+        "deleteModal": {
+            "deleteTranslationMemory": "Delete Translation Memory",
+            "deleteTranslationMemories": "Delete Translation Memories",
+            "message": "Are you sure you want to delete this translation memory {{name}}?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these translation memories?"
+        },
+        "exportModal": {
+            "title": "Export Translation Memory",
+            "message": "Are you sure you want to export this translation memory?"
+        },
+        "importModal": {
+            "title": "Import Translation Memory",
+            "uploadFile": "Upload a TMX or CSV file to import translation memory.",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language",
+            "cancel": "Cancel",
+            "import": "Import"
+        },
+        "detailsCard": {
+            "name": "Name:",
+            "targetLanguage": "Target Language:",
+            "sourceLanguage": "Source Language:",
+            "updatedAt": "Updated At:",
+            "createdAt": "Created At:",
+            "description": "Description",
+            "backToMainPageBtnText": "Back to Translation Memories",
+            "noDataFound": "No Translation Memory Data Found"
+        }
+    },
+    "translationMemoryEntries": {
+        "title": "Entries",
+        "addBtnText": "Add Entry",
+        "bulkDeleteBtnText": "Delete Entries",
+        "table": {
+            "sourceText": "Source Text",
+            "targetText": "Target Text",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No entries found"
+        },
+        "form": {
+            "addTitle": "Add Entry",
+            "updateTitle": "Update Entry",
+            "addBtnText": "Add Entry",
+            "updateBtnText": "Update Entry",
+            "reference": "Reference",
+            "translationMemory": "Translation Memory",
+            "sourceText": "Source Text",
+            "targetText": "Target Text"
+        },
+        "toasts": {
+            "entryCreatedSuccess": "Entry created successfully",
+            "entryUpdatedSuccess": "Entry updated successfully",
+            "entryDeletedSuccess": "Entry deleted successfully",
+            "entryDeletedBulkSuccess": "Entries deleted successfully"
+        },
+        "deleteModal": {
+            "deleteEntry": "Delete Entry",
+            "deleteEntries": "Delete Entries",
+            "message": "Are you sure you want to delete this entry?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these entries?"
+        }
+    },
+    "translationModels": {
+        "title": "Translation Models",
+        "addBtnText": "Add Translation Model",
+        "bulkDeleteBtnText": "Delete Translation Models",
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No Translation Models data found"
+        },
+        "form": {
+            "add": "Add Translation Model",
+            "edit": "Update Translation Model",
+            "name": "Name",
+            "modelName": "Model Name",
+            "operator": "Operator",
+            "allowedUsers": "Allowed Users",
+            "allowedGroups": "Allowed Groups",
+            "description": "Description"
+        },
+        "toasts": {
+            "translationModelCreatedSuccess": "Translation Model created successfully",
+            "translationModelUpdatedSuccess": "Translation Model updated successfully",
+            "translationModelDeletedSuccess": "Translation Model deleted successfully",
+            "translationModelDeletedBulkSuccess": "Translation Models deleted successfully"
+        },
+        "deleteModal": {
+            "deleteTranslationModel": "Delete Translation Model",
+            "deleteTranslationModels": "Delete Translation Models",
+            "message": "Are you sure you want to delete this Translation Model {{name}}?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these Translation Models?"
+        }
+    },
+    "termBases": {
+        "title": "Term Bases",
+        "detailsPageTitle": "Term Base Details",
+        "addBtnText": "Add Term Base",
+        "bulkDeleteBtnText": "Delete Term Bases",
+        "exportBtnText": "Export Term Base",
+        "importBtnText": "Import Term Base",
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No term bases found"
+        },
+        "form": {
+            "add": "Add Term Base",
+            "edit": "Update Term Base",
+            "name": "Name",
+            "description": "Description",
+            "sourceLanguage": "Source Language",
+            "targetLanguage": "Target Language"
+        },
+        "toasts": {
+            "termBaseCreatedSuccess": "Term Base created successfully",
+            "termBaseUpdatedSuccess": "Term Base updated successfully",
+            "termBaseDeletedSuccess": "Term Base deleted successfully",
+            "termBaseDeletedBulkSuccess": "Term Bases deleted successfully",
+            "termBaseImportedSuccess": "Term Base imported successfully"
+        },
+        "deleteModal": {
+            "deleteTermBase": "Delete Term Base",
+            "deleteTermBases": "Delete Term Bases",
+            "message": "Are you sure you want to delete this term base {{name}}?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these term bases?"
+        },
+        "exportModal": {
+            "title": "Export Term Base",
+            "message": "Are you sure you want to export this term base?"
+        },
+        "importModal": {
+            "title": "Import Term Base",
+            "uploadFile": "Upload a CSV file to import term base.",
+            "cancel": "Cancel",
+            "import": "Import"
+        },
+        "detailsCard": {
+            "name": "Name:",
+            "targetLanguage": "Target Language:",
+            "sourceLanguage": "Source Language:",
+            "updatedAt": "Updated At:",
+            "createdAt": "Created At:",
+            "description": "Description",
+            "backToMainPageBtnText": "Back to Term Bases",
+            "noDataFound": "No Term Base Data Found"
+        }
+    },
+    "termBaseEntries": {
+        "title": "Entries",
+        "addBtnText": "Add Entry",
+        "bulkDeleteBtnText": "Delete Entries",
+        "table": {
+            "originalTerm": "Original Term",
+            "translation": "Translation",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No entries found"
+        },
+        "form": {
+            "add": "Add Entry",
+            "update": "Update Entry",
+            "termBase": "Term Base",
+            "originalTerm": "Original Term",
+            "translation": "Translation"
+        },
+        "toasts": {
+            "entryCreatedSuccess": "Entry created successfully",
+            "entryUpdatedSuccess": "Entry updated successfully",
+            "entryDeletedSuccess": "Entry deleted successfully",
+            "entryDeletedBulkSuccess": "Entries deleted successfully"
+        },
+        "deleteModal": {
+            "deleteEntry": "Delete Entry",
+            "deleteEntries": "Delete Entries",
+            "message": "Are you sure you want to delete this entry?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these entries?"
+        }
+    },
+    "translationSubjects": {
+        "title": "Translation Subjects",
+        "addBtnText": "Add Translation Subject",
+        "bulkDeleteBtnText": "Delete Translation Subjects",
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No translation subjects found"
+        },
+        "form": {
+            "add": "Add Translation Subject",
+            "update": "Update Translation Subject",
+            "name": "Name",
+            "description": "Description"
+        },
+        "toasts": {
+            "translationSubjectCreatedSuccess": "Translation Subject created successfully",
+            "translationSubjectUpdatedSuccess": "Translation Subject updated successfully",
+            "translationSubjectDeletedSuccess": "Translation Subject deleted successfully",
+            "translationSubjectDeletedBulkSuccess": "Translation Subjects deleted successfully"
+        },
+        "deleteModal": {
+            "deleteTranslationSubject": "Delete Translation Subject",
+            "deleteTranslationSubjects": "Delete Translation Subjects",
+            "message": "Are you sure you want to delete this translation subject {{name}}?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these translation subjects?"
+        }
+    },
+    "exportDataConfModal": {
+        "exportBtnText": "Export",
+        "cancelBtnText": "Cancel"
+    },
+    "taskFiles": {
+        "title": "Files",
+        "addBtnText": "Add File",
+        "bulkDeleteBtnText": "Delete Files",
+        "table": {
+            "task": "Task ID",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No files found"
+        },
+        "form": {
+            "add": "Add File",
+            "cancel": "Cancel",
+            "update": "Update File",
+            "uploadFile": "Upload File",
+            "task": "Task"
+        },
+        "toasts": {
+            "fileCreatedSuccess": "File created successfully",
+            "fileUpdatedSuccess": "File updated successfully",
+            "fileDeletedSuccess": "File deleted successfully",
+            "fileDeletedBulkSuccess": "Files deleted successfully",
+            "pleaseSelectFile": "Please select a file to upload"
+        },
+        "deleteModal": {
+            "deleteFile": "Delete File",
+            "deleteFiles": "Delete Files",
+            "message": "Are you sure you want to delete this file?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these files?"
+        }
+    },
+    "translationModelPermissionModal": {
+        "title": "Add Translation Model Permission",
+        "btnText": "Add Permission",
+        "cancel": "Cancel",
+        "translationModel": "Translation Model",
+        "toasts": {
+            "translationModelPermissionAddedSuccess": "Translation Model Permission added successfully",
+            "pleaseSelectTranslationModel": "Please select a translation model"
+        }
+    },
+    "businessUnitAssignToUserModal": {
+        "title": "Business Unit Assign to User",
+        "btnText": "Assign",
+        "cancel": "Cancel",
+        "businessUnit": "Business Unit",
+        "toasts": {
+            "pleaseSelectBusinessUnit": "Please select a business unit"
+        }
+    },
+    "businessUnits": {
+        "title": "Business Units",
+        "addBtnText": "Add Business Unit",
+        "bulkDeleteBtnText": "Delete Business Units",
+        "table": {
+            "name": "Name",
+            "description": "Description",
+            "notes": "Notes",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No business units found"
+        },
+        "form": {
+            "add": "Add Business Unit",
+            "update": "Update Business Unit",
+            "name": "Name",
+            "description": "Description",
+            "notes": "Notes"
+        },
+        "toasts": {
+            "businessUnitCreatedSuccess": "Business Unit created successfully",
+            "businessUnitUpdatedSuccess": "Business Unit updated successfully",
+            "businessUnitDeletedSuccess": "Business Unit deleted successfully",
+            "businessUnitDeletedBulkSuccess": "Business Units deleted successfully"
+        },
+        "deleteModal": {
+            "deleteBusinessUnit": "Delete Business Unit",
+            "deleteBusinessUnits": "Delete Business Units",
+            "message": "Are you sure you want to delete this business unit {{name}}?",
+            "bulkDeleteConfirmationMessage": "Are you sure you want to delete these business units?"
+        },
+        "detailsCard": {
+            "name": "Name:",
+            "description": "Description:",
+            "notes": "Notes:",
+            "caseFlowMaxCases": "Case Flow Max Cases:",
+            "caseFlowMaxActiveUsers": "Case Flow Max Active Users:",
+            "caseFlowMaxActiveClients": "Case Flow Max Active Clients:"
+        }
+    },
+    "languages": {
+        "title": "Languages",
+        "addLanguage": "Add Language",
+        "updateLanguage": "Update Language",
+        "deleteLanguage": "Delete Language",
+        "deleteLanguages": "Delete Languages",
+        "table": {
+            "name": "Name",
+            "code": "Code",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "actions": "Actions",
+            "noData": "No languages found"
+        },
+        "addLanguageModal": {
+            "name": "Name",
+            "code": "Code"
+        },
+        "toasts": {
+            "languageCreatedSuccess": "Language created successfully",
+            "languageUpdatedSuccess": "Language updated successfully",
+            "languageDeletedSuccess": "Language deleted successfully",
+            "languageDeletedBulkSuccess": "Languages deleted successfully"
+        },
+        "deleteModal": {
+            "deleteLanguage": "Delete Language",
+            "deleteLanguages": "Delete Languages",
+            "deleteLanguageMessage": "Are you sure you want to delete this language {{name}}?",
+            "deleteLanguagesMessage": "Are you sure you want to delete these languages?"
+        }
     }
 }

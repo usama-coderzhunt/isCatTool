@@ -21,6 +21,7 @@ interface FileUploaderSingleProps {
   existingFile?: any
   documentName?: string
   isEditMode?: boolean
+  allowedExtensions?: Record<string, string[]>
 }
 
 const FileUploaderSingle: React.FC<FileUploaderSingleProps> = ({
@@ -31,7 +32,8 @@ const FileUploaderSingle: React.FC<FileUploaderSingleProps> = ({
   errorMessage,
   existingFile,
   documentName,
-  isEditMode
+  isEditMode,
+  allowedExtensions
 }) => {
   const { t } = useTranslation()
 
@@ -56,10 +58,14 @@ const FileUploaderSingle: React.FC<FileUploaderSingleProps> = ({
   const { getRootProps, getInputProps } = useDropzone({
     multiple: false,
     maxSize: 20 * 1024 * 1024,
-    accept: {
+    accept: allowedExtensions || {
       'image/*': ['.png', '.jpg', '.jpeg'],
       'application/pdf': ['.pdf'],
-      'application/msword': ['.doc', '.docx']
+      'application/msword': ['.doc', '.docx'],
+      'text/csv': ['.csv'],
+      'text/plain': ['.txt'],
+      'text/xml': ['.tmx'],
+      'text/idml': ['.idml']
     },
     onDrop: acceptedFiles => {
       const newFiles = acceptedFiles.map(file => Object.assign(file))

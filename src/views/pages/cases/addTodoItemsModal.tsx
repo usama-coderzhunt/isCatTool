@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography'
 import MenuItem from '@mui/material/MenuItem'
 
 import type { SubmitHandler } from 'react-hook-form'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 
 import CustomTextField from '@/@core/components/mui/TextField'
 
@@ -58,7 +58,6 @@ const AddTodoItemsModal: React.FC<AddTransServiceModalProps> = ({
   // const { recaptchaToken, setRecaptchaToken } = useRecaptchaStore();
   const [selectedNotifications, setSelectedNotifications] = React.useState<any[]>([])
   const [selectedTodo, setSelectedTodo] = React.useState<any[]>([])
-  console.log('selectedNotifications', selectedNotifications)
 
   // Api Call
   const { useCreateTodoItem, useEditTodoItem, getTodos } = useTodosHooks()
@@ -92,35 +91,35 @@ const AddTodoItemsModal: React.FC<AddTransServiceModalProps> = ({
   })
 
   React.useEffect(() => {
-    if (todoId) {
-      setValue('todo', todoId)
-    }
-
-    if ((mode === 'edit' || mode === 'view') && todoItemData) {
-      setValue('subject', todoItemData.subject)
-      setValue('due_date', todoItemData.due_date)
-      setValue('completed', todoItemData.completed)
-      setValue('description', todoItemData.description)
-      setValue('send_to_google_calendar', todoItemData.send_to_google_calendar)
-      setValue('notification', todoItemData.notification)
-      if (!todoId) {
-        setValue('todo', todoItemData.todo)
+    // Reset form values every time modal opens or todoId/todoItemData changes
+    if (open) {
+      if ((mode === 'edit' || mode === 'view') && todoItemData) {
+        reset({
+          subject: todoItemData.subject,
+          due_date: todoItemData.due_date,
+          completed: todoItemData.completed,
+          description: todoItemData.description,
+          send_to_google_calendar: todoItemData.send_to_google_calendar,
+          notification: todoItemData.notification,
+          todo: todoItemData.todo
+        })
+      } else {
+        reset({
+          subject: '',
+          due_date: null,
+          completed: false,
+          description: null,
+          send_to_google_calendar: 'NO',
+          notification: null,
+          todo: todoId ?? 0
+        })
       }
-    } else if (mode === 'create') {
-      setValue('subject', '')
-      setValue('due_date', null)
-      setValue('description', null)
-      setValue('send_to_google_calendar', 'NO')
-      setValue('notification', null)
-      if (!todoId) {
-        setValue('todo', 0)
-      }
     }
-  }, [todoItemData, mode, setValue, todoId])
+  }, [open, todoId, todoItemData, mode, reset])
 
   React.useEffect(() => {
     const loadNotification = async () => {
-      if (mode === 'edit' && todoItemData?.notification) {
+      if (mode === 'edit' || (mode === 'view' && todoItemData?.notification)) {
         const notification = await fetchNotification(Number(todoItemData?.notification))
         setSelectedNotifications(notification ? [notification] : [])
       } else {
@@ -161,6 +160,14 @@ const AddTodoItemsModal: React.FC<AddTransServiceModalProps> = ({
 
     if (hasError) {
       return
+    }
+
+    // --- Ensure notification and todo are always numbers, not arrays ---
+    if (Array.isArray(data.notification)) {
+      data.notification = data.notification[0] ?? null
+    }
+    if (Array.isArray(data.todo)) {
+      data.todo = data.todo[0] ?? 0
     }
 
     if (mode === 'create') {
@@ -277,21 +284,29 @@ const AddTodoItemsModal: React.FC<AddTransServiceModalProps> = ({
 
               {/* Notification */}
               <div className='col-span-6'>
-                <SearchableMultiSelect<TodoItem>
-                  options={getNotifications}
+                <Controller
                   name='notification'
-                  returnAsArray={false}
-                  returnAsString={false}
-                  register={register}
-                  setValue={setValue}
-                  fieldError={errors.notification}
-                  labelKey='name'
-                  value={watch('notification') || []}
-                  className='w-full'
-                  label={t('cases.todo.notification')}
-                  multiple={false}
-                  disabled={mode === 'view'}
-                  selectedOptionsList={mode === 'edit' ? selectedNotifications : undefined}
+                  control={control}
+                  render={({ field }) => (
+                    <SearchableMultiSelect<TodoItem>
+                      {...field}
+                      options={getNotifications}
+                      labelKey='name'
+                      value={field.value ?? undefined}
+                      multiple={false}
+                      disabled={mode === 'view'}
+                      selectedOptionsList={mode === 'edit' || mode === 'view' ? selectedNotifications : undefined}
+                      label={t('cases.todo.notification')}
+                      className='w-full'
+                      fieldError={errors.notification}
+                      onChange={value => {
+                        const numericValue = Array.isArray(value) ? value[0] : value
+                        field.onChange(numericValue)
+                        if (numericValue !== null && typeof numericValue === 'number' && numericValue > 0)
+                          clearErrors('notification')
+                      }}
+                    />
+                  )}
                 />
               </div>
 
@@ -324,29 +339,30 @@ const AddTodoItemsModal: React.FC<AddTransServiceModalProps> = ({
 
               {!todoId && (
                 <div className='col-span-6'>
-                  <SearchableMultiSelect<TodoItem>
-                    options={getTodos}
+                  <Controller
                     name='todo'
-                    returnAsArray={false}
-                    returnAsString={false}
-                    register={register}
-                    setValue={setValue}
-                    fieldError={errors.todo}
-                    labelKey='name'
-                    value={watch('todo') || 0}
-                    className='w-full'
-                    label={t('cases.todo.todo')}
-                    multiple={false}
-                    showAsterisk={true}
-                    disabled={mode === 'view'}
-                    selectedOptionsList={mode === 'edit' ? selectedTodo : undefined}
-                    onChange={value => {
-                      const numericValue = value ? Number(value) : 0
-                      setValue('todo', numericValue)
-                      if (numericValue > 0) {
-                        clearErrors('todo')
-                      }
-                    }}
+                    control={control}
+                    render={({ field }) => (
+                      <SearchableMultiSelect<TodoItem>
+                        {...field}
+                        options={getTodos}
+                        labelKey='name'
+                        value={field.value ?? 0}
+                        multiple={false}
+                        showAsterisk={true}
+                        disabled={mode === 'view'}
+                        selectedOptionsList={mode === 'edit' ? selectedTodo : undefined}
+                        label={t('cases.todo.todo')}
+                        className='w-full'
+                        fieldError={errors.todo}
+                        onChange={value => {
+                          const numericValue = Array.isArray(value) ? value[0] : value
+                          field.onChange(numericValue)
+                          if (numericValue !== null && typeof numericValue === 'number' && numericValue > 0)
+                            clearErrors('todo')
+                        }}
+                      />
+                    )}
                   />
                 </div>
               )}
@@ -389,7 +405,7 @@ const AddTodoItemsModal: React.FC<AddTransServiceModalProps> = ({
                     padding: '0.5rem 1rem'
                   }}
                 >
-                  {mode === 'create' ? t('cases.todo.createNew') : t('cases.todo.update')}
+                  {mode === 'create' ? t('cases.todo.addTodoItem') : t('cases.todo.updateTodoItem')}
                 </Button>
               </div>
             )}

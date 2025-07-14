@@ -103,7 +103,7 @@ const AddDocTypesModal = ({ open, handleClose, title, mode, docTypeData }: AddDo
         <Box sx={{ ...modalStyles, width: 450 }}>
           <div className='flex gap-x-2 justify-between items-center mb-6'>
             <Typography variant='h4'>
-              {mode === 'create' ? t('documents.types.create') : t('documents.types.edit')}
+              {mode === 'create' ? t('documents.types.add') : t('documents.types.update')}
             </Typography>
             <Button
               onClick={handleCloseModal}
@@ -151,7 +151,7 @@ const AddDocTypesModal = ({ open, handleClose, title, mode, docTypeData }: AddDo
                   type='submit'
                   // disabled={process.env.NEXT_PUBLIC_ENV === 'development' ? false : !recaptchaToken}
                 >
-                  {mode === 'create' ? t('documents.types.create') : t('documents.types.edit')}
+                  {mode === 'create' ? t('documents.types.add') : t('documents.types.update')}
                 </Button>
               </div>
             </form>

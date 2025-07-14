@@ -10,7 +10,7 @@ import { usePathname, useParams } from 'next/navigation'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import MenuItem from '@mui/material/MenuItem'
-import { Button, Chip, IconButton, Switch, useColorScheme } from '@mui/material'
+import { Button, Chip, IconButton, Switch, Tooltip, useColorScheme } from '@mui/material'
 
 // Material React Table Import
 import { MaterialReactTable, MRT_SortingState, MRT_ColumnDef, MRT_Cell, MRT_Row } from 'material-react-table'
@@ -77,6 +77,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -142,6 +143,13 @@ const LawyerClientTable: FC<LawyerClientTableProps> = ({
     if (lawyerClientId === null) return
     deleteLawyerClient.mutate(lawyerClientId, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(`${pathName?.includes('/lawyer-clients') ? 'Client' : 'Lead'} deleted successfully`)
         setData(prevData => prevData?.filter(lawyerClient => lawyerClient.id !== lawyerClientId))
         setOpen(false)
@@ -213,9 +221,9 @@ const LawyerClientTable: FC<LawyerClientTableProps> = ({
       { id: lawyerClientId, is_active: newStatus },
       {
         onSuccess: () => {
-          toast.success(`${pendingStatusChange?.userName}'s status changed to ${newStatus ? 'Active' : 'Inactive'}`)
           setStatusModalOpen(false)
           setPendingStatusChange(null)
+          toast.success(`${pendingStatusChange?.userName}'s status changed to ${newStatus ? 'Active' : 'Inactive'}`)
         }
       }
     )
@@ -259,6 +267,18 @@ const LawyerClientTable: FC<LawyerClientTableProps> = ({
             {getDisplayValue(cell.getValue())}
           </Typography>
         )
+      },
+      {
+        accessorKey: 'notes',
+        header: t('lawyerClients.table.note'),
+        Cell: ({ cell }: { cell: MRT_Cell<LawyerClientTypes> }) => {
+          const notes = getDisplayValue(cell.getValue())
+          return (
+            <Tooltip title={notes} arrow>
+              <Typography className='truncate max-w-[200px] w-full'>{notes}</Typography>
+            </Tooltip>
+          )
+        }
       },
       {
         accessorKey: 'is_active',
@@ -423,15 +443,7 @@ const LawyerClientTable: FC<LawyerClientTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={
-                  pathName?.includes('/lawyer-clients')
-                    ? t('lawyerClients.table.search')
-                    : t('lawyerClients.table.search')
-                }
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <CustomTextField
                 select
                 id='select-status'
@@ -490,8 +502,8 @@ const LawyerClientTable: FC<LawyerClientTableProps> = ({
         handleClose={setShowViewModal}
         title={
           pathName?.includes('/lawyer-clients')
-            ? t(`lawyerClients.modes.${mode}`) + '  ' + t('lawyerClients.title')
-            : t(`lawyerClients.modes.${mode}`) + '  ' + t('lawyerClients.leads')
+            ? t(`${mode === 'create' ? 'lawyerClients.form.addClient' : 'lawyerClients.form.updateClient'}`)
+            : t(`${mode === 'create' ? 'lawyerClients.form.addLead' : 'lawyerClients.form.updateLead'}`)
         }
         mode={mode}
         lawyerClientData={mode === 'edit' ? selectedData : null}
@@ -516,6 +528,7 @@ const LawyerClientTable: FC<LawyerClientTableProps> = ({
           setStatusModalOpen(false)
           setPendingStatusChange(null)
         }}
+        isShowAddNotesField={false}
         handleStatusChange={handleStatusConfirm}
         title={t('lawyerClients.table.confirmStatusChange')}
         userName={pendingStatusChange?.userName || ''}
@@ -533,6 +546,7 @@ const LawyerClientTable: FC<LawyerClientTableProps> = ({
           setPromotionModalOpen(false)
           setPendingPromotion(null)
         }}
+        isShowAddNotesField={false}
         handleStatusChange={handlePromotionConfirm}
         title={t('lawyerClients.table.promoteToClient')}
         userName={pendingPromotion?.userName || ''}

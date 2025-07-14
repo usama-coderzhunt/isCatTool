@@ -23,6 +23,7 @@ import { getSystemMode } from '@core/utils/serverHelpers'
 // Style Imports
 import '@/app/globals.css'
 import { TitleUpdater } from '@/components/TitleUpdater'
+import SetLanguageCookie from '@/components/SetLanguageCookie'
 
 // Generated Icon CSS Imports
 // import '@assets/iconify-icons/generated-icons.css'
@@ -35,6 +36,7 @@ const Layout = async ({ children, params }: ChildrenType & { params: Promise<{ l
 
   return (
     <>
+      <SetLanguageCookie lang={resolvedParams.lang} />
       <InitColorSchemeScript attribute='data' defaultMode={systemMode} />
       <Providers direction={direction}>
         <BlankLayout systemMode={systemMode}>

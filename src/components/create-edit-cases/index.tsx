@@ -178,7 +178,7 @@ const AddCasesModal: React.FC<AddCasesModalProps> = ({
         <Box sx={modalStyles}>
           <div className='flex gap-x-2 justify-between items-center mb-6'>
             <Typography variant='h4'>
-              {mode === 'create' ? t('cases.form.createCase') : t('cases.form.updateCase')}
+              {mode === 'create' ? t('cases.form.addCase') : t('cases.form.updateCase')}
             </Typography>
             <Button
               onClick={handleCloseModal}
@@ -244,7 +244,7 @@ const AddCasesModal: React.FC<AddCasesModalProps> = ({
                 <div className='col-span-6'>
                   <SearchableMultiSelect<CaseTypes>
                     options={(pageSize, page, search) =>
-                      getLawyerClients(pageSize, page, search, undefined, undefined, true)
+                      getLawyerClients(pageSize, page, search, 'client', undefined, true)
                     }
                     name='clients'
                     returnAsArray={true}
@@ -259,6 +259,7 @@ const AddCasesModal: React.FC<AddCasesModalProps> = ({
                     multiple={true}
                     selectedOptionsList={mode === 'edit' ? selectedCaseClients : undefined}
                     showAsterisk={true}
+                    showStatusBadge={true}
                   />
                 </div>
               )}
@@ -340,7 +341,7 @@ const AddCasesModal: React.FC<AddCasesModalProps> = ({
                   }}
                   type='submit'
                 >
-                  {mode === 'create' ? t('cases.form.createCase') : t('cases.form.updateCase')}
+                  {mode === 'create' ? t('cases.form.addCase') : t('cases.form.updateCase')}
                 </Button>
               </div>
             )}

@@ -59,6 +59,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -137,6 +138,13 @@ const CaseTypeTable: FC<CaseTypeTableProps> = ({
     if (!selectedCaseType) return
     deleteCaseTypeMutation.mutate(undefined, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(t('caseTypes.toastMessages.deleted'))
         handleCloseDeleteModal()
       }
@@ -229,7 +237,7 @@ const CaseTypeTable: FC<CaseTypeTableProps> = ({
               }}
               sx={{ padding: '0.5rem 1rem' }}
             >
-              {t('caseTypes.buttons.create')}
+              {t('caseTypes.buttons.add')}
             </Button>
           )}
         </div>
@@ -268,18 +276,13 @@ const CaseTypeTable: FC<CaseTypeTableProps> = ({
             noRecordsToDisplay: t('caseTypes.table.noData'),
             rowsPerPage: t('table.rowsPerPage'),
             of: t('table.of')
-            // search: t('documents.types.search')
           }}
           onColumnVisibilityChange={updateColumnVisibility}
           onDensityChange={updateDensity}
           onIsFullScreenChange={updateFullScreen}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('caseTypes.table.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportCaseTypesToCSV(caseTypeData)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>

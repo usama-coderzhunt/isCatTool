@@ -52,7 +52,13 @@ const DebouncedInput = ({
   }, [value, onChange])
 
   return (
-    <CustomTextField label={t('staffTable.search')} {...props} value={value} onChange={e => setValue(e.target.value)} />
+    <CustomTextField
+      label={t('staffTable.search')}
+      {...props}
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
+    />
   )
 }
 
@@ -119,11 +125,7 @@ const StaffTable: FC<StaffTableProps> = ({
         onIsFullScreenChange={updateFullScreen}
         renderTopToolbarCustomActions={() => (
           <div className='flex items-center gap-3'>
-            <DebouncedInput
-              value={globalFilter ?? ''}
-              onChange={value => setGlobalFilter(String(value))}
-              placeholder={t('staffTable.search')}
-            />
+            <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
             <IconButton onClick={() => exportStaffToCSV(rows)} title={t('table.export')}>
               <i className='tabler-file-download text-[28px] cursor-pointer' />
             </IconButton>

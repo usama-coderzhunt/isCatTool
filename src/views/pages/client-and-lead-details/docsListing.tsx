@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
-import { Button, Typography } from '@mui/material'
+import { Button, Tooltip, Typography } from '@mui/material'
 
 import DocsTable from './docsTable'
 import AddDocsModal from './addDocsModal'
@@ -12,12 +12,13 @@ import { CreateDocumentInput } from '@/types/documentTypes'
 
 const DocsListing = ({
   userPermissions,
-  selectedClientData
+  selectedClientData,
+  isClientActive
 }: {
   userPermissions: { codename: string }[]
   selectedClientData: any
+  isClientActive?: boolean
 }) => {
-  console.log('>>selectedClientData', selectedClientData)
   const { t } = useTranslation('global')
   const pathname = usePathname()
   // State to control the modal visibility
@@ -89,11 +90,28 @@ const DocsListing = ({
                   </Button>
                 ) : undefined}
                 {hasPermissions(userPermissions, ['add_document']) && (
-                  <div>
-                    <Button variant='contained' color='primary' className='shadow-2xl' onClick={handleOpen}>
-                      {t('documents.uploadNew')}
-                    </Button>
-                  </div>
+                  <Tooltip
+                    title={!isClientActive ? t('documents.inactiveClientCreateMessage') : ''}
+                    placement='top'
+                    arrow
+                    slotProps={{
+                      tooltip: {
+                        className: '!bg-backgroundPaper !text-textPrimary !text-center'
+                      }
+                    }}
+                  >
+                    <span>
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        className='shadow-2xl'
+                        onClick={handleOpen}
+                        disabled={!isClientActive}
+                      >
+                        {t('documents.uploadNew')}
+                      </Button>
+                    </span>
+                  </Tooltip>
                 )}
               </div>
             </div>

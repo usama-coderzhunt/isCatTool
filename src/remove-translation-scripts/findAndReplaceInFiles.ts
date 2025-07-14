@@ -77,27 +77,27 @@ async function replacePatternInFile(filePath: string) {
   }
 }
 
-async function updateNextConfig() {
-  const filePath = 'next.config.ts'
+// async function updateNextConfig() {
+//   const filePath = 'next.config.ts'
 
-  const content = await fs.readFile(filePath, 'utf8')
+//   const content = await fs.readFile(filePath, 'utf8')
 
-  // Define a pattern that matches the redirects configuration and remove it
-  const redirectsPattern = /(return \[[\s\S]*?\]\s*)/
+//   // Define a pattern that matches the redirects configuration and remove it
+//   const redirectsPattern = /(return \[[\s\S]*?\]\s*)/
 
-  const redirect = `return [{
-    source: '/',
-    destination: '/home',
-    permanent: true
-  }]`
+//   const redirect = `return [{
+//     source: '/',
+//     destination: '/home',
+//     permanent: true
+//   }]`
 
-  const updatedContent = content.replace(redirectsPattern, redirect)
+//   const updatedContent = content.replace(redirectsPattern, redirect)
 
-  if (content !== updatedContent) {
-    await fs.writeFile(filePath, updatedContent, 'utf8')
-    consola.success('Removed redirects from next.config.ts\n')
-  }
-}
+//   if (content !== updatedContent) {
+//     await fs.writeFile(filePath, updatedContent, 'utf8')
+//     consola.success('Removed redirects from next.config.ts\n')
+//   }
+// }
 
 export const findAndReplaceInFiles = async () => {
   const paths = await globby(['src/**/*.{tsx,ts}', '!src/remove-translation-scripts/**/*'])
@@ -110,7 +110,7 @@ export const findAndReplaceInFiles = async () => {
 
   consola.success('Replaced pattern successfully\n')
 
-  await updateNextConfig()
+  // await updateNextConfig()
 
   consola.success('Replaced various patterns in whole project successfully.\n')
 }

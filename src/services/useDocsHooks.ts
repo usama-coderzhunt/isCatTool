@@ -100,7 +100,9 @@ export const useDocsHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['docs'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['docs'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         toast.error(error.response?.data?.message || 'Failed to delete case')
@@ -256,7 +258,9 @@ export const useDocsHooks = () => {
           requiredPermission: 'delete_documenttype'
         } as any),
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['docsType'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['docsType'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'

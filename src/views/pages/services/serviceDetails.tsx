@@ -1,17 +1,28 @@
 import { useTranslation } from 'next-i18next'
 import Image from 'next/image'
-import { Button, Card, Typography } from '@mui/material'
+import { Button, Card, Typography, Chip } from '@mui/material'
 
 import CircularLoader from '@/components/CircularLoader'
 import { ServiceTypes } from '@/types/services'
 import { getDisplayDateTime } from '@/utils/utility/displayValue'
+
+// Extended interface to include categories_detail
+interface ServiceCategory {
+  id: number
+  name: string
+  slug: string
+}
+
+interface ExtendedServiceTypes extends ServiceTypes {
+  categories_detail?: ServiceCategory[]
+}
 
 const ServiceDetails = ({
   serviceDetails,
   isLoading,
   handleBtnClick
 }: {
-  serviceDetails: ServiceTypes
+  serviceDetails: ExtendedServiceTypes
   isLoading: boolean
   handleBtnClick: any
 }) => {
@@ -48,6 +59,34 @@ const ServiceDetails = ({
                 {serviceDetails.name}
               </Typography>
 
+              {/* Categories */}
+              {serviceDetails.categories_detail && serviceDetails.categories_detail.length > 0 && (
+                <div className='mb-6'>
+                  <Typography variant='body2' className='font-medium mb-2'>
+                    {t('services.categories')}
+                  </Typography>
+                  <div className='flex flex-wrap gap-2'>
+                    {serviceDetails.categories_detail.map(category => (
+                      <Chip
+                        key={category.id}
+                        label={category.name}
+                        variant='filled'
+                        color='default'
+                        size='small'
+                        className='text-xs'
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/*  Additional Info */}
+              <Typography variant='h6' className='mb-6'>
+                {serviceDetails.additional_info?.additional_information
+                  ? serviceDetails.additional_info?.additional_information.replace(/<[^>]*>/g, '')
+                  : '-'}
+              </Typography>
+
               {/* Short Description */}
               <Typography variant='h6' className='mb-6'>
                 {serviceDetails.short_description ? serviceDetails.short_description.replace(/<[^>]*>/g, '') : '-'}
@@ -78,8 +117,13 @@ const ServiceDetails = ({
 
               {/* Back Button */}
               <div className='w-full flex items-center justify-start'>
-                <Button onClick={handleBtnClick} variant='contained' color='primary' className='shadow-lg px-6 py-2'>
-                  {t('services.backToServices')}
+                <Button
+                  onClick={handleBtnClick}
+                  variant='outlined'
+                  color='inherit'
+                  className='min-w-fit inline-flex items-center justify-center p-2 rounded-full'
+                >
+                  <i className='tabler-arrow-left'></i>
                 </Button>
               </div>
             </div>

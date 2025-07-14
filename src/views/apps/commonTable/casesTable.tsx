@@ -1,7 +1,7 @@
 'use client'
 
 import { Dispatch, FC, SetStateAction, useEffect, useMemo, useState } from 'react'
-import { Button, Chip, IconButton, MenuItem, Switch, Typography, useColorScheme } from '@mui/material'
+import { Button, Chip, IconButton, MenuItem, Switch, Tooltip, Typography, useColorScheme } from '@mui/material'
 import { MaterialReactTable, MRT_Cell, MRT_ColumnDef, MRT_Row, MRT_SortingState } from 'material-react-table'
 import DeleteConfModal from '@/components/deleteConfirmationModal'
 import { getDisplayDateTime, getDisplayValue } from '@/utils/utility/displayValue'
@@ -13,7 +13,7 @@ import CustomTextField from '@/@core/components/mui/TextField'
 import { InvoiceType } from '@/types/apps/invoiceTypes'
 import CaseDetailsCard from '@/views/pages/cases/caseDetailsCard'
 import { useTranslation } from 'react-i18next'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import { hasPermissions } from '@/utils/permissionUtils'
 import { useAuthStore } from '@/store/useAuthStore'
 import { useTableState } from '@/hooks/useTableState'
@@ -33,6 +33,7 @@ interface CasesTableProps {
   clientId?: number
   setCaseStatus: Dispatch<SetStateAction<string | null>>
   caseStatus: string | null
+  isClientActive?: boolean
 }
 
 const DebouncedInput = ({
@@ -65,6 +66,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -81,10 +83,12 @@ const CasesTable: FC<CasesTableProps> = ({
   setSorting,
   clientId,
   setCaseStatus,
-  caseStatus
+  caseStatus,
+  isClientActive
 }) => {
   const { t, i18n } = useTranslation('global')
   const router = useRouter()
+  const pathname = usePathname()
   const params = useParams() as { lang: string }
   const { lang: currentLocale } = params
   const userPermissions = useAuthStore(state => state.userPermissions)
@@ -131,6 +135,13 @@ const CasesTable: FC<CasesTableProps> = ({
     if (caseId === null) return
     deleteCase(caseId, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(t('cases.table.toasts.caseDeletedSuccess'))
         setData(prevData => prevData?.filter(delCaseId => delCaseId.id !== caseId))
         setIsDelModalOpen(false)
@@ -174,9 +185,9 @@ const CasesTable: FC<CasesTableProps> = ({
       { id: caseId, closed: newStatus },
       {
         onSuccess: () => {
-          toast.success(t('cases.table.toasts.caseStatusUpdatedSuccess'))
           setCaseStatusChangeModalOpen(false)
           setCaseStatusChange(null)
+          toast.success(t('cases.table.toasts.caseStatusUpdatedSuccess'))
         }
       }
     )
@@ -333,19 +344,47 @@ const CasesTable: FC<CasesTableProps> = ({
           ) : (
             <></>
           )}
-          {hasPermissions(userPermissions, ['add_case']) && (
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={() => {
-                setOpenAddCasesModal(true)
-                setMode('create')
-              }}
-              sx={{ padding: '0.5rem 1rem' }}
-            >
-              {t('cases.create')}
-            </Button>
-          )}
+          {pathname?.includes('/apps/cases')
+            ? hasPermissions(userPermissions, ['add_case']) && (
+                <Button
+                  variant='contained'
+                  color='primary'
+                  onClick={() => {
+                    setOpenAddCasesModal(true)
+                    setMode('create')
+                  }}
+                  sx={{ padding: '0.5rem 1rem' }}
+                >
+                  {t('cases.addCase')}
+                </Button>
+              )
+            : hasPermissions(userPermissions, ['add_case']) && (
+                <Tooltip
+                  title={!isClientActive ? t('cases.table.inactiveClientCreateMessage') : ''}
+                  placement='top'
+                  arrow
+                  slotProps={{
+                    tooltip: {
+                      className: '!bg-backgroundPaper !text-textPrimary !text-center'
+                    }
+                  }}
+                >
+                  <span>
+                    <Button
+                      variant='contained'
+                      color='primary'
+                      disabled={!isClientActive}
+                      onClick={() => {
+                        setOpenAddCasesModal(true)
+                        setMode('create')
+                      }}
+                      sx={{ padding: '0.5rem 1rem' }}
+                    >
+                      {t('cases.addCase')}
+                    </Button>
+                  </span>
+                </Tooltip>
+              )}
         </div>
       </div>
       <div className={`w-full ${themeMode === 'light' ? 'customColor' : ''}`}>
@@ -381,11 +420,7 @@ const CasesTable: FC<CasesTableProps> = ({
           onSortingChange={setSorting}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('cases.table.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <CustomTextField
                 select
                 id='select-status'
@@ -454,6 +489,7 @@ const CasesTable: FC<CasesTableProps> = ({
           setCaseStatusChangeModalOpen(false)
           setCaseStatusChange(null)
         }}
+        isShowAddNotesField={false}
         handleStatusChange={handleCaseStatusConfirm}
         title={t('clientTable.confirmStatusChange')}
         userName={caseStatusChange?.userName || ''}

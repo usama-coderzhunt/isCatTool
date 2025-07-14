@@ -62,6 +62,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -286,11 +287,7 @@ const SubscriptionsTable: FC<SubscriptionsTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('subscriptions.table.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportSubscriptionsToCSV(subscriptionsData)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>

@@ -1,7 +1,7 @@
 'use client'
 
 import { Dispatch, FC, ReactElement, SetStateAction, useEffect, useMemo, useState } from 'react'
-import { Chip, IconButton, Typography, useColorScheme } from '@mui/material'
+import { Chip, IconButton, Tooltip, Typography, useColorScheme } from '@mui/material'
 import { MaterialReactTable, MRT_Cell, MRT_ColumnDef, MRT_Row, MRT_SortingState } from 'material-react-table'
 import { getDisplayDateTime, getDisplayValue } from '@/utils/utility/displayValue'
 import CustomTextField from '@/@core/components/mui/TextField'
@@ -65,6 +65,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -228,8 +229,8 @@ const TransactionsTable: FC<TransactionsTableProps> = ({
 
   const { tableState, updateColumnVisibility, updateDensity, updateFullScreen } = useTableState('transactions')
 
-  const columns = useMemo<MRT_ColumnDef<TransactionsTypes, any>[]>(
-    () => [
+  const columns = useMemo<MRT_ColumnDef<TransactionsTypes, any>[]>(() => {
+    const baseColumns: MRT_ColumnDef<TransactionsTypes, any>[] = [
       {
         accessorKey: 'reference_id',
         header: t('transactions.table.referenceId'),
@@ -336,9 +337,26 @@ const TransactionsTable: FC<TransactionsTableProps> = ({
           )
         }
       }
-    ],
-    [t, userPermissions]
-  )
+    ]
+
+    // Only show notes column for admin or super user
+    if (isSuperUser || userRole === 'Admin') {
+      baseColumns.splice(4, 0, {
+        accessorKey: 'notes',
+        header: t('transactions.table.note'),
+        Cell: ({ cell }: { cell: MRT_Cell<TransactionsTypes> }) => {
+          const notes = getDisplayValue(cell.getValue())
+          return (
+            <Tooltip title={notes} arrow>
+              <Typography className='truncate max-w-[200px] w-full'>{notes}</Typography>
+            </Tooltip>
+          )
+        }
+      })
+    }
+
+    return baseColumns
+  }, [t, userPermissions, isSuperUser, userRole])
 
   const handleImagePreview = (imageUrl: string) => {
     setSelectedImageUrl(imageUrl)
@@ -390,11 +408,7 @@ const TransactionsTable: FC<TransactionsTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('transactions.table.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportTransactionsToCSV(transactionsData)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>

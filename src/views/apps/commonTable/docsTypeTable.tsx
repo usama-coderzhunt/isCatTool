@@ -59,6 +59,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -135,6 +136,13 @@ const DocsTypeTable: FC<CasesTableProps> = ({
     if (!selectedDocType) return
     deleteDocTypeMutation.mutate(undefined, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(t('documents.types.documentTypeDeleted'))
         handleCloseDeleteModal()
       }
@@ -227,7 +235,7 @@ const DocsTypeTable: FC<CasesTableProps> = ({
               }}
               sx={{ padding: '0.5rem 1rem' }}
             >
-              {t('documents.types.create')}
+              {t('documents.types.add')}
             </Button>
           )}
         </div>
@@ -274,11 +282,7 @@ const DocsTypeTable: FC<CasesTableProps> = ({
           onIsFullScreenChange={updateFullScreen}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('documents.types.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportDocumentTypesToCSV(docsTypeData)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>
@@ -311,7 +315,7 @@ const DocsTypeTable: FC<CasesTableProps> = ({
       <AddDocTypesModal
         open={openAddModal}
         handleClose={handleCloseAddModal}
-        title={mode === 'create' ? t('documents.types.create') : t('documents.types.edit')}
+        title={mode === 'create' ? t('documents.types.add') : t('documents.types.update')}
         mode={mode}
         docTypeData={selectedDocType}
       />

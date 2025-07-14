@@ -137,7 +137,7 @@ const CaseTodoItemsListing = ({ caseId, isFilterEnabled }: { caseId?: number; is
 
             {hasPermissions(userPermissions, ['add_todoitem']) && (
               <Button variant='contained' color='primary' className='shadow-2xl' onClick={() => handleOpen('create')}>
-                {t('cases.todo.addNew')}
+                {t('cases.todo.addTodoItem')}
               </Button>
             )}
           </div>
@@ -248,10 +248,10 @@ const CaseTodoItemsListing = ({ caseId, isFilterEnabled }: { caseId?: number; is
         mode={modalMode}
         title={
           modalMode === 'create'
-            ? t('cases.todo.addNew')
+            ? t('cases.todo.addTodoItem')
             : modalMode === 'edit'
-              ? t('cases.todo.edit')
-              : t('cases.todo.view')
+              ? t('cases.todo.updateTodoItem')
+              : t('cases.todo.viewTodoItem')
         }
         todoId={todoIdInitial}
       />

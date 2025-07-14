@@ -66,6 +66,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -135,7 +136,7 @@ const OrdersTable: FC<OrdersTableProps> = ({
       {
         id: selectedOrder.id,
         status: 'cancelled',
-        notes: isSuperUser === false && userRole !== 'Admin' ? t('orders.toasts.orderCancelledByUser') : activeNote
+        notes: isSuperUser === false && userRole !== 'Admin' ? 'Order cancelled by user' : activeNote
       },
       {
         onSuccess: () => {
@@ -162,7 +163,7 @@ const OrdersTable: FC<OrdersTableProps> = ({
       {
         id: selectedOrder.id,
         status: 'completed',
-        notes: isSuperUser === false && userRole !== 'Admin' ? t('orders.toasts.orderCancelledByUser') : activeNote
+        notes: activeNote
       },
       {
         onSuccess: () => {
@@ -222,8 +223,8 @@ const OrdersTable: FC<OrdersTableProps> = ({
   }
   const { tableState, updateColumnVisibility, updateDensity, updateFullScreen } = useTableState('coupons')
 
-  const columns = useMemo<MRT_ColumnDef<OrdersTypes, any>[]>(
-    () => [
+  const columns = useMemo<MRT_ColumnDef<OrdersTypes, any>[]>(() => {
+    const baseColumns: MRT_ColumnDef<OrdersTypes, any>[] = [
       {
         accessorKey: 'order_number',
         header: t('orders.table.order_number'),
@@ -270,15 +271,6 @@ const OrdersTable: FC<OrdersTableProps> = ({
         )
       },
       {
-        accessorKey: 'notes',
-        header: t('orders.table.notes'),
-        Cell: ({ cell }: { cell: MRT_Cell<OrdersTypes> }) => (
-          <Typography className='font-medium max-w-[200px] w-full truncate' color='text.primary'>
-            {getDisplayValue(cell.getValue())}
-          </Typography>
-        )
-      },
-      {
         accessorKey: 'provider',
         header: t('orders.table.provider'),
         Cell: ({ cell }: { cell: MRT_Cell<OrdersTypes> }) => (
@@ -287,7 +279,6 @@ const OrdersTable: FC<OrdersTableProps> = ({
           </Typography>
         )
       },
-
       {
         accessorKey: 'created_at',
         header: t('orders.table.created_at'),
@@ -305,43 +296,61 @@ const OrdersTable: FC<OrdersTableProps> = ({
             {getDisplayDateTime(cell.getValue())}
           </Typography>
         )
-      },
-      {
-        id: 'actions',
-        header: t('table.actions'),
-        Cell: ({ row }: { row: MRT_Row<OrdersTypes> }) => (
-          <div className='flex items-center gap-2'>
-            {row.original.status === 'pending' && (
-              <IconButton color='primary' onClick={() => handleCancelClick(row.original)} size='small'>
-                <i className='tabler-edit text-textSecondary' />
-              </IconButton>
-            )}
-            {hasPermissions(userPermissions, ['change_order']) && row.original.status === 'pending' && (
+      }
+    ]
+    if (isSuperUser || userRole === 'Admin') {
+      baseColumns.splice(4, 0, {
+        accessorKey: 'notes',
+        header: t('orders.table.notes'),
+        Cell: ({ cell }: { cell: MRT_Cell<OrdersTypes> }) => {
+          const notes = getDisplayValue(cell.getValue())
+          return (
+            <Tooltip title={notes} arrow>
+              <Typography className='truncate max-w-[200px] w-full'>{notes}</Typography>
+            </Tooltip>
+          )
+        }
+      })
+    }
+    baseColumns.push({
+      id: 'actions',
+      header: t('table.actions'),
+      Cell: ({ row }: { row: MRT_Row<OrdersTypes> }) => (
+        <div className='flex items-center gap-2'>
+          {row.original.status === 'pending' && (
+            <IconButton color='primary' onClick={() => handleCancelClick(row.original)} size='small'>
+              <i className='tabler-edit text-textSecondary' />
+            </IconButton>
+          )}
+          {hasPermissions(userPermissions, ['change_order']) &&
+            row.original.status === 'pending' &&
+            row.original.provider !== 'paypal' &&
+            row.original.provider !== 'stripe' && (
               <IconButton color='primary' onClick={() => handleCompleteClick(row.original)} size='small'>
                 <i className='tabler-check text-textSecondary' />
               </IconButton>
             )}
-            {(isSuperUser || userRole === 'Admin') && (
-              <IconButton color='primary' onClick={() => handleNoteClick(row.original)} size='small'>
-                <i className='tabler-note text-textSecondary' />
-              </IconButton>
-            )}
-            <IconButton onClick={() => router.push(`/${currentLocale}/dashboard/orders/${row.id}`)}>
-              <i className='tabler-eye text-textSecondary' />
+          {(isSuperUser || userRole === 'Admin') && (
+            <IconButton color='primary' onClick={() => handleNoteClick(row.original)} size='small'>
+              <i className='tabler-note text-textSecondary' />
             </IconButton>
-          </div>
-        )
-      }
-    ],
-    [t, userPermissions]
-  )
+          )}
+          <IconButton onClick={() => router.push(`/${currentLocale}/dashboard/orders/${row.id}`)}>
+            <i className='tabler-eye text-textSecondary' />
+          </IconButton>
+        </div>
+      )
+    })
+
+    return baseColumns
+  }, [t, userPermissions, isSuperUser, userRole])
   return (
     <div className='w-full flex flex-col gap-y-8'>
       <div className='w-full flex items-center justify-between gap-x-2'>
         <Typography variant='h3'>{t('orders.table.title')}</Typography>
         {hasPermissions(userPermissions, ['add_order']) && (
           <Button variant='contained' color='primary' onClick={handleAddOrderClick} sx={{ padding: '0.5rem 1rem' }}>
-            {t('orders.table.createOrder')}
+            {t('orders.table.addOrder')}
           </Button>
         )}
       </div>
@@ -382,11 +391,7 @@ const OrdersTable: FC<OrdersTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('orders.table.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <CustomTextField
                 select
                 id='select-status'
@@ -420,6 +425,7 @@ const OrdersTable: FC<OrdersTableProps> = ({
         title={t('orders.table.cancel_confirmation')}
         userName={selectedOrder?.order_number || ''}
         newStatus={true}
+        isShowAddNotesField={isSuperUser || userRole === 'Admin' ? true : false}
         message={`${t('orders.table.cancel_confirmation_message')} ${selectedOrder?.order_number}?`}
         setNotes={setActiveNote}
         notes={activeNote}

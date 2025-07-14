@@ -72,7 +72,7 @@ const Header = ({ mode, isMenuVisible = false }: { mode: Mode; isMenuVisible?: b
                   <i className='tabler-menu-2 text-textPrimary' />
                 </IconButton>
               )}
-              <Link href={`/${currentLocale}/home`}>
+              <Link href={`/${currentLocale}/`}>
                 <Logo />
               </Link>
               {!isMenuVisible && (
@@ -81,7 +81,7 @@ const Header = ({ mode, isMenuVisible = false }: { mode: Mode; isMenuVisible?: b
             </div>
           ) : (
             <div className='w-full flex items-center justify-between gap-4'>
-              <Link href={`/${currentLocale}/home`}>
+              <Link href={`/${currentLocale}/`}>
                 <Logo />
               </Link>
               {!isMenuVisible && (

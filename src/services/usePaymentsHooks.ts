@@ -118,7 +118,7 @@ export const usePaymentsHooks = () => {
         queryClient.invalidateQueries({ queryKey: ['payments'] })
       },
       onError: (error: AxiosError<ErrorResponse>) => {
-        const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'
+        const errorMessage = error.response?.data?.detail || error.message || 'An unexpected error occurred.'
 
         toast.error(errorMessage)
       }

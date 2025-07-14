@@ -10,16 +10,13 @@ import { Typography } from '@mui/material'
 import type { MRT_SortingState } from 'material-react-table'
 
 import OrderDetails from '@/views/pages/orders/orderDetails'
-import CouponDetailsCard from '@/views/pages/orders/components/CouponDetailsCard'
 import { useOrdersHooks } from '@/services/useOrdersHooks'
 import { useUserManagementHooks } from '@/services/useUserManagementHooks'
-import { useCouponsHooks } from '@/services/useCouponsHooks'
 import { useServicesHooks } from '@/services/useServicesHooks'
 import type { UserType } from '@/types/userTypes'
 import PlansCard from '@/views/pages/services/plansCard'
 import type { ServiceTypes } from '@/types/services'
 import { usePaymentsHooks } from '@/services/usePaymentsHooks'
-import { getDecryptedLocalStorage } from '@/utils/utility/decrypt'
 import UserDetailsCard from '@/views/pages/orders/components/UserDetailsCard'
 import TransactionsTable from '@/views/apps/commonTable/transactionsTable'
 import { getOrderingParam } from '@/utils/utility/sortingFn'
@@ -47,8 +44,9 @@ const OrderDetailsPage = () => {
   const [orderId, setOrderId] = useState<number | null>(null)
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [sortingSubscriptions, setSortingSubscriptions] = useState<MRT_SortingState>([])
-  const [globalFilter, setGlobalFilter] = useState('')
+  const [globalFilterTransactions, setGlobalFilterTransactions] = useState('')
   const [globalFilterSubscriptions, setGlobalFilterSubscriptions] = useState('')
+  const [globalFilterInvoices, setGlobalFilterInvoices] = useState('')
 
   useEffect(() => {
     setOrderId(Number(params.id))
@@ -65,7 +63,7 @@ const OrderDetailsPage = () => {
   const { data: orderData, isLoading } = getOrderById(Number(orderId))
   const { data: userData } = useUserInfo(orderData?.created_by)
   const { data: servicePlanData } = getServicePlanById(orderData?.service_plan || 0)
-  const userId = getDecryptedLocalStorage('userID')
+  const userId = userData?.id
 
   const { data: activePlanIdsRes } = getActiveServicePlans(
     userId ? Number(userId) : null,
@@ -84,13 +82,13 @@ const OrderDetailsPage = () => {
 
   const { pagination, setPagination, appliedSearch } = usePaginatedSearch({
     initialPageSize: 5,
-    globalFilter
+    globalFilter: globalFilterInvoices
   })
 
   const { data: transactionsData, isLoading: isTransactionsLoading } = getTransactionsByOrderId(
     paginationTransactions.pageSize,
     paginationTransactions.pageIndex + 1,
-    globalFilter,
+    globalFilterTransactions,
     getOrderingParam(sorting),
     Number(orderId)
   )
@@ -134,6 +132,22 @@ const OrderDetailsPage = () => {
       }
     : null
 
+  // Helper variables to determine if tables should be shown
+  const shouldShowTransactionsTable =
+    (transactionsData?.data?.results && transactionsData.data.results.length > 0) ||
+    globalFilterTransactions.length > 0 ||
+    paginationTransactions.pageIndex > 0
+
+  const shouldShowSubscriptionsTable =
+    (subscriptionsData?.data?.results && subscriptionsData.data.results.length > 0) ||
+    globalFilterSubscriptions.length > 0 ||
+    paginationSubscriptions.pageIndex > 0
+
+  const shouldShowInvoicesTable =
+    (invoicesData?.data?.results && invoicesData.data.results.length > 0) ||
+    globalFilterInvoices.length > 0 ||
+    pagination.pageIndex > 0
+
   return (
     <>
       <Typography variant='h3' className='mb-6'>
@@ -148,43 +162,49 @@ const OrderDetailsPage = () => {
         />
         <div className='w-full grid grid-cols-12 gap-6'>
           <div className='col-span-8'>
-            <TransactionsTable
-              transactionsData={transactionsData?.data?.results || []}
-              totalRecords={transactionsData?.data?.count ?? 0}
-              pagination={paginationTransactions}
-              setPagination={setPaginationTransactions}
-              setGlobalFilter={setGlobalFilter}
-              globalFilter={globalFilter}
-              isLoading={isTransactionsLoading}
-              sorting={sorting}
-              setSorting={setSorting}
-            />
-
-            <div className='w-full mt-8'>
-              <SubscriptionsTable
-                subscriptionsData={subscriptionsData?.data?.results || []}
-                totalRecords={subscriptionsData?.data?.count ?? 0}
-                pagination={paginationSubscriptions}
-                setPagination={setPaginationSubscriptions}
-                setGlobalFilter={setGlobalFilterSubscriptions}
-                globalFilter={globalFilterSubscriptions}
-                isLoading={isSubscriptionsLoading}
-                sorting={sortingSubscriptions}
-                setSorting={setSortingSubscriptions}
-              />
-            </div>
-            <div className='w-full mt-8'>
-              <InvoicesTable
-                invoicesData={invoicesData?.data?.results || []}
-                totalRecords={invoicesData?.data?.count ?? 0}
-                pagination={pagination}
-                setPagination={setPagination}
-                setGlobalFilter={setGlobalFilter}
-                globalFilter={globalFilter}
-                isLoading={isInvoicesLoading}
+            {shouldShowTransactionsTable && (
+              <TransactionsTable
+                transactionsData={transactionsData?.data?.results || []}
+                totalRecords={transactionsData?.data?.count ?? 0}
+                pagination={paginationTransactions}
+                setPagination={setPaginationTransactions}
+                setGlobalFilter={setGlobalFilterTransactions}
+                globalFilter={globalFilterTransactions}
+                isLoading={isTransactionsLoading}
                 sorting={sorting}
                 setSorting={setSorting}
               />
+            )}
+
+            <div className='w-full mt-8'>
+              {shouldShowSubscriptionsTable && (
+                <SubscriptionsTable
+                  subscriptionsData={subscriptionsData?.data?.results || []}
+                  totalRecords={subscriptionsData?.data?.count ?? 0}
+                  pagination={paginationSubscriptions}
+                  setPagination={setPaginationSubscriptions}
+                  setGlobalFilter={setGlobalFilterSubscriptions}
+                  globalFilter={globalFilterSubscriptions}
+                  isLoading={isSubscriptionsLoading}
+                  sorting={sortingSubscriptions}
+                  setSorting={setSortingSubscriptions}
+                />
+              )}
+            </div>
+            <div className='w-full mt-8'>
+              {shouldShowInvoicesTable && (
+                <InvoicesTable
+                  invoicesData={invoicesData?.data?.results || []}
+                  totalRecords={invoicesData?.data?.count ?? 0}
+                  pagination={pagination}
+                  setPagination={setPagination}
+                  setGlobalFilter={setGlobalFilterInvoices}
+                  globalFilter={globalFilterInvoices}
+                  isLoading={isInvoicesLoading}
+                  sorting={sorting}
+                  setSorting={setSorting}
+                />
+              )}
             </div>
           </div>
           <div className='col-span-4'>

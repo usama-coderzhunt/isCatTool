@@ -397,7 +397,7 @@ const AddTransServiceModal: React.FC<AddTransServiceModalProps> = ({
                     padding: '0.5rem 1rem'
                   }}
                 >
-                  {mode === 'create' ? t('services.createNewService') : t('services.updateService')}
+                  {mode === 'create' ? t('services.addNew') : t('services.editService')}
                 </Button>
               </div>
             )}

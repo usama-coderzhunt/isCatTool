@@ -56,7 +56,7 @@ const DeleteConfModal = ({ open, handleClose, title, deleteValue, handleDelete, 
               <i className='tabler-trash w-[32px] h-[32px] text-primary'></i>
             </div>
             <Typography variant='h5'>{title || t('documents.types.delete.title')}</Typography>
-            <Typography variant='body2' className='mb-4'>
+            <Typography variant='body2' className='mb-4 text-center'>
               {message || t('documents.types.delete.message', { name: deleteValue })}
             </Typography>
 

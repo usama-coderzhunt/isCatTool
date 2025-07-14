@@ -127,7 +127,9 @@ export const useLawyerClientsHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['lawyer-clients'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['lawyer-clients'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         toast.error(error.response?.data?.message || 'Failed to delete client')

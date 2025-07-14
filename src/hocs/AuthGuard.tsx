@@ -21,7 +21,16 @@ export default function AuthGuard({ children, locale }: ChildrenType & { locale:
   const pathnameWithoutId = pathname.split('/').slice(0, -1).join('/')
   const isPublicRoute = publicRoutes.includes(Number(id) ? pathnameWithoutId : pathname)
   useEffect(() => {
-    if (!token && !localStorage.getItem('returnUrl')) {
+    if (
+      !token &&
+      !localStorage.getItem('returnUrl') &&
+      !(
+        pathname.includes('login') ||
+        pathname.includes('register') ||
+        pathname.includes('forgot-password') ||
+        pathname.includes('reset-password')
+      )
+    ) {
       localStorage.setItem('returnUrl', cipher(window.location.pathname))
     }
     const redirectUrl = getDecryptedLocalStorage('returnUrl')

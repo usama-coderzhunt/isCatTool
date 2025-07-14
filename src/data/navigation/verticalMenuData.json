@@ -245,6 +245,33 @@
           ]
         },
         {
+          "type": "item",
+          "label": "llmOperators",
+          "href": "/apps/llm-operators",
+          "icon": "tabler-robot",
+          "permission": [
+            "adminAndSuperUserOnly"
+          ]
+        },
+          {
+          "type": "item",
+          "label": "businessUnits",
+          "href": "/apps/business-units",
+          "icon": "tabler-building",
+          "permission": [
+            "adminAndSuperUserOnly"
+          ]
+        },
+         {
+          "type": "item",
+          "label": "languages",
+          "href": "/apps/languages",
+          "icon": "tabler-language",
+          "permission": [
+            "view_language"
+          ]
+        },
+        {
           "type": "submenu",
           "label": "blog",
           "icon": "tabler-file-text",
@@ -272,6 +299,103 @@
               "href": "/apps/blog/tags",
               "permission": [
                 "view_tag"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "submenu",
+          "label": "istaTranslationAssistant",
+          "icon": "tabler-test-pipe",
+          "items": [
+            {
+              "type": "submenu",
+              "label": "translationMemories",
+              "items": [
+                {
+                  "type": "item",
+                  "label": "translationMemories",
+                  "href": "/apps/translation-memories",
+                  "permission": [
+                    "view_translationmemory"
+                  ]
+                },
+                {
+                  "type": "item",
+                  "label": "translationMemoriesEntry",
+                  "href": "/apps/translation-memory-entries",
+                  "permission": [
+                    "view_translationmemoryentry"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "submenu",
+              "label": "projects",
+              "items": [
+                {
+                  "type": "item",
+                  "label": "projects",
+                  "href": "/apps/projects",
+                  "permission": [
+                    "view_project"
+                  ]
+                },
+                {
+                  "type": "item",
+                  "label": "tasks",
+                  "href": "/apps/tasks",
+                  "permission": [
+                    "view_task"
+                  ]
+                },
+                {
+                  "type": "item",
+                  "label": "files",
+                  "href": "/apps/files",
+                  "permission": [
+                    "view_file"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "submenu",
+              "label": "termBases",
+              "items": [
+                {
+                  "type": "item",
+                  "label": "termBases",
+                  "href": "/apps/term-bases",
+                  "permission": [
+                    "view_termbase"
+                  ]
+                },
+                {
+                  "type": "item",
+                  "label": "termBaseEntries",
+                  "href": "/apps/term-base-entries",
+                  "permission": [
+                    "view_termbaseentry"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "item",
+              "label": "translationModels",
+              "href": "/apps/translation-models",
+              "permission": [
+                "view_translationmodel"
+              ]
+            },
+            {
+              "type": "item",
+              "label": "translationSubjects",
+              "href": "/apps/translation-subjects",
+              "permission": [
+                "view_translationsubject"
               ]
             }
           ]

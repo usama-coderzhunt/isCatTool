@@ -21,6 +21,7 @@ import type { Locale } from '@configs/i18n'
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
+import { useTemplateStore } from '@/store/templateStore'
 
 type LanguageDataType = {
   langCode: Locale
@@ -69,6 +70,7 @@ const LanguageDropdown = () => {
   const router = useRouter()
   const { settings } = useSettings()
   const { lang } = useParams()
+  const { setCurrentLang } = useTemplateStore()
 
   const handleClose = () => {
     setOpen(false)
@@ -80,6 +82,7 @@ const LanguageDropdown = () => {
 
   const handleLanguageChange = (locale: string) => {
     setIsLoading(true)
+    setCurrentLang(locale)
     const newPath = getLocalePath(pathName, locale)
     router.push(newPath)
     handleClose()

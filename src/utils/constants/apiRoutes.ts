@@ -157,7 +157,14 @@ export const API_ROUTES = {
   BUSINESS_UNIT: {
     LIST: '/api/bu/',
     DETAIL: (id: string) => `/api/bu/${id}/`,
-    EXTENDED_GROUPS: '/api/extended-groups/'
+    EXTENDED_GROUPS: '/api/extended-groups/',
+    getBusinessUnit: '/api/bu/',
+    getBusinessUnitById: '/api/bu/',
+    createBusinessUnit: '/api/bu/',
+    editBusinessUnit: '/api/bu/',
+    deleteBusinessUnit: '/api/bu/',
+    bulkDeleteBusinessUnit: '/api/bu/bulk_delete/',
+    businessUnitAssignToUser: (id: number) => `/api/users/${id}/assign-business-unit/`
   },
 
   //Case Flow Cases Routes
@@ -397,5 +404,119 @@ export const API_ROUTES = {
   INVOICES: {
     getInvoices: '/api/transaction-manager/invoices/',
     editInvoice: '/api/transaction-manager/invoices/'
+  },
+
+  // LLM Operators Routes
+  LLM_OPERATORS: {
+    getLlmOperators: '/api/ista/llm-operators/',
+    createLlmOperator: '/api/ista/llm-operators/',
+    editLlmOperator: '/api/ista/llm-operators/',
+    deleteLlmOperator: '/api/ista/llm-operators/',
+    bulkDeleteLlmOperators: '/api/ista/llm-operators/bulk_delete/'
+  },
+
+  // Projects Routes
+  PROJECTS: {
+    getProjects: '/api/ista/projects/',
+    createProject: '/api/ista/projects/',
+    editProject: '/api/ista/projects/',
+    deleteProject: '/api/ista/projects/'
+  },
+
+  // Projects Tasks Routes
+  TASKS: {
+    getTasks: '/api/ista/tasks/',
+    getTaskById: '/api/ista/tasks/',
+    createTask: '/api/ista/tasks/',
+    editTask: '/api/ista/tasks/',
+    deleteTask: '/api/ista/tasks/',
+    bulkDeleteTasks: '/api/ista/tasks/bulk_delete/',
+    taskSplitByCount: (id: number | null) => `/api/ista/tasks/${id}/split_by_count/`
+  },
+
+  // Files Routes
+  FILES: {
+    getFiles: '/api/ista/files/',
+    getFileById: '/api/ista/files/',
+    createFile: '/api/ista/files/',
+    editFile: '/api/ista/files/',
+    deleteFile: '/api/ista/files/',
+    bulkDeleteFiles: '/api/ista/files/bulk_delete/'
+  },
+
+  // Translation Models Routes
+  TRANSLATION_MODELS: {
+    getTranslationModels: '/api/ista/translation-models/',
+    getTranslationModelsById: '/api/ista/translation-models/',
+    createTranslationModels: '/api/ista/translation-models/',
+    editTranslationModels: '/api/ista/translation-models/',
+    deleteTranslationModels: '/api/ista/translation-models/',
+    bulkDeleteTranslationModels: '/api/ista/translation-models/bulk_delete/',
+    translationModelPermissions: (id: number | null) => `/api/ista/translation-models/${id}/add_user_permission/`
+  },
+
+  // Translation Subjects Routes
+  TRANSLATION_SUBJECTS: {
+    getTranslationSubjects: '/api/ista/translation-subjects/',
+    getTranslationSubjectById: '/api/ista/translation-subjects/',
+    createTranslationSubject: '/api/ista/translation-subjects/',
+    editTranslationSubject: '/api/ista/translation-subjects/',
+    deleteTranslationSubject: '/api/ista/translation-subjects/',
+    bulkDeleteTranslationSubjects: '/api/ista/translation-subjects/bulk_delete/'
+  },
+
+  // Translation Languages Routes
+  TRANSLATION_LANGUAGES: {
+    getTranslationLanguages: '/api/ista/translation-languages/'
+  },
+
+  // Translation Memory Routes
+  TRANSLATION_MEMORY: {
+    getTranslationMemory: '/api/ista/tm/',
+    getTranslationMemoryById: '/api/ista/tm/',
+    createTranslationMemory: '/api/ista/tm/',
+    editTranslationMemory: '/api/ista/tm/',
+    deleteTranslationMemory: '/api/ista/tm/',
+    bulkDeleteTranslationMemory: '/api/ista/tm/bulk_delete/',
+    exportTranslationMemory: (id: number | null) => `/api/ista/tm/${id}/export/`,
+    importTranslationMemory: (id: number | null) => `/api/ista/tm/${id}/import/`
+  },
+
+  // Translation Memory Entries Routes
+  TRANSLATION_MEMORY_ENTRIES: {
+    getEntries: '/api/ista/tm-entries/',
+    getEntryById: '/api/ista/tm-entries/',
+    createEntry: '/api/ista/tm-entries/',
+    editEntry: '/api/ista/tm-entries/',
+    deleteEntry: '/api/ista/tm-entries/',
+    bulkDeleteEntries: '/api/ista/tm-entries/bulk_delete/'
+  },
+
+  TERM_BASE: {
+    getTermBase: '/api/ista/tb/',
+    getTermBaseById: '/api/ista/tb/',
+    createTermBase: '/api/ista/tb/',
+    editTermBase: '/api/ista/tb/',
+    deleteTermBase: '/api/ista/tb/',
+    bulkDeleteTermBase: '/api/ista/tb/bulk_delete/',
+    exportTermBase: (id: number | null) => `/api/ista/tb/${id}/export/`,
+    importTermBase: (id: number | null) => `/api/ista/tb/${id}/import/`
+  },
+
+  TERM_BASE_ENTRIES: {
+    getTermBaseEntries: '/api/ista/tb-entries/',
+    getTermBaseEntryById: '/api/ista/tb-entries/',
+    createTermBaseEntry: '/api/ista/tb-entries/',
+    editTermBaseEntry: '/api/ista/tb-entries/',
+    deleteTermBaseEntry: '/api/ista/tb-entries/',
+    bulkDeleteTermBaseEntries: '/api/ista/tb-entries/bulk_delete/'
+  },
+  // Language Routes
+  LANGUAGE: {
+    getLanguages: '/api/ista/languages/',
+    createLanguage: '/api/ista/languages/',
+    editLanguage: '/api/ista/languages/',
+    deleteLanguage: '/api/ista/languages/',
+    bulkDeleteLanguage: '/api/ista/languages/bulk_delete/'
   }
 }

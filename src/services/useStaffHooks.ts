@@ -90,7 +90,9 @@ export const useStaffHooks = () => {
           } as any)
           .then(response => response.data),
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['staffPositions'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['staffPositions'] })
+        }, 500)
       },
       onError: error => {
         const errorMessage = error.response?.data?.message || 'Failed to delete position'
@@ -122,30 +124,6 @@ export const useStaffHooks = () => {
       }
     })
   }
-
-  // Staff Hooks
-  // const useStaffMembers = (pageSize?: number, page?: number, search?: string, ordering?: string) => {
-  //   return useQuery({
-  //     queryKey: ['staff', page, pageSize, search, ordering],
-  //     queryFn: () =>
-  //       axiosInstance.get('/api/staff/', {
-  //         params: {
-  //           page: page,
-  //           page_size: pageSize,
-  //           search: search,
-  //           ordering
-  //         },
-  //         requiresAuth: true,
-  //         requiredPermission: 'view_staff'
-  //       } as any)
-  //         .then(response => response.data)
-  //         .catch(error => {
-  //           const errorMessage = error.response?.data?.message || 'Failed to fetch staff members'
-  //           toast.error(errorMessage)
-  //           throw error
-  //         })
-  //   })
-  // }
 
   const useStaffMembers = (pageSize?: number, page?: number, search?: string, ordering?: string) => {
     return useQuery({
@@ -275,8 +253,10 @@ export const useStaffHooks = () => {
         }
       },
       onSuccess: data => {
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['staff'] })
+        }, 500)
         toast.success(data.message || 'Staff member deleted successfully')
-        queryClient.invalidateQueries({ queryKey: ['staff'] })
       }
     })
     return mutation

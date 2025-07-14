@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { MaterialReactTable, MRT_Cell, MRT_Row, MRT_SortingState } from 'material-react-table'
-import { Button, IconButton, Typography, useColorScheme } from '@mui/material'
+import { Button, IconButton, Typography, useColorScheme, Tooltip } from '@mui/material'
 import { useServicesHooks } from '@/services/useServicesHooks'
 import { getDisplayDateTime, getDisplayValue } from '@/utils/utility/displayValue'
 import { useTranslation } from 'next-i18next'
@@ -79,6 +79,7 @@ interface TransServicesTableProps {
   multiple: boolean
   openDeleteModal: boolean
   setOpenDeleteModal: any
+  isClientActive: boolean
 }
 
 const TransServicesTable: React.FC<TransServicesTableProps> = ({
@@ -93,7 +94,8 @@ const TransServicesTable: React.FC<TransServicesTableProps> = ({
   multiple,
   setMultiple,
   openDeleteModal,
-  setOpenDeleteModal
+  setOpenDeleteModal,
+  isClientActive
 }) => {
   const { t } = useTranslation('global')
   const { mode: themeMode } = useColorScheme()
@@ -125,6 +127,13 @@ const TransServicesTable: React.FC<TransServicesTableProps> = ({
     if (transServiceId === null) return
     deleteTransServiceMutation.mutate(transServiceId, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((servicesData?.data?.count - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(t('services.toasts.transServiceDeletedSuccess'))
         setOpenDeleteModal(false)
       }
@@ -215,15 +224,29 @@ const TransServicesTable: React.FC<TransServicesTableProps> = ({
         return (
           <div className='flex items-center'>
             {hasPermissions(userPermissions, ['change_transservice']) && (
-              <Button
-                variant='outlined'
-                className='min-w-fit inline-flex items-center justify-center p-2 rounded-full bg-transparent hover:bg-[#e1def514] border-none'
-                onClick={() => {
-                  handleOpen('edit', row.original), setServiceID(serviceId.toString())
+              <Tooltip
+                title={!isClientActive ? t('services.table.inactiveClientEditMessage') : ''}
+                placement='top'
+                arrow
+                slotProps={{
+                  tooltip: {
+                    className: '!bg-backgroundPaper !text-textPrimary !text-center'
+                  }
                 }}
               >
-                <i className='tabler-edit text-textSecondary w-[22px] h-[22px]' />
-              </Button>
+                <span>
+                  <Button
+                    variant='outlined'
+                    disabled={!isClientActive}
+                    className='min-w-fit inline-flex items-center justify-center p-2 rounded-full bg-transparent hover:bg-[#e1def514] border-none'
+                    onClick={() => {
+                      handleOpen('edit', row.original), setServiceID(serviceId.toString())
+                    }}
+                  >
+                    <i className='tabler-edit text-textSecondary w-[22px] h-[22px]' />
+                  </Button>
+                </span>
+              </Tooltip>
             )}
             {hasPermissions(userPermissions, ['view_transservice']) && (
               <Button

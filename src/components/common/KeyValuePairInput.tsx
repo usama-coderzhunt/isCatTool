@@ -337,14 +337,7 @@ const KeyValuePairInput: React.FC<KeyValuePairInputProps> = ({
             <ListItem
               key={index}
               divider={index !== pairs.length - 1}
-              sx={{
-                py: 2,
-                px: 2,
-                borderRadius: 1,
-                '&:hover': {
-                  backgroundColor: theme.palette.grey[50]
-                }
-              }}
+              className='p-2 rounded-md hover:bg-backgroundDefault'
             >
               <ListItemText
                 primary={

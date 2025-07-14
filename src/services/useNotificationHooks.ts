@@ -199,7 +199,9 @@ export const useNotificationHooks = () => {
         } as any)
       },
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ['notifications'] })
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['notifications'] })
+        }, 500)
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         toast.error(error.response?.data?.message || 'Failed to delete notification')

@@ -37,14 +37,20 @@ const ClientAndLeadDetailsPage = () => {
         <>
           <Typography variant='h3'>{t('clientDetails.title')}</Typography>
           <ClientDetails clientDetails={clientDetails} isLoading={isLoading} />
-          {clientDetails?.client_type === "client" && <>
-            {hasPermissions(userPermissions, ['view_transservice']) && (
-              <TransServicesListing clientId={clientId} />
-            )}
-            {hasPermissions(userPermissions, ['view_document']) && (
-              <DocsListing userPermissions={userPermissions} selectedClientData={clientDetails} />
-            )}
-          </>}
+          {clientDetails?.client_type === 'client' && (
+            <>
+              {hasPermissions(userPermissions, ['view_transservice']) && (
+                <TransServicesListing clientId={clientId} isClientActive={clientDetails?.is_active} />
+              )}
+              {hasPermissions(userPermissions, ['view_document']) && (
+                <DocsListing
+                  userPermissions={userPermissions}
+                  selectedClientData={clientDetails}
+                  isClientActive={clientDetails?.is_active}
+                />
+              )}
+            </>
+          )}
         </>
       )}
     </div>

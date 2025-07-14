@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { forwardRef } from 'react'
+import { forwardRef, useState } from 'react'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
@@ -143,6 +143,7 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
       })
     }
   },
+
   '& :not(.MuiInputBase-sizeSmall).MuiInputBase-root': {
     borderRadius: '8px',
     fontSize: '17px',
@@ -250,37 +251,70 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
   }
 }))
 
-const CustomTextField = forwardRef((props: TextFieldProps & { showAsterisk?: boolean, disabled?: boolean }, ref) => {
-  const { size = 'medium', slotProps, showAsterisk, label, disabled, ...rest } = props
+const CustomTextField = forwardRef(
+  (props: TextFieldProps & { showAsterisk?: boolean; disabled?: boolean; shrinkLabel?: boolean }, ref) => {
+    const { size = 'medium', slotProps, showAsterisk, label, disabled, shrinkLabel = true, ...rest } = props
+    const [isFocused, setIsFocused] = useState(false)
+    const [hasValue, setHasValue] = useState(false)
 
-  const renderLabel = () => {
-    if (typeof label === 'string') {
-      return showAsterisk ? (
-        <span>
-          {label}
-          <span style={{ color: 'red' }}> *</span>
-        </span>
-      ) : label
+    const renderLabel = () => {
+      if (typeof label === 'string') {
+        return showAsterisk ? (
+          <span>
+            {label}
+            <span style={{ color: 'red' }}> *</span>
+          </span>
+        ) : (
+          label
+        )
+      }
+      return label
     }
-    return label
-  }
 
-  return (
-    <TextField
-      disabled={disabled}
-      inputRef={ref}
-      {...rest}
-      label={renderLabel()}
-      variant="outlined"
-      id="outlined-basic"
-      slotProps={{
-        ...slotProps,
-      }}
-      InputLabelProps={{
-        shrink: true,
-      }}
-    />
-  )
-})
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(true)
+      if (rest.onFocus) {
+        rest.onFocus(event)
+      }
+    }
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(false)
+      if (rest.onBlur) {
+        rest.onBlur(event)
+      }
+    }
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setHasValue(event.target.value.length > 0)
+      if (rest.onChange) {
+        rest.onChange(event)
+      }
+    }
+
+    // Determine if label should be shrunk
+    const shouldShrink = shrinkLabel || isFocused || hasValue
+
+    return (
+      <TextField
+        disabled={disabled}
+        inputRef={ref}
+        {...rest}
+        label={renderLabel()}
+        variant='outlined'
+        id='outlined-basic'
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        slotProps={{
+          ...slotProps
+        }}
+        InputLabelProps={{
+          shrink: shouldShrink
+        }}
+      />
+    )
+  }
+)
 
 export default CustomTextField

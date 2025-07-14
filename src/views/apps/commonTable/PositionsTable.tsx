@@ -59,6 +59,7 @@ const DebouncedInput = ({
   return (
     <CustomTextField
       label={t('positionsTable.search')}
+      shrinkLabel={false}
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
@@ -121,9 +122,16 @@ const PositionsTable: FC<PositionsTableProps> = ({
     if (positionId === null) return
     deletePosition.mutate(positionId, {
       onSuccess: () => {
-        toast.success(t('positionsTable.toasts.positionDeletedSuccess'))
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         setData(prevData => prevData?.filter(position => position.id !== positionId))
         setIsDelModalOpen(false)
+        toast.success(t('positionsTable.toasts.positionDeletedSuccess'))
       }
     })
   }
@@ -246,7 +254,7 @@ const PositionsTable: FC<PositionsTableProps> = ({
               }}
               sx={{ padding: '0.5rem 1rem' }}
             >
-              {t('positionsTable.createPosition')}
+              {t('positionsTable.addPosition')}
             </Button>
           )}
         </div>
@@ -288,11 +296,7 @@ const PositionsTable: FC<PositionsTableProps> = ({
           onIsFullScreenChange={updateFullScreen}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('positionsTable.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportPositionsToCSV(data)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>

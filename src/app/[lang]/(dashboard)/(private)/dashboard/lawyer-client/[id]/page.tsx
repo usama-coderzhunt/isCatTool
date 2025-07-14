@@ -25,8 +25,12 @@ const LawyerClientDetailsPage = () => {
       {clientId && (
         <>
           <LawyerClientDetails lawyerClientDetails={lawyerClientDetails} isLoading={isLoading} />
-          <DocsListing userPermissions={userPermissions} selectedClientData={lawyerClientDetails} />
-          <CasesListings />
+          <DocsListing
+            userPermissions={userPermissions}
+            selectedClientData={lawyerClientDetails}
+            isClientActive={lawyerClientDetails?.is_active}
+          />
+          <CasesListings isClientActive={lawyerClientDetails?.is_active} />
         </>
       )}
     </div>

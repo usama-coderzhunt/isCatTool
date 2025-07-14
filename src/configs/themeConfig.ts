@@ -53,7 +53,7 @@ export type Config = {
 }
 
 const themeConfig: Config = {
-  homePageUrl: '/home',
+  homePageUrl: '/',
   settingsCookieName: 'vuexy-mui-next-demo-1',
   mode: 'light', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'

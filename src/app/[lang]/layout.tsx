@@ -25,6 +25,7 @@ import { getSystemMode } from '@core/utils/serverHelpers'
 import '@/app/globals.css'
 import '@assets/iconify-icons/generated-icons.css'
 import { TitleUpdater } from '@/components/TitleUpdater'
+import MetaDataUpdater from '@/components/MetaUpdater'
 
 // Define the metadata generation function
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
@@ -66,6 +67,7 @@ const RootLayout = async (props: ChildrenType & { params: Promise<{ lang: Locale
         <body className='flex is-full min-bs-full flex-auto flex-col'>
           <InitColorSchemeScript attribute='data' defaultMode={systemMode} />
           <TitleUpdater />
+          <MetaDataUpdater />
           <AuthGuard locale={params.lang}>{props.children}</AuthGuard>
         </body>
       </html>

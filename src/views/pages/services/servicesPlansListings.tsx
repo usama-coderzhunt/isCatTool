@@ -14,12 +14,15 @@ import PlanTypeToggle from '@/components/common/PlanTypeToggle'
 import { usePaymentsHooks } from '@/services/usePaymentsHooks'
 import { getDecryptedLocalStorage } from '@/utils/utility/decrypt'
 
-
-import classNames from 'classnames'
-import frontCommonStyles from '@views/front-pages/styles.module.css'
-
-
-const ServicesPlansListing = ({ serviceId, serviceData }: { serviceId: string; serviceData: ServiceTypes }) => {
+const ServicesPlansListing = ({
+  serviceId,
+  serviceData,
+  isAddPlanBtnVisible = true
+}: {
+  serviceId: string
+  serviceData: ServiceTypes
+  isAddPlanBtnVisible?: boolean
+}) => {
   const { t } = useTranslation('global')
   const userPermissions = useAuthStore(state => state.userPermissions)
 
@@ -68,16 +71,16 @@ const ServicesPlansListing = ({ serviceId, serviceData }: { serviceId: string; s
   }
 
   return (
-    <div className={classNames('!py-20', frontCommonStyles.layoutSpacing)}>
+    <div className='py-10'>
       <div className='w-full'>
         <div className='flex items-center gap-4 mb-4 justify-between gap-x-4'>
           <Typography variant='h3' className='font-medium'>
             {t('services.servicePlans.title')}
           </Typography>
           <PlanTypeToggle value={planType} onChange={setPlanType} />
-          {hasPermissions(userPermissions, ['add_transservice']) && (
+          {hasPermissions(userPermissions, ['adminAndSuperUserOnly']) && isAddPlanBtnVisible && (
             <Button variant='contained' color='primary' className='shadow-2xl' onClick={handleOpen}>
-              {t('services.servicePlans.addNewPlan')}
+              {t('services.servicePlans.addPlan')}
             </Button>
           )}
         </div>
@@ -107,7 +110,7 @@ const ServicesPlansListing = ({ serviceId, serviceData }: { serviceId: string; s
           handleOpen={handleOpen}
           servicePlanData={selectedService}
           mode={modalMode}
-          title={modalMode === 'create' ? t('services.servicePlans.addNewPlan') : t('services.servicePlans.editPlan')}
+          title={modalMode === 'create' ? t('services.servicePlans.addPlan') : t('services.servicePlans.updatePlan')}
           serviceId={serviceId}
           parentServiceFeatures={serviceData.features_list || {}}
           parentServiceLimits={serviceData.limit_list || {}}

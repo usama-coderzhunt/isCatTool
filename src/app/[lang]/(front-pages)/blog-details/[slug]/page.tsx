@@ -8,6 +8,7 @@ import { format } from 'date-fns'
 import { Chip } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import CircularLoader from '@/components/CircularLoader'
+import Footer from '@/views/front-pages/landing-page/Footer'
 
 interface Tag {
   id: number
@@ -78,51 +79,54 @@ const BlogDetail = () => {
   const postTags = getPostTags(blogData?.tags, tagsData?.results)
 
   return (
-    <article className='max-w-4xl mx-auto px-4 py-8'>
-      {/* Featured Image */}
-      {blogData.featured_image && (
-        <div className='relative w-full h-96 mb-8'>
-          <Image
-            src={blogData.featured_image}
-            alt={blogData.title}
-            fill
-            className='object-cover rounded-lg'
-            priority
-            unoptimized
-          />
+    <div>
+      <article className='max-w-4xl mx-auto px-4 py-8'>
+        {/* Featured Image */}
+        {blogData.featured_image && (
+          <div className='relative w-full h-96 mb-8'>
+            <Image
+              src={blogData.featured_image}
+              alt={blogData.title}
+              fill
+              className='object-cover rounded-lg'
+              priority
+              unoptimized
+            />
+          </div>
+        )}
+
+        {/* Title */}
+        <h1 className='text-3xl md:text-4xl font-bold mb-4' color='text.primary'>
+          {blogData.title}
+        </h1>
+
+        {/* Meta Information */}
+        <div className='flex items-center text-textSecondary mb-6'>
+          <span>
+            {t('blog.Published')} {format(new Date(blogData.published_at), 'MMMM dd, yyyy')}
+          </span>
         </div>
-      )}
 
-      {/* Title */}
-      <h1 className='text-3xl md:text-4xl font-bold mb-4' color='text.primary'>
-        {blogData.title}
-      </h1>
+        {/* Content */}
+        <div className='prose prose-lg max-w-none mb-8' dangerouslySetInnerHTML={{ __html: blogData.content }} />
 
-      {/* Meta Information */}
-      <div className='flex items-center text-textSecondary mb-6'>
-        <span>
-          {t('blog.Published')} {format(new Date(blogData.published_at), 'MMMM dd, yyyy')}
-        </span>
-      </div>
-
-      {/* Content */}
-      <div className='prose prose-lg max-w-none mb-8' dangerouslySetInnerHTML={{ __html: blogData.content }} />
-
-      {/* Views */}
-      <div className='mb-6 text-textSecondary'>
-        <span className='font-medium'>{t('blog.Views')}:</span> {blogData.views}
-      </div>
-
-      {/* Tags */}
-      {postTags?.length > 0 && (
-        <div className='flex flex-wrap gap-2'>
-          <span className='font-medium text-textSecondary'>{t('blog.Tags')}:</span>
-          {postTags.map(tag => (
-            <Chip label={tag.name} color='primary' variant='outlined' key={tag.id} />
-          ))}
+        {/* Views */}
+        <div className='mb-6 text-textSecondary'>
+          <span className='font-medium'>{t('blog.Views')}:</span> {blogData.views}
         </div>
-      )}
-    </article>
+
+        {/* Tags */}
+        {postTags?.length > 0 && (
+          <div className='flex flex-wrap gap-2'>
+            <span className='font-medium text-textSecondary'>{t('blog.Tags')}:</span>
+            {postTags.map(tag => (
+              <Chip label={tag.name} color='primary' variant='outlined' key={tag.id} />
+            ))}
+          </div>
+        )}
+      </article>
+      <Footer />
+    </div>
   )
 }
 

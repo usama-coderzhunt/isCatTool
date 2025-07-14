@@ -18,18 +18,18 @@ const nextConfig: NextConfig = {
 
   redirects: async () => {
     return [
-      {
-        source: '/',
-        destination: '/home',
-        permanent: true,
-        locale: false
-      },
-      {
-        source: '/:lang(en|fr|ar|es)',
-        destination: '/:lang/home',
-        permanent: true,
-        locale: false
-      },
+      // {
+      //   source: '/',
+      //   destination: '/en',
+      //   permanent: true,
+      //   locale: false
+      // },
+      // {
+      //   source: '/:lang(en|fr|ar|es)',
+      //   destination: '/:lang',
+      //   permanent: true,
+      //   locale: false
+      // },
       {
         source: '/((?!(?:en|fr|ar|es|front-pages)\\b)):path',
         destination: '/en/:path',

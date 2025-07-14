@@ -3,8 +3,6 @@
 import { useForm } from 'react-hook-form'
 import { Dialog, DialogContent, DialogTitle, Button } from '@mui/material'
 import { useUserManagementHooks } from '@/services/useUserManagementHooks'
-import Recaptcha from '@/components/Recaptcha'
-import { useRecaptchaStore } from '@/store/recaptchaStore'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
@@ -23,9 +21,6 @@ interface FormData {
 }
 
 const CreateGroupDialog = ({ open, onClose, mode, groupData }: CreateGroupDialogProps) => {
-  // store
-  // const { recaptchaToken, setRecaptchaToken } = useRecaptchaStore()
-
   const { useCreateGroup, useUpdateGroup } = useUserManagementHooks()
   const createGroup = useCreateGroup()
   const updateGroup = useUpdateGroup()
@@ -62,11 +57,14 @@ const CreateGroupDialog = ({ open, onClose, mode, groupData }: CreateGroupDialog
 
   const onSubmit = (data: FormData) => {
     if (mode === 'edit' && groupData) {
-      updateGroup.mutate({ id: groupData.id, data: { name: data.name } }, {
-        onSuccess: () => {
-          handleCloseModal()
+      updateGroup.mutate(
+        { id: groupData.id, data: { name: data.name } },
+        {
+          onSuccess: () => {
+            handleCloseModal()
+          }
         }
-      })
+      )
     } else {
       createGroup.mutate(data, {
         onSuccess: () => {
@@ -78,7 +76,7 @@ const CreateGroupDialog = ({ open, onClose, mode, groupData }: CreateGroupDialog
 
   return (
     <Dialog open={open} onClose={handleCloseModal} maxWidth='sm' fullWidth>
-      <DialogTitle>{t('groupDialog.createGroupDialogTitle')}</DialogTitle>
+      <DialogTitle>{mode === 'create' ? t('groupDialog.addGroup') : t('groupDialog.updateGroup')}</DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)} className='mt-4 flex flex-col gap-5'>
           <CustomTextField
@@ -90,18 +88,10 @@ const CreateGroupDialog = ({ open, onClose, mode, groupData }: CreateGroupDialog
             showAsterisk={true}
           />
 
-          {/* Recaptcha */}
-          {/* <Recaptcha /> */}
-
           <div className='flex justify-end gap-4 mt-4'>
             <Button onClick={handleCloseModal}>{t('groupDialog.createGroupDialogCancel')}</Button>
-            <Button
-              type='submit'
-              variant='contained'
-              className='bg-primary hover:bg-primaryDark'
-            // disabled={createGroup.isLoading || process.env.NEXT_PUBLIC_ENV === 'development' ? false : !recaptchaToken}
-            >
-              {t('groupDialog.createGroupDialogCreate')}
+            <Button type='submit' variant='contained' className='bg-primary hover:bg-primaryDark'>
+              {mode === 'create' ? t('groupDialog.addGroup') : t('groupDialog.updateGroup')}
             </Button>
           </div>
         </form>

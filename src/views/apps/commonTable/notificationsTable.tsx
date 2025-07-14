@@ -61,6 +61,7 @@ const DebouncedInput = ({
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -113,8 +114,15 @@ const NotificationsTable: FC<NotificationsTableProps> = ({
     if (notificationId === null) return
     deleteNotification(notificationId, {
       onSuccess: () => {
-        toast.success(t('notifications.success.deleted'))
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         setData(prevData => prevData?.filter(delNotificationId => delNotificationId.id !== notificationId))
+        toast.success(t('notifications.success.deleted'))
         setIsDelModalOpen(false)
       }
     })
@@ -240,7 +248,7 @@ const NotificationsTable: FC<NotificationsTableProps> = ({
               }}
               sx={{ padding: '0.5rem 1rem' }}
             >
-              {t('notifications.createNotification')}
+              {t('notifications.addNotification')}
             </Button>
           )}
         </div>
@@ -282,11 +290,7 @@ const NotificationsTable: FC<NotificationsTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={t('notifications.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <IconButton onClick={() => exportNotificationsToCSV(notificationsData)} title={t('table.export')}>
                 <i className='tabler-file-download text-[28px] cursor-pointer' />
               </IconButton>

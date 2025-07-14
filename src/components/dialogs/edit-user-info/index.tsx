@@ -21,10 +21,7 @@ import { useClientHooks } from '@/services/useClientHook'
 import type { CreateClient } from '@/types/apps/TableDataTypes'
 import CountrySelect from '@/components/MuiDropDowns/CountrySelect'
 
-// Goggle ReCaptcha
-import Recaptcha from '@/components/Recaptcha'
 import PhoneInput from '@/components/phoneInput'
-import { useRecaptchaStore } from '@/store/recaptchaStore'
 import { useTranslation } from 'react-i18next'
 import { modalStyles } from '@/utils/constants/modalsStyles'
 import { toast } from 'react-toastify'
@@ -49,9 +46,6 @@ const AddClientModal: React.FC<AddClientModalProps> = ({
   pathName
 }) => {
   const { t } = useTranslation('global')
-
-  // store
-  // const { recaptchaToken, setRecaptchaToken } = useRecaptchaStore();
 
   const { useSaveClient, useUpdateClient } = useClientHooks()
   const { mutate: editClient } = useUpdateClient()
@@ -143,7 +137,6 @@ const AddClientModal: React.FC<AddClientModalProps> = ({
       setPhoneNumber(null)
     }
     handleClose(false)
-    // setRecaptchaToken(null)
   }
 
   const handlePhoneNumberChange = (newPhoneNumber: string) => {
@@ -169,7 +162,9 @@ const AddClientModal: React.FC<AddClientModalProps> = ({
         <Box sx={modalStyles}>
           <div className='flex gap-x-2 justify-between items-center mb-6'>
             <Typography variant='h4'>
-              {mode === 'create' ? t(`${entity}Modal.title.create`) : t(`${entity}Modal.title.edit`)}
+              {mode === 'create'
+                ? t(`${entity === 'client' ? 'clientTable.addClient' : 'clientTable.addLead'}`)
+                : t(`${entity === 'client' ? 'clientTable.updateClient' : 'clientTable.updateLead'}`)}
             </Typography>
             <Button
               onClick={handleCloseModal}
@@ -295,10 +290,25 @@ const AddClientModal: React.FC<AddClientModalProps> = ({
                   </Typography>
                 )}
               </div>
-            </div>
 
-            {/* Recaptcha */}
-            {/* <Recaptcha /> */}
+              <div className='col-span-12 relative'>
+                <CustomTextField
+                  className='hover:appearance-none focus:outline-none'
+                  fullWidth
+                  label={t('clientModal.fields.notes')}
+                  type='text'
+                  {...register('notes')}
+                  defaultValue={clientData?.notes || null}
+                  error={!!errors.notes}
+                  helperText={errors.notes?.message}
+                  id='notes'
+                  multiline
+                  minRows={3}
+                  maxRows={4}
+                  sx={{ '& .MuiOutlinedInput-root': { height: 'auto' } }}
+                />
+              </div>
+            </div>
 
             {/* Submit Button */}
             {(mode === 'create' || mode === 'edit') && (
@@ -310,9 +320,10 @@ const AddClientModal: React.FC<AddClientModalProps> = ({
                     padding: '0.5rem 1rem'
                   }}
                   type='submit'
-                  // disabled={process.env.NEXT_PUBLIC_ENV === 'development' ? false : !recaptchaToken}
                 >
-                  {mode === 'create' ? t(`${entity}Modal.buttons.create`) : t(`${entity}Modal.buttons.update`)}
+                  {mode === 'create'
+                    ? t(`${entity === 'client' ? 'clientTable.addClient' : 'clientTable.addLead'}`)
+                    : t(`${entity}Modal.buttons.update`)}
                 </Button>
               </div>
             )}

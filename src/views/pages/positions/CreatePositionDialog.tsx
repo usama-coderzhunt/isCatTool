@@ -86,7 +86,7 @@ const CreatePositionDialog = ({ open, onClose, mode, positionData }: CreatePosit
   return (
     <Dialog open={open} onClose={handleCloseModal} maxWidth='xs' fullWidth>
       <DialogTitle>
-        {mode === 'create' ? t('positionsTable.createPosition') : t('positionsTable.editPosition')}
+        {mode === 'create' ? t('positionsTable.addPosition') : t('positionsTable.updatePosition')}
       </DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)} className='mt-4 flex flex-col gap-5'>
@@ -102,7 +102,7 @@ const CreatePositionDialog = ({ open, onClose, mode, positionData }: CreatePosit
           <div className='flex justify-end gap-4 mt-4'>
             <Button onClick={handleCloseModal}>{t('common.cancel')}</Button>
             <Button type='submit' variant='contained' className='bg-primary hover:bg-primaryDark'>
-              {mode === 'create' ? t('common.create') : t('common.update')}
+              {mode === 'create' ? t('positionsTable.addPosition') : t('positionsTable.updatePosition')}
             </Button>
           </div>
         </form>

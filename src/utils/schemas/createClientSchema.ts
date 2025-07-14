@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const createClientSchema = z.object({
   first_name: z.string().min(1, { message: 'First name is required' }),
@@ -17,7 +17,7 @@ export const createClientSchema = z.object({
   customer_country: z.string().nullable().default(null),
   notes: z.string().nullable().default(null),
   client_type: z.enum(['lead', 'client'], { message: 'Invalid client type' }).nullable().default(null),
-  is_active: z.boolean().nullable().default(null),
-});
+  is_active: z.boolean().nullable().default(null)
+})
 
-export type CreateClientSchema = z.infer<typeof createClientSchema>;
+export type CreateClientSchema = z.infer<typeof createClientSchema>

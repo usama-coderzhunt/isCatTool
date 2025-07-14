@@ -16,6 +16,7 @@ interface StatusConfModalProps {
   notes?: string
   setNotes?: (notes: string) => void
   showImageUpload?: boolean
+  isShowAddNotesField?: boolean
   initialNotes?: string
   initialImage?: string
 }
@@ -31,6 +32,7 @@ const StatusConfModal = ({
   notes = '',
   setNotes,
   showImageUpload = false,
+  isShowAddNotesField = true,
   initialNotes = '',
   initialImage = ''
 }: StatusConfModalProps) => {
@@ -68,15 +70,17 @@ const StatusConfModal = ({
       </div>
       <DialogContent>
         <div className='flex flex-col gap-4'>
-          <CustomTextField
-            fullWidth
-            multiline
-            rows={3}
-            value={notes}
-            onChange={e => setNotes?.(e.target.value.slice(0, maxLength))}
-            label={t('modal.confirmation.status.addNotes')}
-            helperText={`${notes?.length}/${maxLength}`}
-          />
+          {isShowAddNotesField && (
+            <CustomTextField
+              fullWidth
+              multiline
+              rows={3}
+              value={notes}
+              onChange={e => setNotes?.(e.target.value.slice(0, maxLength))}
+              label={t('modal.confirmation.status.addNotes')}
+              helperText={`${notes?.length}/${maxLength}`}
+            />
+          )}
           {showImageUpload && (
             <div className='w-full'>
               <ImageUploader

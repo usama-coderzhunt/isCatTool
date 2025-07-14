@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
 import Card from '@mui/material/Card'
-import CustomTextField from '@/@core/components/mui/TextField'
+
 import Button from '@mui/material/Button'
 import Switch from '@mui/material/Switch'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -11,13 +12,21 @@ import MenuItem from '@mui/material/MenuItem'
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import Typography from '@mui/material/Typography'
-import HTMLEditor from '@/components/common/htmlEditor'
-import { useAdminSettingsHook } from '@/services/adminSettingsHook'
+
 import { useTranslation } from 'react-i18next'
+
+import IconButton from '@mui/material/IconButton'
+
+import InputAdornment from '@mui/material/InputAdornment'
+
+import type { LexicalEditorHandle } from '@/components/common/Lexical dev/LexicalEditor'
+import LexicalEditor from '@/components/common/Lexical dev/LexicalEditor'
+import { useAdminSettingsHook } from '@/services/adminSettingsHook'
+
 import type { PaymentSettings as PaymentSettingsType } from '@/types/adminSettingsTypes'
 import DeleteConfModal from '@/components/deleteConfirmationModal'
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
+
+import CustomTextField from '@/@core/components/mui/TextField'
 
 const PaymentSettings = () => {
   const {
@@ -76,17 +85,22 @@ const PaymentSettings = () => {
   })
 
   // Add state for existing manual payment methods
-  const [editedMethod, setEditedMethod] = useState<{
-    id: number | null
-    name: string
-    instructions: string
-    active: boolean
-    additional_details: string
-  } | null>(null)
+  const [editedMethods, setEditedMethods] = useState<{
+    [id: number]: {
+      name: string
+      instructions: string
+      active: boolean
+      additional_details: string
+    }
+  }>({})
 
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
   const [selectedMethodId, setSelectedMethodId] = useState<number | null>(null)
   const [selectedMethodName, setSelectedMethodName] = useState('')
+
+  //refs
+  const instructionsEditorRef = useRef<LexicalEditorHandle>(null)
+  const additionalDetailsEditorRef = useRef<LexicalEditorHandle>(null)
 
   // Add state for password visibility
   const [showSecrets, setShowSecrets] = useState<Record<string, boolean>>({
@@ -336,32 +350,37 @@ const PaymentSettings = () => {
             <div className='flex flex-col gap-4'>
               <CustomTextField
                 label={t('adminSettings.manualPayment.name')}
-                value={editedMethod?.id === method.id ? editedMethod.name : method.name}
+                value={editedMethods[method.id]?.name ?? method.name}
                 onChange={e =>
-                  setEditedMethod({
-                    id: method.id,
-                    name: e.target.value,
-                    instructions: editedMethod?.id === method.id ? editedMethod.instructions : method.instructions,
-                    active: editedMethod?.id === method.id ? editedMethod.active : method.active,
-                    additional_details:
-                      editedMethod?.id === method.id ? editedMethod.additional_details : method.additional_details
-                  })
+                  setEditedMethods(prev => ({
+                    ...prev,
+                    [method.id]: {
+                      ...prev[method.id],
+                      name: e.target.value,
+                      instructions: prev[method.id]?.instructions ?? method.instructions,
+                      active: prev[method.id]?.active ?? method.active,
+                      additional_details: prev[method.id]?.additional_details ?? method.additional_details
+                    }
+                  }))
                 }
                 fullWidth
               />
               <div>
                 <Typography className='block text-sm mb-2'>{t('adminSettings.manualPayment.instructions')}</Typography>
-                <HTMLEditor
-                  value={editedMethod?.id === method.id ? editedMethod.instructions : method.instructions}
-                  onChange={(value: string) =>
-                    setEditedMethod({
-                      id: method.id,
-                      name: editedMethod?.id === method.id ? editedMethod.name : method.name,
-                      instructions: value,
-                      active: editedMethod?.id === method.id ? editedMethod.active : method.active,
-                      additional_details:
-                        editedMethod?.id === method.id ? editedMethod.additional_details : method.additional_details
-                    })
+                <LexicalEditor
+                  key={`instructions-${method.id}`}
+                  value={editedMethods[method.id]?.instructions ?? method.instructions}
+                  setValue={value =>
+                    setEditedMethods(prev => ({
+                      ...prev,
+                      [method.id]: {
+                        ...prev[method.id],
+                        instructions: value,
+                        name: prev[method.id]?.name ?? method.name,
+                        active: prev[method.id]?.active ?? method.active,
+                        additional_details: prev[method.id]?.additional_details ?? method.additional_details
+                      }
+                    }))
                   }
                   height='150px'
                 />
@@ -370,37 +389,55 @@ const PaymentSettings = () => {
                 <Typography className='block text-sm mb-2'>
                   {t('adminSettings.manualPayment.additionalDetails')}
                 </Typography>
-                <HTMLEditor
-                  value={editedMethod?.id === method.id ? editedMethod.additional_details : method.additional_details}
-                  onChange={(value: string) =>
-                    setEditedMethod({
-                      id: method.id,
-                      name: editedMethod?.id === method.id ? editedMethod.name : method.name,
-                      instructions: editedMethod?.id === method.id ? editedMethod.instructions : method.instructions,
-                      active: editedMethod?.id === method.id ? editedMethod.active : method.active,
-                      additional_details: value
-                    })
+                <LexicalEditor
+                  key={`additional-details-${method.id}`}
+                  value={editedMethods[method.id]?.additional_details ?? method.additional_details}
+                  setValue={value =>
+                    setEditedMethods(prev => ({
+                      ...prev,
+                      [method.id]: {
+                        ...prev[method.id],
+                        additional_details: value,
+                        name: prev[method.id]?.name ?? method.name,
+                        instructions: prev[method.id]?.instructions ?? method.instructions,
+                        active: prev[method.id]?.active ?? method.active
+                      }
+                    }))
                   }
                   height='150px'
                 />
               </div>
               <div className='flex justify-between items-center'>
                 <div className='flex gap-2'>
-                  <Button variant='outlined' onClick={() => setEditedMethod(null)}>
+                  <Button
+                    variant='outlined'
+                    onClick={() =>
+                      setEditedMethods(prev => {
+                        const { [method.id]: _, ...rest } = prev
+
+                        return rest
+                      })
+                    }
+                  >
                     {t('adminSettings.manualPayment.revertChanges')}
                   </Button>
                   <Button
                     variant='contained'
                     onClick={() => {
+                      const edited = editedMethods[method.id] || method
+
                       updateManualPayment({
                         id: method.id,
-                        name: editedMethod?.id === method.id ? editedMethod.name : method.name,
-                        instructions: editedMethod?.id === method.id ? editedMethod.instructions : method.instructions,
-                        active: editedMethod?.id === method.id ? editedMethod.active : method.active,
-                        additional_details:
-                          editedMethod?.id === method.id ? editedMethod.additional_details : method.additional_details
+                        name: edited.name,
+                        instructions: edited.instructions,
+                        active: edited.active,
+                        additional_details: edited.additional_details
                       })
-                      setEditedMethod(null)
+                      setEditedMethods(prev => {
+                        const { [method.id]: _, ...rest } = prev
+
+                        return rest
+                      })
                     }}
                   >
                     {t('adminSettings.manualPayment.save')}
@@ -410,24 +447,23 @@ const PaymentSettings = () => {
                   <FormControlLabel
                     control={
                       <Switch
-                        checked={editedMethod?.id === method.id ? editedMethod.active : method.active}
+                        checked={editedMethods[method.id]?.active ?? method.active}
                         onChange={e =>
-                          setEditedMethod({
-                            id: method.id,
-                            name: editedMethod?.id === method.id ? editedMethod.name : method.name,
-                            instructions:
-                              editedMethod?.id === method.id ? editedMethod.instructions : method.instructions,
-                            active: e.target.checked,
-                            additional_details:
-                              editedMethod?.id === method.id
-                                ? editedMethod.additional_details
-                                : method.additional_details
-                          })
+                          setEditedMethods(prev => ({
+                            ...prev,
+                            [method.id]: {
+                              ...prev[method.id],
+                              active: e.target.checked,
+                              name: prev[method.id]?.name ?? method.name,
+                              instructions: prev[method.id]?.instructions ?? method.instructions,
+                              additional_details: prev[method.id]?.additional_details ?? method.additional_details
+                            }
+                          }))
                         }
                       />
                     }
                     label={
-                      (editedMethod?.id === method.id ? editedMethod.active : method.active)
+                      (editedMethods[method.id]?.active ?? method.active)
                         ? t('adminSettings.manualPayment.enabled')
                         : t('adminSettings.manualPayment.disabled')
                     }
@@ -463,9 +499,16 @@ const PaymentSettings = () => {
                 <Typography className='block text-sm mb-2'>{t('adminSettings.manualPayment.instructions')}</Typography>
                 <i className='tabler-asterisk text-red-500 text-xs -mt-2' />
               </div>
-              <HTMLEditor
+              <LexicalEditor
+                key='new-instructions'
+                ref={instructionsEditorRef}
                 value={newManualPayment.instructions}
-                onChange={(value: string) => setNewManualPayment(prev => ({ ...prev, instructions: value }))}
+                setValue={value =>
+                  setNewManualPayment(prev => ({
+                    ...prev,
+                    instructions: value
+                  }))
+                }
                 height='150px'
               />
             </div>
@@ -473,9 +516,16 @@ const PaymentSettings = () => {
               <Typography className='block text-sm mb-2'>
                 {t('adminSettings.manualPayment.additionalDetails')}
               </Typography>
-              <HTMLEditor
+              <LexicalEditor
+                key='new-additional-details'
+                ref={additionalDetailsEditorRef}
                 value={newManualPayment.additional_details}
-                onChange={(value: string) => setNewManualPayment(prev => ({ ...prev, additional_details: value }))}
+                setValue={value =>
+                  setNewManualPayment(prev => ({
+                    ...prev,
+                    additional_details: value
+                  }))
+                }
                 height='150px'
               />
             </div>
@@ -484,6 +534,14 @@ const PaymentSettings = () => {
               onClick={() => {
                 createManualPayment(newManualPayment)
                 setNewManualPayment({ name: '', instructions: '', active: true, additional_details: '' })
+
+                if (instructionsEditorRef.current) {
+                  instructionsEditorRef.current.reset()
+                }
+
+                if (additionalDetailsEditorRef.current) {
+                  additionalDetailsEditorRef.current.reset()
+                }
               }}
               disabled={!newManualPayment.name || !newManualPayment.instructions}
             >

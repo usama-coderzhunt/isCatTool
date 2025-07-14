@@ -146,9 +146,7 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({ open, handleClose, coup
       <Fade in={open}>
         <Box sx={modalStyles}>
           <div className='flex gap-x-2 justify-between items-center mb-6'>
-            <Typography variant='h4'>
-              {mode === 'create' ? t('coupons.form.create') : t('coupons.form.edit')}
-            </Typography>
+            <Typography variant='h4'>{mode === 'create' ? t('coupons.form.add') : t('coupons.form.update')}</Typography>
             <Button
               onClick={handleCloseModal}
               variant='outlined'
@@ -314,7 +312,7 @@ const AddCouponModal: React.FC<AddCouponModalProps> = ({ open, handleClose, coup
                   onClick={() => setShowDateErrors(true)}
                   type='submit'
                 >
-                  {mode === 'create' ? t('coupons.form.create') : t('coupons.form.edit')}
+                  {mode === 'create' ? t('coupons.form.add') : t('coupons.form.update')}
                 </Button>
               </div>
             )}

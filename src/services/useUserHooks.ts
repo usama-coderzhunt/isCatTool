@@ -92,10 +92,7 @@ export const useUserHooks = () => {
 
         if (localStorage.getItem('returnUrl')) {
           const returnUrl = decipher(localStorage.getItem('returnUrl') || '')
-
           router.push(returnUrl)
-          // console.log('>>returnUrl', returnUrl)
-          // localStorage.removeItem('returnUrl')
         } else {
           router.push(`/${lang}/dashboard`)
         }

@@ -73,6 +73,7 @@ export const useTransactionsHooks = () => {
       },
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['transactions'] })
+        queryClient.invalidateQueries({ queryKey: ['transactions-by-order-id'] })
       },
       onError: (error: AxiosError<ErrorResponse>) => {
         const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred.'

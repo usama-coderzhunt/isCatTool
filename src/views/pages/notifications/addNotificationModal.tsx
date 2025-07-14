@@ -16,9 +16,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import CustomTextField from '@/@core/components/mui/TextField'
 
-// Goggle ReCaptcha
-import Recaptcha from '@/components/Recaptcha'
-import { useRecaptchaStore } from '@/store/recaptchaStore'
 import { toast } from 'react-toastify'
 import { modalStyles } from '@/utils/constants/modalsStyles'
 import { NotificationTemplateType, METHOD_CHOICES, TARGET_CHOICES } from '@/types/notificationTypes'
@@ -34,8 +31,6 @@ interface AddNotificationModalProps {
 
 const AddNotificationModal: React.FC<AddNotificationModalProps> = ({ open, handleClose, notificationData, mode }) => {
   const { t } = useTranslation('global')
-  // store
-  // const { recaptchaToken, setRecaptchaToken } = useRecaptchaStore();
 
   // hooks
   const { useCreateNotification, useEditNotification } = useNotificationHooks()
@@ -70,9 +65,6 @@ const AddNotificationModal: React.FC<AddNotificationModalProps> = ({ open, handl
   }, [notificationData, mode, setValue, reset])
 
   const onSubmit: SubmitHandler<NotificationTemplateType> = (data: any) => {
-    // if (!recaptchaToken && process.env.NEXT_PUBLIC_ENV !== "development") {
-    //     return;
-    // }
     if (mode === 'create') {
       createNotification(data as NotificationTemplateType, {
         onSuccess: () => {
@@ -98,7 +90,6 @@ const AddNotificationModal: React.FC<AddNotificationModalProps> = ({ open, handl
       reset()
     }
     handleClose(false)
-    // setRecaptchaToken(null)
   }
 
   return (
@@ -118,7 +109,7 @@ const AddNotificationModal: React.FC<AddNotificationModalProps> = ({ open, handl
       <Fade in={open}>
         <Box sx={{ ...modalStyles, width: 450 }}>
           <div className='flex gap-x-2 justify-between items-center mb-6'>
-            <Typography variant='h4'>{t(`notifications.modal.${mode}`)}</Typography>
+            <Typography variant='h4'>{t(`notifications.modal.${mode === 'create' ? 'add' : 'update'}`)}</Typography>
             <Button
               onClick={handleCloseModal}
               variant='outlined'
@@ -188,9 +179,6 @@ const AddNotificationModal: React.FC<AddNotificationModalProps> = ({ open, handl
               </div>
             </div>
 
-            {/* Recaptcha */}
-            {/* <Recaptcha /> */}
-
             {/* Submit Button */}
             {(mode === 'create' || mode === 'edit') && (
               <div className='w-full flex justify-end'>
@@ -201,9 +189,8 @@ const AddNotificationModal: React.FC<AddNotificationModalProps> = ({ open, handl
                     padding: '0.5rem 1rem'
                   }}
                   type='submit'
-                  // disabled={process.env.NEXT_PUBLIC_ENV === 'development' ? false : !recaptchaToken}
                 >
-                  {t(`notifications.modal.${mode === 'create' ? 'createButton' : 'updateButton'}`)}
+                  {t(`notifications.modal.${mode === 'create' ? 'add' : 'update'}`)}
                 </Button>
               </div>
             )}

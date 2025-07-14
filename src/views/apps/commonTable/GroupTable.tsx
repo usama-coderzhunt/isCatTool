@@ -61,10 +61,10 @@ const DebouncedInput = ({
   return (
     <CustomTextField
       label={t('groups.search')}
-      placeholder={t('groups.search')}
       {...props}
       value={value}
       onChange={e => setValue(e.target.value)}
+      shrinkLabel={false}
     />
   )
 }
@@ -119,6 +119,13 @@ const GroupTable = ({
     if (!selectedGroup) return
     deleteGroupMutation.mutate(undefined, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(t('groups.deleteSuccessMessage'))
         handleCloseDeleteModal()
       }

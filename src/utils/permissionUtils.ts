@@ -131,6 +131,8 @@ export const publicRoutes = [
   '/home',
 
   // English Routes
+  '/en',
+  '/en/',
   '/en/login',
   '/en/pages/auth/forgot-password',
   '/en/pages/auth/forgot-password/reset',
@@ -149,6 +151,8 @@ export const publicRoutes = [
   '/en/apps/subscriptions',
 
   // French Routes
+  '/fr',
+  '/fr/',
   '/fr/login',
   '/fr/pages/auth/forgot-password',
   '/fr/pages/auth/forgot-password/reset',
@@ -167,6 +171,8 @@ export const publicRoutes = [
   '/fr/apps/subscriptions',
 
   // Arabic Routes
+  '/ar',
+  '/ar/',
   '/ar/dashboard/service',
   '/ar/login',
   '/ar/pages/auth/forgot-password',
@@ -186,6 +192,8 @@ export const publicRoutes = [
   '/ar/apps/subscriptions',
 
   // Spanish (/es) Routes
+  '/es',
+  '/es/',
   '/es/login',
   '/es/pages/auth/forgot-password',
   '/es/pages/auth/forgot-password/reset',

@@ -69,7 +69,7 @@ const OrderDetailCard = ({ row }: { row: any }) => {
               </div>
             </div>
 
-            {/* Short Description Row */}
+            {/* Notes Row */}
             {(isSuperUser || userRole === 'Admin') && (
               <div className='flex w-full items-center py-3 gap-x-4'>
                 <Typography variant='body1' color='text.primary' className='font-bold min-w-[120px]'>

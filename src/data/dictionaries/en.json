@@ -127,6 +127,19 @@
     "blog": "Blog",
     "posts": "Posts",
     "categories": "Categories",
-    "tags": "Tags"
+    "tags": "Tags",
+    "llmOperators": "LLM Operators",
+    "projects": "Projects",
+    "istaTranslationAssistant": "ISTA Translation Assistant",
+    "tasks": "Tasks",
+    "translationMemories": "Translation Memories",
+    "translationMemoriesEntry": "Entries",
+    "translationModels": "Translation Models",
+    "termBases": "Term Bases",
+    "termBaseEntries": "Entries",
+    "translationSubjects": "Translation Subjects",
+    "files": "Files",
+    "businessUnits": "Business Units",
+    "languages": "Languages"
   }
 }

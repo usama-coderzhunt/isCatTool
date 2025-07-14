@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import MenuItem from '@mui/material/MenuItem'
-import { Button, IconButton, Switch, Chip } from '@mui/material'
+import { Button, IconButton, Switch, Chip, Tooltip } from '@mui/material'
 import { useColorScheme } from '@mui/material/styles'
 
 // Material React Table Import
@@ -74,6 +74,7 @@ const DebouncedInput = ({
 
   return (
     <CustomTextField
+      shrinkLabel={false}
       label={t('clientTable.search')}
       {...props}
       value={value}
@@ -148,6 +149,13 @@ const CommonTable: FC<CommonTableProps> = ({
     if (clientId === null) return
     deleteClientMutation.mutate(clientId, {
       onSuccess: () => {
+        const newTotalPages = Math.ceil((totalRecords - 1) / pagination.pageSize)
+        if (pagination.pageIndex >= newTotalPages) {
+          setPagination(prev => ({
+            ...prev,
+            pageIndex: Math.max(0, newTotalPages - 1)
+          }))
+        }
         toast.success(
           `${pathName?.includes('/clients') ? t('clientTable.client') : t('clientTable.lead')} ${t('clientTable.deletedSuccess')}`
         )
@@ -276,6 +284,18 @@ const CommonTable: FC<CommonTableProps> = ({
         )
       },
       {
+        accessorKey: 'notes',
+        header: t('clientTable.note'),
+        Cell: ({ cell }: { cell: MRT_Cell<Client> }) => {
+          const notes = getDisplayValue(cell.getValue())
+          return (
+            <Tooltip title={notes} arrow>
+              <Typography className='truncate max-w-[200px] w-full'>{notes}</Typography>
+            </Tooltip>
+          )
+        }
+      },
+      {
         accessorKey: 'is_active',
         header: 'Status',
         Header: () => <span>{t('clientTable.status')}</span>,
@@ -400,7 +420,7 @@ const CommonTable: FC<CommonTableProps> = ({
               }}
               sx={{ padding: '0.5rem 1rem' }}
             >
-              {t(pathName?.includes('/clients') ? 'clientTable.createClient' : 'clientTable.createLead')}
+              {t(pathName?.includes('/clients') ? 'clientTable.addClient' : 'clientTable.addLead')}
             </Button>
           )}
         </div>
@@ -443,11 +463,7 @@ const CommonTable: FC<CommonTableProps> = ({
           }}
           renderTopToolbarCustomActions={() => (
             <div className='flex items-center gap-3'>
-              <DebouncedInput
-                value={globalFilter ?? ''}
-                onChange={value => setGlobalFilter(String(value))}
-                placeholder={pathName?.includes('/clients') ? t('clientTable.search') : t('clientTable.search')}
-              />
+              <DebouncedInput value={globalFilter ?? ''} onChange={value => setGlobalFilter(String(value))} />
               <CustomTextField
                 select
                 id='select-status'
@@ -531,6 +547,7 @@ const CommonTable: FC<CommonTableProps> = ({
           setStatusModalOpen(false)
           setPendingStatusChange(null)
         }}
+        isShowAddNotesField={false}
         handleStatusChange={handleStatusConfirm}
         title={t('clientTable.confirmStatusChange')}
         userName={pendingStatusChange?.userName || ''}
@@ -544,6 +561,7 @@ const CommonTable: FC<CommonTableProps> = ({
           setPromotionModalOpen(false)
           setPendingPromotion(null)
         }}
+        isShowAddNotesField={false}
         handleStatusChange={handlePromotionConfirm}
         title={t('clientTable.promoteToClient')}
         userName={pendingPromotion?.userName || ''}
